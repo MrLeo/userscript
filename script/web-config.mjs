@@ -372,15 +372,15 @@ const packageList = [
   ...[
     'lint-staged',
     'husky',
-    `@commitlint/{cli,config-conventional}`
+    '@commitlint/cli',
+    '@commitlint/config-conventional',
   ]
-]
-console.info(chalk.red(packageList.join(' ').toString()))
+].join(' ')
 
 const addPackageflags = ['--save-dev']
 if (await fs.pathExists('pnpm-workspace.yaml')) addPackageflags.push('-w')
-await $`pnpm add ${packageList.join(' ').toString()} ${addPackageflags}`
-console.info(chalk.green(`[pnpm] packages 已安装`))
+await $`pnpm add ${packageList} ${addPackageflags}`
+console.info(chalk.green(`[pnpm] ${packageList} 已安装`))
 
 await Promise.all([
   $`pnpm dlx mrm editorconfig --config:indent 2`, // https://mrm.js.org/docs/mrm-task-editorconfig
