@@ -5,11 +5,8 @@
     "moduleResolution": "node",
     "strict": true,
     "jsx": "preserve",
-
     "baseUrl": ".",
-    // "rootDir": "src",
     "outDir": "./dist",
-    // "allowJs": true,
     "pretty": true,
     "checkJs": true,
     "sourceMap": true,
@@ -25,18 +22,23 @@
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
-
-    // "types": ["@dcloudio/types"],
-
     "paths": {
-      // "@/*": [ "./src/*" ],
-      "types/*": ["types/*"]
+      "types/*": [
+        "types/*"
+      ]
     },
-
-    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost"
+    ]
   },
-  // "include": [
-  //   "**/*.ts",
-  // ],
-  "exclude": ["**/*.js", "tests/**/*", "node_modules", "dist", ".git"]
+  "exclude": [
+    "**/*.js",
+    "tests/**/*",
+    "node_modules",
+    "dist",
+    ".git"
+  ]
 }
