@@ -342,6 +342,7 @@ git commit -m "build: update project config files"
 
 rm -rf node_modules
 rm -rf dist
+rm -rf .husky
 echo "node_modules & dist 已删除"
 
 pnpm install
@@ -355,11 +356,9 @@ pnpm dlx mrm editorconfig --config:indent 2
 pnpm dlx mrm prettier --config:indent 2
 # pnpm dlx mrm eslint
 # pnpm dlx mrm typescript
-pnpm dlx mrm lint-staged
-
-rm -rf .husky
 pnpm dlx husky install
 pnpm dlx husky add .husky/commit-msg 'npx --no-install commitlint --edit "$1"'
+pnpm dlx mrm lint-staged
 
 # TODO 修改 packages.json
 # {
@@ -370,7 +369,6 @@ pnpm dlx husky add .husky/commit-msg 'npx --no-install commitlint --edit "$1"'
 #     "pretest": "npm run lint"
 #   }
 # }
-
 pnpm dlx prettier --write .
 pnpm dlx eslint . --cache --fix --ext .js,.jsx,.ts,.tsx,.vue
 
