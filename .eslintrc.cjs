@@ -91,7 +91,7 @@ module.exports = {
   overrides: [
     {
       // enable the rule specifically for TypeScript files
-      files: ["*.ts", "*.mts", "*.cts", "*.tsx"],
+      files: ['*.ts', '*.mts', '*.cts', '*.tsx'],
       rules: {
         // '@typescript-eslint/no-explicit-any': ['error'],
         // '@typescript-eslint/no-unused-vars': ['error'],
