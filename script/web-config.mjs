@@ -359,7 +359,7 @@ console.info(chalk.green(`node_modules & dist 已删除`))
 
 await $`pnpm install`
 
-const packages = [
+const addPackageflags = [
   ...[
     'eslint',
     'prettier',
@@ -370,11 +370,11 @@ const packages = [
     '@typescript-eslint/eslint-plugin',
   ],
   ...['lint-staged', 'husky', '@commitlint/{cli,config-conventional}'],
-].join(' ')
-const addPackageflags = ['--save-dev']
+  '--save-dev',
+]
 if (await fs.pathExists('pnpm-workspace.yaml')) addPackageflags.push('-w')
-await $`pnpm add ${packages} ${addPackageflags}`
-console.info(chalk.green(`[pnpm] ${packages} 已安装`))
+await $`pnpm add ${addPackageflags}`
+console.info(chalk.green(`[pnpm] packages 已安装`))
 
 await Promise.all([
   $`pnpm dlx mrm editorconfig --config:indent 2`, // https://mrm.js.org/docs/mrm-task-editorconfig
