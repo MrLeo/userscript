@@ -368,8 +368,11 @@ const addPackageflags = [
     'eslint-plugin-vue',
     '@typescript-eslint/parser',
     '@typescript-eslint/eslint-plugin',
+
+    'lint-staged',
+    'husky',
+    '@commitlint/{cli,config-conventional}',
   ].join(' '),
-  ['lint-staged', 'husky', '@commitlint/{cli,config-conventional}'].join(' '),
   '--save-dev',
 ]
 if (await fs.pathExists('pnpm-workspace.yaml')) addPackageflags.push('-w')
