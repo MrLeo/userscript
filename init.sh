@@ -340,8 +340,9 @@ EOF
 git add . && git commit -m "build: update project config files"
 
 rm -rf node_modules dist
-pnpm install
+echo node_modules & dist 已删除
 
+pnpm install
 pnpm add --save-dev eslint prettier eslint-config-prettier eslint-plugin-prettier eslint-plugin-vue @typescript-eslint/parser @typescript-eslint/eslint-plugin -w
 pnpm add --save-dev lint-staged husky @commitlint/{cli,config-conventional} -w
 
