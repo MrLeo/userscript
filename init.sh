@@ -337,10 +337,11 @@ cat >.npmrc<<EOF
 # home=https://www.npmjs.org
 EOF
 
-git add . && git commit -m "build: update project config files"
+git add .
+git commit -m "build: update project config files"
 
-rm -rf node_modules dist
-echo node_modules & dist 已删除
+rm -rf node_modules dist;
+echo "node_modules & dist 已删除"
 
 pnpm install
 pnpm add --save-dev eslint prettier eslint-config-prettier eslint-plugin-prettier eslint-plugin-vue @typescript-eslint/parser @typescript-eslint/eslint-plugin -w
@@ -372,6 +373,7 @@ npx husky add .husky/commit-msg 'npx --no-install commitlint --edit "$1"'
 npx prettier --write .
 npx eslint . --cache --fix --ext .js,.jsx,.ts,.tsx,.vue
 
-git add . && git commit -m "build: update mrm config"
+git add .
+git commit -m "build: update mrm config"
 
 # npx mrm readme
