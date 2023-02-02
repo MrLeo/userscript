@@ -359,23 +359,21 @@ console.info(chalk.green(`node_modules & dist 已删除`))
 
 await $`pnpm install`
 
-const addPackageflags = [
-  'eslint',
+const packageList = [
+  ...['eslint',
   'prettier',
   'eslint-config-prettier',
   'eslint-plugin-prettier',
   'eslint-plugin-vue',
   '@typescript-eslint/parser',
-  '@typescript-eslint/eslint-plugin',
-
-  'lint-staged',
+    '@typescript-eslint/eslint-plugin',],
+  ...['lint-staged',
   'husky',
-  `'@commitlint/{cli,config-conventional}'`,
-
-  '--save-dev',
+  `@commitlint/{cli,config-conventional}`,]
 ]
+const addPackageflags = [ '--save-dev', ]
 if (await fs.pathExists('pnpm-workspace.yaml')) addPackageflags.push('-w')
-await $`pnpm add ${addPackageflags}`
+await $`pnpm add ${packageList.join(' ')} ${addPackageflags}`
 console.info(chalk.green(`[pnpm] packages 已安装`))
 
 await Promise.all([
