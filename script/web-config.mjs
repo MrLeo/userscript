@@ -370,7 +370,7 @@ const addPackageflags = [
 
   'lint-staged',
   'husky',
-  `@commitlint/{cli,config-conventional}`,
+  `'@commitlint/{cli,config-conventional}'`,
 
   '--save-dev',
 ]
