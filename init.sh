@@ -340,7 +340,8 @@ EOF
 git add .
 git commit -m "build: update project config files"
 
-rm -rf node_modules dist;
+rm -rf node_modules
+rm -rf dist
 echo "node_modules & dist 已删除"
 
 pnpm install
@@ -348,17 +349,17 @@ pnpm add --save-dev eslint prettier eslint-config-prettier eslint-plugin-prettie
 pnpm add --save-dev lint-staged husky @commitlint/{cli,config-conventional} -w
 
 alias npx='pnpm dlx'
-# [Mrm - Codemods for your project config files](https://mrm.js.org/)
 
-npx mrm editorconfig --config:indent 2
-npx mrm prettier --config:indent 2
-# npx mrm eslint
-# npx mrm typescript
-npx mrm lint-staged
+# [Mrm - Codemods for your project config files](https://mrm.js.org/)
+pnpm dlx mrm editorconfig --config:indent 2
+pnpm dlx mrm prettier --config:indent 2
+# pnpm dlx mrm eslint
+# pnpm dlx mrm typescript
+pnpm dlx mrm lint-staged
 
 rm -rf .husky
-npx husky install
-npx husky add .husky/commit-msg 'npx --no-install commitlint --edit "$1"'
+pnpm dlx husky install
+pnpm dlx husky add .husky/commit-msg 'npx --no-install commitlint --edit "$1"'
 
 # TODO 修改 packages.json
 # {
@@ -370,10 +371,10 @@ npx husky add .husky/commit-msg 'npx --no-install commitlint --edit "$1"'
 #   }
 # }
 
-npx prettier --write .
-npx eslint . --cache --fix --ext .js,.jsx,.ts,.tsx,.vue
+pnpm dlx prettier --write .
+pnpm dlx eslint . --cache --fix --ext .js,.jsx,.ts,.tsx,.vue
 
 git add .
 git commit -m "build: update mrm config"
 
-# npx mrm readme
+# pnpm dlx mrm readme
