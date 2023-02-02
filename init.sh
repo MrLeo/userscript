@@ -365,6 +365,7 @@ npx mrm lint-staged
 npx prettier --write .
 npx eslint . --cache --fix --ext .js,.jsx,.ts,.tsx,.vue
 
+rm -rf .husky
 npx husky install
 npx husky add .husky/commit-msg 'npx --no-install commitlint --edit "$1"'
 
