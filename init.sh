@@ -337,9 +337,26 @@ cat >.npmrc<<EOF
 # home=https://www.npmjs.org
 EOF
 
-git add . && git commit -m "build: add project config files"
+git add . && git commit -m "build: update project config files"
 
+rm -rf node_modules dist
+pnpm install
+
+pnpm add --save-dev eslint prettier eslint-config-prettier eslint-plugin-prettier eslint-plugin-vue @typescript-eslint/parser @typescript-eslint/eslint-plugin -w
+pnpm add --save-dev lint-staged husky @commitlint/{cli,config-conventional} -w
+
+alias npx='pnpm dlx'
 # [Mrm - Codemods for your project config files](https://mrm.js.org/)
+
+npx mrm editorconfig --config:indent 2
+npx mrm prettier --config:indent 2
+# npx mrm eslint
+# npx mrm typescript
+npx mrm lint-staged
+
+rm -rf .husky
+npx husky install
+npx husky add .husky/commit-msg 'npx --no-install commitlint --edit "$1"'
 
 # TODO 修改 packages.json
 # {
@@ -351,26 +368,8 @@ git add . && git commit -m "build: add project config files"
 #   }
 # }
 
-rm -rf node_modules dist
-pnpm install
-
-pnpm add --save-dev eslint prettier eslint-config-prettier eslint-plugin-prettier eslint-plugin-vue @typescript-eslint/parser @typescript-eslint/eslint-plugin -w
-pnpm add --save-dev lint-staged husky @commitlint/{cli,config-conventional} -w
-
-alias npx='pnpm dlx'
-
-npx mrm editorconfig --config:indent 2
-npx mrm prettier --config:indent 2
-# npx mrm eslint
-# npx mrm typescript
-npx mrm lint-staged
-
 npx prettier --write .
 npx eslint . --cache --fix --ext .js,.jsx,.ts,.tsx,.vue
-
-rm -rf .husky
-npx husky install
-npx husky add .husky/commit-msg 'npx --no-install commitlint --edit "$1"'
 
 git add . && git commit -m "build: update mrm config"
 
