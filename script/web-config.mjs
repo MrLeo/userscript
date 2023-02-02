@@ -359,7 +359,7 @@ console.info(chalk.green(`node_modules & dist 已删除`))
 
 await $`pnpm install`
 
-const packageList = [
+const packageList = new Set([
   ...[
     'eslint',
     'prettier',
@@ -375,12 +375,12 @@ const packageList = [
     '@commitlint/cli',
     '@commitlint/config-conventional',
   ]
-].join(' ')
+])
 
-const addPackageflags = ['--save-dev']
+const addPackageflags = [...packageList, '--save-dev']
 if (await fs.pathExists('pnpm-workspace.yaml')) addPackageflags.push('-w')
 await $`pnpm add ${packageList} ${addPackageflags}`
-console.info(chalk.green(`[pnpm] ${packageList} 已安装`))
+console.info(chalk.green(`[pnpm] package 已安装`))
 
 await Promise.all([
   $`pnpm dlx mrm editorconfig --config:indent 2`, // https://mrm.js.org/docs/mrm-task-editorconfig
