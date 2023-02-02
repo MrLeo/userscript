@@ -351,10 +351,13 @@ git add . && git commit -m "build: add project config files"
 #   }
 # }
 
-alias npx='pnpm dlx'
+rm -rf node_modules dist
+pnpm install
 
 pnpm add --save-dev eslint prettier eslint-config-prettier eslint-plugin-prettier eslint-plugin-vue @typescript-eslint/parser @typescript-eslint/eslint-plugin -w
 pnpm add --save-dev lint-staged husky @commitlint/{cli,config-conventional} -w
+
+alias npx='pnpm dlx'
 
 npx mrm editorconfig --config:indent 2
 npx mrm prettier --config:indent 2
@@ -371,4 +374,4 @@ npx husky add .husky/commit-msg 'npx --no-install commitlint --edit "$1"'
 
 git add . && git commit -m "build: update mrm config"
 
-npx mrm readme
+# npx mrm readme
