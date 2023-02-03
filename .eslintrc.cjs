@@ -36,6 +36,7 @@ module.exports = {
   globals: {
     '': 'readonly',
     uni: 'readonly',
+    jQuery: 'readonly',
   },
   rules: {
     indent: 'off', // 缩进2个空格：https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/indent.md
@@ -87,6 +88,7 @@ module.exports = {
     '@typescript-eslint/no-empty-function': 'off',
     '@typescript-eslint/no-var-requires': 'off',
     '@typescript-eslint/no-unused-vars': ['warn'],
+    '@typescript-eslint/ban-ts-comment': 'off',
   },
   overrides: [
     {
