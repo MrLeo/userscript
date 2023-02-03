@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name       @leo/table-to-json
 // @namespace  https://xuebin.me/
-// @version    0.0.1
+// @version    0.0.2
 // @author     monkey
 // @icon       https://vitejs.dev/logo.svg
 // @updateURL  https://gitee.com/mr.leo/userscript/raw/main/@leo/table-to-json.user.js
@@ -11,7 +11,7 @@
 // @require    https://cdn.jsdelivr.net/npm/vue@3.2.45/dist/vue.global.prod.js
 // ==/UserScript==
 
-(e=>{const o=document.createElement("style");o.dataset.source="vite-plugin-monkey",o.innerText=e,document.head.appendChild(o)})(":root{font-family:Inter,Avenir,Helvetica,Arial,sans-serif;font-size:16px;line-height:24px;font-weight:400;color-scheme:light dark;color:#ffffffde;background-color:#242424;font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;-webkit-text-size-adjust:100%}a{font-weight:500;color:#646cff;text-decoration:inherit}a:hover{color:#535bf2}body{margin:0;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;place-items:center;min-width:320px;min-height:100vh}h1{font-size:3.2em;line-height:1.1}button{border-radius:8px;border:1px solid transparent;padding:.6em 1.2em;font-size:1em;font-weight:500;font-family:inherit;background-color:#1a1a1a;cursor:pointer;-webkit-transition:border-color .25s;transition:border-color .25s}button:hover{border-color:#646cff}button:focus,button:focus-visible{outline:4px auto -webkit-focus-ring-color}.card{padding:2em}#app{max-width:1280px;margin:0 auto;padding:2rem;text-align:center}@media (prefers-color-scheme: light){:root{color:#213547;background-color:#fff}a:hover{color:#747bff}button{background-color:#f9f9f9}}.inno-userscript_invoice[data-v-5c90b940]{position:fixed;z-index:9999;background-color:#fff;-webkit-box-shadow:5px 5px 5px #ccc,-5px -5px 5px #ccc;box-shadow:5px 5px 5px #ccc,-5px -5px 5px #ccc;max-height:80%;overflow:auto}.inno-userscript_invoice .drag[data-v-5c90b940]{cursor:move;font-size:16px;background:#ccc;padding:8px}.btn[data-v-5c90b940]{cursor:pointer}.copy[data-v-5c90b940]{cursor:copy}details[data-v-5c90b940]{border:1px solid #aaa;border-radius:4px;padding:.5em .5em 0}summary[data-v-5c90b940]{font-weight:700;margin:-.5em -.5em 0;padding:.5em;cursor:pointer}details[open][data-v-5c90b940]{padding:.5em}details[open] summary[data-v-5c90b940]{border-bottom:1px solid #aaa;margin-bottom:.5em}");
+(e=>{const o=document.createElement("style");o.dataset.source="vite-plugin-monkey",o.innerText=e,document.head.appendChild(o)})(":root{font-family:Inter,Avenir,Helvetica,Arial,sans-serif;font-size:16px;line-height:24px;font-weight:400;color-scheme:light dark;color:#ffffffde;background-color:#242424;font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;-webkit-text-size-adjust:100%}a{font-weight:500;color:#646cff;text-decoration:inherit}a:hover{color:#535bf2}body{margin:0;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;place-items:center;min-width:320px;min-height:100vh}h1{font-size:3.2em;line-height:1.1}button{border-radius:8px;border:1px solid transparent;padding:.6em 1.2em;font-size:1em;font-weight:500;font-family:inherit;background-color:#1a1a1a;cursor:pointer;-webkit-transition:border-color .25s;transition:border-color .25s}button:hover{border-color:#646cff}button:focus,button:focus-visible{outline:4px auto -webkit-focus-ring-color}.card{padding:2em}#app{max-width:1280px;margin:0 auto;padding:2rem;text-align:center}@media (prefers-color-scheme: light){:root{color:#213547;background-color:#fff}a:hover{color:#747bff}button{background-color:#f9f9f9}}.inno-userscript_invoice[data-v-00439c86]{position:fixed;z-index:9999;background-color:#fff;-webkit-box-shadow:5px 5px 5px #ccc,-5px -5px 5px #ccc;box-shadow:5px 5px 5px #ccc,-5px -5px 5px #ccc;max-height:80%;overflow:auto}.inno-userscript_invoice .drag[data-v-00439c86]{cursor:move;font-size:16px;background:#ccc;padding:8px}.btn[data-v-00439c86]{cursor:pointer}.copy[data-v-00439c86]{cursor:copy}details[data-v-00439c86]{border:1px solid #aaa;border-radius:4px;padding:.5em .5em 0}summary[data-v-00439c86]{font-weight:700;margin:-.5em -.5em 0;padding:.5em;cursor:pointer}details[open][data-v-00439c86]{padding:.5em}details[open] summary[data-v-00439c86]{border-bottom:1px solid #aaa;margin-bottom:.5em}");
 
 (function(vue) {
   "use strict";
@@ -654,12 +654,6 @@
       const getTables = () => {
         tables.value = jQuery("table");
       };
-      const autoRefreshTables = setInterval(() => {
-        var _a3;
-        getTables();
-        if ((_a3 = tables.value) == null ? void 0 : _a3.length)
-          clearInterval(autoRefreshTables);
-      }, 1e3);
       vue.watch(
         () => tables.value,
         (v) => {
@@ -694,8 +688,7 @@
       );
       const { copy, isSupported } = useClipboard();
       return (_ctx, _cache) => {
-        return tables.value ? (vue.openBlock(), vue.createElementBlock("div", {
-          key: 0,
+        return vue.openBlock(), vue.createElementBlock("div", {
           ref: "root",
           class: "inno-userscript_invoice",
           style: vue.normalizeStyle(vue.unref(style2))
@@ -705,40 +698,47 @@
             ref: drag,
             class: "drag"
           }, [
-            vue.createTextVNode(" Table to JSON "),
+            vue.createTextVNode(" Table to JSON   "),
             vue.createElementVNode("a", {
               class: "btn",
               onClick: _cache[0] || (_cache[0] = ($event) => getTables())
-            }, "重新解析")
+            }, "解析"),
+            vue.createTextVNode("   "),
+            vue.createElementVNode("a", {
+              class: "btn",
+              onClick: _cache[1] || (_cache[1] = ($event) => getTables())
+            }, "关闭")
           ], 512),
-          vue.createElementVNode("pre", null, vue.toDisplayString(JSON.stringify(output.value, null, 2)), 1),
-          vue.createElementVNode("details", null, [
-            vue.createElementVNode("summary", null, [
-              vue.createTextVNode("Request "),
-              vue.unref(isSupported) ? (vue.openBlock(), vue.createElementBlock("a", {
-                key: 0,
-                class: "copy",
-                onClick: _cache[1] || (_cache[1] = ($event) => vue.unref(copy)(TypeResponse.value))
-              }, "copy")) : vue.createCommentVNode("", true)
+          tables.value ? (vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: 0 }, [
+            vue.createElementVNode("pre", null, vue.toDisplayString(JSON.stringify(output.value, null, 2)), 1),
+            vue.createElementVNode("details", null, [
+              vue.createElementVNode("summary", null, [
+                vue.createTextVNode("Request "),
+                vue.unref(isSupported) ? (vue.openBlock(), vue.createElementBlock("a", {
+                  key: 0,
+                  class: "copy",
+                  onClick: _cache[2] || (_cache[2] = ($event) => vue.unref(copy)(TypeResponse.value))
+                }, "copy")) : vue.createCommentVNode("", true)
+              ]),
+              vue.createElementVNode("pre", null, vue.toDisplayString(TypeRequest.value), 1)
             ]),
-            vue.createElementVNode("pre", null, vue.toDisplayString(TypeRequest.value), 1)
-          ]),
-          vue.createElementVNode("details", null, [
-            vue.createElementVNode("summary", null, [
-              vue.createTextVNode("Response "),
-              vue.unref(isSupported) ? (vue.openBlock(), vue.createElementBlock("a", {
-                key: 0,
-                class: "copy",
-                onClick: _cache[2] || (_cache[2] = ($event) => vue.unref(copy)(TypeResponse.value))
-              }, "copy")) : vue.createCommentVNode("", true)
-            ]),
-            vue.createElementVNode("pre", null, vue.toDisplayString(TypeResponse.value), 1)
-          ])
-        ], 4)) : vue.createCommentVNode("", true);
+            vue.createElementVNode("details", null, [
+              vue.createElementVNode("summary", null, [
+                vue.createTextVNode("Response "),
+                vue.unref(isSupported) ? (vue.openBlock(), vue.createElementBlock("a", {
+                  key: 0,
+                  class: "copy",
+                  onClick: _cache[3] || (_cache[3] = ($event) => vue.unref(copy)(TypeResponse.value))
+                }, "copy")) : vue.createCommentVNode("", true)
+              ]),
+              vue.createElementVNode("pre", null, vue.toDisplayString(TypeResponse.value), 1)
+            ])
+          ], 64)) : vue.createCommentVNode("", true)
+        ], 4);
       };
     }
   });
-  const App_vue_vue_type_style_index_0_scoped_5c90b940_lang = "";
+  const App_vue_vue_type_style_index_0_scoped_00439c86_lang = "";
   const _export_sfc = (sfc, props) => {
     const target = sfc.__vccOpts || sfc;
     for (const [key, val] of props) {
@@ -746,7 +746,7 @@
     }
     return target;
   };
-  const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-5c90b940"]]);
+  const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-00439c86"]]);
   vue.createApp(App).mount(
     (() => {
       const app = document.createElement("div");

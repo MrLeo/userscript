@@ -33,10 +33,10 @@ const getTables = () => {
   tables.value = jQuery('table')
 }
 
-const autoRefreshTables = setInterval(() => {
-  getTables()
-  if (tables.value?.length) clearInterval(autoRefreshTables)
-}, 1000)
+// const autoRefreshTables = setInterval(() => {
+//   getTables()
+//   if (tables.value?.length) clearInterval(autoRefreshTables)
+// }, 1000)
 
 watch(
   () => tables.value,
@@ -78,20 +78,24 @@ const { copy, isSupported } = useClipboard()
 </script>
 
 <template>
-  <div v-if="tables" ref="root" class="inno-userscript_invoice" :style="style">
+  <div ref="root" class="inno-userscript_invoice" :style="style">
     <h1 ref="drag" class="drag">
-      Table to JSON
-      <a class="btn" @click="getTables()">重新解析</a>
+      Table to JSON &nbsp;
+      <a class="btn" @click="getTables()">解析</a>
+      &nbsp;
+      <a class="btn" @click="getTables()">关闭</a>
     </h1>
-    <pre>{{ JSON.stringify(output, null, 2) }}</pre>
-    <details>
-      <summary>Request <a v-if="isSupported" class="copy" @click="copy(TypeResponse)">copy</a></summary>
-      <pre>{{ TypeRequest }}</pre>
-    </details>
-    <details>
-      <summary>Response <a v-if="isSupported" class="copy" @click="copy(TypeResponse)">copy</a></summary>
-      <pre>{{ TypeResponse }}</pre>
-    </details>
+    <template v-if="tables">
+      <pre>{{ JSON.stringify(output, null, 2) }}</pre>
+      <details>
+        <summary>Request <a v-if="isSupported" class="copy" @click="copy(TypeResponse)">copy</a></summary>
+        <pre>{{ TypeRequest }}</pre>
+      </details>
+      <details>
+        <summary>Response <a v-if="isSupported" class="copy" @click="copy(TypeResponse)">copy</a></summary>
+        <pre>{{ TypeResponse }}</pre>
+      </details>
+    </template>
   </div>
 </template>
 
