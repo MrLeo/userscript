@@ -1,11 +1,10 @@
 // ==UserScript==
 // @name       @leo/table-to-json
-// @namespace  npm/vite-plugin-monkey
+// @namespace  https://xuebin.me/
 // @version    0.0.0
 // @author     monkey
 // @icon       https://vitejs.dev/logo.svg
-// @updateURL  https://github.com/MrLeo/userscript/raw/main/packages/table-to-json/dist/%40leo/table-to-json.user.js
-// @match      *://www.baidu.com/*
+// @updateURL  https://gitee.com/mr.leo/userscript/raw/main/@leo/table-to-json.user.js
 // @match      *://wiki.zhaopin.com/*
 // @require    https://cdn.jsdelivr.net/npm/core-js-bundle@latest/minified.js
 // @require    https://cdn.jsdelivr.net/npm/table-to-json@1.0.0/lib/jquery.tabletojson.min.js

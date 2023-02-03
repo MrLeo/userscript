@@ -16,9 +16,9 @@ export default defineConfig({
       entry: 'src/main.ts',
       userscript: {
         icon: 'https://vitejs.dev/logo.svg',
-        namespace: 'npm/vite-plugin-monkey',
-        match: ['*://www.baidu.com/*', '*://wiki.zhaopin.com/*'],
-        updateURL: 'https://github.com/MrLeo/userscript/raw/main/packages/table-to-json/dist/%40leo/table-to-json.user.js',
+        namespace: 'https://xuebin.me/',
+        match: ['*://wiki.zhaopin.com/*'],
+        updateURL: 'https://gitee.com/mr.leo/userscript/raw/main/@leo/table-to-json.user.js',
         require: [
           'https://cdn.jsdelivr.net/npm/core-js-bundle@latest/minified.js',
           'https://cdn.jsdelivr.net/npm/table-to-json@1.0.0/lib/jquery.tabletojson.min.js',
