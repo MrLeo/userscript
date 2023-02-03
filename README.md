@@ -5,5 +5,6 @@
 # API 文档
 
 - https://github.com/lisonge/vite-plugin-monkey
+- https://www.tampermonkey.net/documentation.php
 - https://api.jquery.com/
 - https://github.com/lightswitch05/table-to-json

@@ -1,0 +1,23 @@
+{
+  "name": "@leo/core",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Leo <https://xuebin.me>",
+  "license": "MIT",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "require": "./index.cjs",
+      "import": "./index.mjs"
+    },
+    "./*": "./*"
+  },
+  "main": "./index.cjs",
+  "module": "./index.mjs",
+  "types": "./index.d.ts",
+  "files": [
+    "index.*"
+  ],
+  "scripts": {}
+}
