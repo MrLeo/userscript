@@ -3,7 +3,14 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "main": "src/main.ts",
+  "main": "./dist/core.umd.js",
+  "module": "./dist/core.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/core.es.js",
+      "require": "./dist/core.umd.js"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",

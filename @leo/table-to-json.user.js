@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name       @leo/table-to-json
 // @namespace  https://xuebin.me/
-// @version    0.0.4
+// @version    0.0.5
 // @author     monkey
 // @icon       https://vitejs.dev/logo.svg
 // @updateURL  https://gitee.com/mr.leo/userscript/raw/main/@leo/table-to-json.user.js
@@ -13,7 +13,7 @@
 // @grant      GM_xmlhttpRequest
 // ==/UserScript==
 
-(e=>{const o=document.createElement("style");o.dataset.source="vite-plugin-monkey",o.innerText=e,document.head.appendChild(o)})(":root{font-family:Inter,Avenir,Helvetica,Arial,sans-serif;font-size:16px;line-height:24px;font-weight:400;color-scheme:light dark;color:#ffffffde;background-color:#242424;font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;-webkit-text-size-adjust:100%}a{font-weight:500;color:#646cff;text-decoration:inherit}a:hover{color:#535bf2}body{margin:0;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;place-items:center;min-width:320px;min-height:100vh}h1{font-size:3.2em;line-height:1.1}button{border-radius:8px;border:1px solid transparent;padding:.6em 1.2em;font-size:1em;font-weight:500;font-family:inherit;background-color:#1a1a1a;cursor:pointer;-webkit-transition:border-color .25s;transition:border-color .25s}button:hover{border-color:#646cff}button:focus,button:focus-visible{outline:4px auto -webkit-focus-ring-color}.card{padding:2em}#app{max-width:1280px;margin:0 auto;padding:2rem;text-align:center}@media (prefers-color-scheme: light){:root{color:#213547;background-color:#fff}a:hover{color:#747bff}button{background-color:#f9f9f9}}.inno-userscript_invoice[data-v-f9336dac]{position:fixed;z-index:9999;background-color:#fff;-webkit-box-shadow:5px 5px 10px 0px #ccc;box-shadow:5px 5px 10px #ccc;max-height:80%;overflow:auto;border-radius:5px;border:1px solid #ccc;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column}.inno-userscript_invoice .main[data-v-f9336dac]{overflow:auto;padding:4px}.inno-userscript_invoice .drag[data-v-f9336dac]{cursor:move;font-size:16px;background:#ccc;padding:8px}.btn[data-v-f9336dac]{cursor:pointer}.copy[data-v-f9336dac]{cursor:copy}details[data-v-f9336dac]{border:1px solid #aaa;border-radius:4px;padding:.5em .5em 0}summary[data-v-f9336dac]{font-weight:700;margin:-.5em -.5em 0;padding:.5em;cursor:pointer}details[open][data-v-f9336dac]{padding:.5em}details[open] summary[data-v-f9336dac]{border-bottom:1px solid #aaa;margin-bottom:.5em}");
+(e=>{const o=document.createElement("style");o.dataset.source="vite-plugin-monkey",o.innerText=e,document.head.appendChild(o)})(":root{font-family:Inter,Avenir,Helvetica,Arial,sans-serif;font-size:16px;line-height:24px;font-weight:400;color-scheme:light dark;color:#ffffffde;background-color:#242424;font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;-webkit-text-size-adjust:100%}a{font-weight:500;color:#646cff;text-decoration:inherit}a:hover{color:#535bf2}body{margin:0;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;place-items:center;min-width:320px;min-height:100vh}h1{font-size:3.2em;line-height:1.1}button{border-radius:8px;border:1px solid transparent;padding:.6em 1.2em;font-size:1em;font-weight:500;font-family:inherit;background-color:#1a1a1a;cursor:pointer;-webkit-transition:border-color .25s;transition:border-color .25s}button:hover{border-color:#646cff}button:focus,button:focus-visible{outline:4px auto -webkit-focus-ring-color}.card{padding:2em}#app{max-width:1280px;margin:0 auto;padding:2rem;text-align:center}@media (prefers-color-scheme: light){:root{color:#213547;background-color:#fff}a:hover{color:#747bff}button{background-color:#f9f9f9}}.inno-userscript_invoice[data-v-f87958ba]{position:fixed;z-index:9999;background-color:#fff;-webkit-box-shadow:5px 5px 10px 0px #ccc;box-shadow:5px 5px 10px #ccc;max-height:80%;overflow:auto;border-radius:5px;border:1px solid #ccc;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column}.inno-userscript_invoice .main[data-v-f87958ba]{overflow:auto;padding:4px}.inno-userscript_invoice .drag[data-v-f87958ba]{cursor:move;font-size:16px;background:#ccc;padding:8px}.btn[data-v-f87958ba]{cursor:pointer}.copy[data-v-f87958ba]{cursor:copy}details[data-v-f87958ba]{border:1px solid #aaa;border-radius:4px;padding:.5em .5em 0}summary[data-v-f87958ba]{font-weight:700;margin:-.5em -.5em 0;padding:.5em;cursor:pointer}details[open][data-v-f87958ba]{padding:.5em}details[open] summary[data-v-f87958ba]{border-bottom:1px solid #aaa;margin-bottom:.5em}");
 
 (function(vue) {
   "use strict";
@@ -100,9 +100,9 @@
     createToken("GTE0PRE", "^\\s*>=\\s*0\\.0\\.0-0\\s*$");
   })(re$3, reExports);
   const opts = ["includePrerelease", "loose", "rtl"];
-  const parseOptions$2 = (options) => !options ? {} : typeof options !== "object" ? { loose: true } : opts.filter((k) => options[k]).reduce((o, k) => {
-    o[k] = true;
-    return o;
+  const parseOptions$2 = (options) => !options ? {} : typeof options !== "object" ? { loose: true } : opts.filter((k) => options[k]).reduce((o2, k) => {
+    o2[k] = true;
+    return o2;
   }, {});
   var parseOptions_1 = parseOptions$2;
   const numeric = /^[0-9]+$/;
@@ -122,7 +122,7 @@
   };
   const debug = debug_1;
   const { MAX_LENGTH: MAX_LENGTH$1, MAX_SAFE_INTEGER } = constants$1;
-  const { re: re$2, t: t$2 } = reExports;
+  const { re: re$2, t: t$3 } = reExports;
   const parseOptions$1 = parseOptions_1;
   const { compareIdentifiers } = identifiers$1;
   let SemVer$d = class SemVer2 {
@@ -146,7 +146,7 @@
       this.options = options;
       this.loose = !!options.loose;
       this.includePrerelease = !!options.includePrerelease;
-      const m = version2.trim().match(options.loose ? re$2[t$2.LOOSE] : re$2[t$2.FULL]);
+      const m = version2.trim().match(options.loose ? re$2[t$3.LOOSE] : re$2[t$3.FULL]);
       if (!m) {
         throw new TypeError(`Invalid Version: ${version2}`);
       }
@@ -219,11 +219,11 @@
       } else if (!this.prerelease.length && !other.prerelease.length) {
         return 0;
       }
-      let i = 0;
+      let i2 = 0;
       do {
-        const a = this.prerelease[i];
-        const b = other.prerelease[i];
-        debug("prerelease compare", i, a, b);
+        const a = this.prerelease[i2];
+        const b = other.prerelease[i2];
+        debug("prerelease compare", i2, a, b);
         if (a === void 0 && b === void 0) {
           return 0;
         } else if (b === void 0) {
@@ -235,17 +235,17 @@
         } else {
           return compareIdentifiers(a, b);
         }
-      } while (++i);
+      } while (++i2);
     }
     compareBuild(other) {
       if (!(other instanceof SemVer2)) {
         other = new SemVer2(other, this.options);
       }
-      let i = 0;
+      let i2 = 0;
       do {
-        const a = this.build[i];
-        const b = other.build[i];
-        debug("prerelease compare", i, a, b);
+        const a = this.build[i2];
+        const b = other.build[i2];
+        debug("prerelease compare", i2, a, b);
         if (a === void 0 && b === void 0) {
           return 0;
         } else if (b === void 0) {
@@ -257,7 +257,7 @@
         } else {
           return compareIdentifiers(a, b);
         }
-      } while (++i);
+      } while (++i2);
     }
     // preminor will bump the version up to the next minor release, and immediately
     // down to pre-release. premajor and prepatch work the same way.
@@ -312,14 +312,14 @@
           if (this.prerelease.length === 0) {
             this.prerelease = [0];
           } else {
-            let i = this.prerelease.length;
-            while (--i >= 0) {
-              if (typeof this.prerelease[i] === "number") {
-                this.prerelease[i]++;
-                i = -2;
+            let i2 = this.prerelease.length;
+            while (--i2 >= 0) {
+              if (typeof this.prerelease[i2] === "number") {
+                this.prerelease[i2]++;
+                i2 = -2;
               }
             }
-            if (i === -1) {
+            if (i2 === -1) {
               this.prerelease.push(0);
             }
           }
@@ -343,7 +343,7 @@
   };
   var semver$1 = SemVer$d;
   const { MAX_LENGTH } = constants$1;
-  const { re: re$1, t: t$1 } = reExports;
+  const { re: re$1, t: t$2 } = reExports;
   const SemVer$c = semver$1;
   const parseOptions = parseOptions_1;
   const parse$6 = (version2, options) => {
@@ -357,8 +357,8 @@
     if (version2.length > MAX_LENGTH) {
       return null;
     }
-    const r = options.loose ? re$1[t$1.LOOSE] : re$1[t$1.FULL];
-    if (!r.test(version2)) {
+    const r2 = options.loose ? re$1[t$2.LOOSE] : re$1[t$2.FULL];
+    if (!r2.test(version2)) {
       return null;
     }
     try {
@@ -376,8 +376,8 @@
   var valid_1 = valid$2;
   const parse$4 = parse_1;
   const clean$1 = (version2, options) => {
-    const s = parse$4(version2.trim().replace(/^[=v]+/, ""), options);
-    return s ? s.version : null;
+    const s2 = parse$4(version2.trim().replace(/^[=v]+/, ""), options);
+    return s2 ? s2.version : null;
   };
   var clean_1 = clean$1;
   const SemVer$b = semver$1;
@@ -518,7 +518,7 @@
   var cmp_1 = cmp$1;
   const SemVer$5 = semver$1;
   const parse$1 = parse_1;
-  const { re, t } = reExports;
+  const { re, t: t$1 } = reExports;
   const coerce$1 = (version2, options) => {
     if (version2 instanceof SemVer$5) {
       return version2;
@@ -532,16 +532,16 @@
     options = options || {};
     let match = null;
     if (!options.rtl) {
-      match = version2.match(re[t.COERCE]);
+      match = version2.match(re[t$1.COERCE]);
     } else {
       let next;
-      while ((next = re[t.COERCERTL].exec(version2)) && (!match || match.index + match[0].length !== version2.length)) {
+      while ((next = re[t$1.COERCERTL].exec(version2)) && (!match || match.index + match[0].length !== version2.length)) {
         if (!match || next.index + next[0].length !== match.index + match[0].length) {
           match = next;
         }
-        re[t.COERCERTL].lastIndex = next.index + next[1].length + next[2].length;
+        re[t$1.COERCERTL].lastIndex = next.index + next[1].length + next[2].length;
       }
-      re[t.COERCERTL].lastIndex = -1;
+      re[t$1.COERCERTL].lastIndex = -1;
     }
     if (match === null) {
       return null;
@@ -580,8 +580,8 @@
         self2.push(item);
       });
     } else if (arguments.length > 0) {
-      for (var i = 0, l = arguments.length; i < l; i++) {
-        self2.push(arguments[i]);
+      for (var i2 = 0, l2 = arguments.length; i2 < l2; i2++) {
+        self2.push(arguments[i2]);
       }
     }
     return self2;
@@ -649,14 +649,14 @@
     this.length++;
   };
   Yallist$1.prototype.push = function() {
-    for (var i = 0, l = arguments.length; i < l; i++) {
-      push(this, arguments[i]);
+    for (var i2 = 0, l2 = arguments.length; i2 < l2; i2++) {
+      push(this, arguments[i2]);
     }
     return this.length;
   };
   Yallist$1.prototype.unshift = function() {
-    for (var i = 0, l = arguments.length; i < l; i++) {
-      unshift(this, arguments[i]);
+    for (var i2 = 0, l2 = arguments.length; i2 < l2; i2++) {
+      unshift(this, arguments[i2]);
     }
     return this.length;
   };
@@ -690,31 +690,31 @@
   };
   Yallist$1.prototype.forEach = function(fn, thisp) {
     thisp = thisp || this;
-    for (var walker = this.head, i = 0; walker !== null; i++) {
-      fn.call(thisp, walker.value, i, this);
+    for (var walker = this.head, i2 = 0; walker !== null; i2++) {
+      fn.call(thisp, walker.value, i2, this);
       walker = walker.next;
     }
   };
   Yallist$1.prototype.forEachReverse = function(fn, thisp) {
     thisp = thisp || this;
-    for (var walker = this.tail, i = this.length - 1; walker !== null; i--) {
-      fn.call(thisp, walker.value, i, this);
+    for (var walker = this.tail, i2 = this.length - 1; walker !== null; i2--) {
+      fn.call(thisp, walker.value, i2, this);
       walker = walker.prev;
     }
   };
-  Yallist$1.prototype.get = function(n) {
-    for (var i = 0, walker = this.head; walker !== null && i < n; i++) {
+  Yallist$1.prototype.get = function(n2) {
+    for (var i2 = 0, walker = this.head; walker !== null && i2 < n2; i2++) {
       walker = walker.next;
     }
-    if (i === n && walker !== null) {
+    if (i2 === n2 && walker !== null) {
       return walker.value;
     }
   };
-  Yallist$1.prototype.getReverse = function(n) {
-    for (var i = 0, walker = this.tail; walker !== null && i < n; i++) {
+  Yallist$1.prototype.getReverse = function(n2) {
+    for (var i2 = 0, walker = this.tail; walker !== null && i2 < n2; i2++) {
       walker = walker.prev;
     }
-    if (i === n && walker !== null) {
+    if (i2 === n2 && walker !== null) {
       return walker.value;
     }
   };
@@ -747,8 +747,8 @@
     } else {
       throw new TypeError("Reduce of empty list with no initial value");
     }
-    for (var i = 0; walker !== null; i++) {
-      acc = fn(acc, walker.value, i);
+    for (var i2 = 0; walker !== null; i2++) {
+      acc = fn(acc, walker.value, i2);
       walker = walker.next;
     }
     return acc;
@@ -764,24 +764,24 @@
     } else {
       throw new TypeError("Reduce of empty list with no initial value");
     }
-    for (var i = this.length - 1; walker !== null; i--) {
-      acc = fn(acc, walker.value, i);
+    for (var i2 = this.length - 1; walker !== null; i2--) {
+      acc = fn(acc, walker.value, i2);
       walker = walker.prev;
     }
     return acc;
   };
   Yallist$1.prototype.toArray = function() {
     var arr = new Array(this.length);
-    for (var i = 0, walker = this.head; walker !== null; i++) {
-      arr[i] = walker.value;
+    for (var i2 = 0, walker = this.head; walker !== null; i2++) {
+      arr[i2] = walker.value;
       walker = walker.next;
     }
     return arr;
   };
   Yallist$1.prototype.toArrayReverse = function() {
     var arr = new Array(this.length);
-    for (var i = 0, walker = this.tail; walker !== null; i++) {
-      arr[i] = walker.value;
+    for (var i2 = 0, walker = this.tail; walker !== null; i2++) {
+      arr[i2] = walker.value;
       walker = walker.prev;
     }
     return arr;
@@ -805,10 +805,10 @@
     if (to > this.length) {
       to = this.length;
     }
-    for (var i = 0, walker = this.head; walker !== null && i < from; i++) {
+    for (var i2 = 0, walker = this.head; walker !== null && i2 < from; i2++) {
       walker = walker.next;
     }
-    for (; walker !== null && i < to; i++, walker = walker.next) {
+    for (; walker !== null && i2 < to; i2++, walker = walker.next) {
       ret.push(walker.value);
     }
     return ret;
@@ -832,10 +832,10 @@
     if (to > this.length) {
       to = this.length;
     }
-    for (var i = this.length, walker = this.tail; walker !== null && i > to; i--) {
+    for (var i2 = this.length, walker = this.tail; walker !== null && i2 > to; i2--) {
       walker = walker.prev;
     }
-    for (; walker !== null && i > from; i--, walker = walker.prev) {
+    for (; walker !== null && i2 > from; i2--, walker = walker.prev) {
       ret.push(walker.value);
     }
     return ret;
@@ -847,11 +847,11 @@
     if (start < 0) {
       start = this.length + start;
     }
-    for (var i = 0, walker = this.head; walker !== null && i < start; i++) {
+    for (var i2 = 0, walker = this.head; walker !== null && i2 < start; i2++) {
       walker = walker.next;
     }
     var ret = [];
-    for (var i = 0; walker && i < deleteCount; i++) {
+    for (var i2 = 0; walker && i2 < deleteCount; i2++) {
       ret.push(walker.value);
       walker = this.removeNode(walker);
     }
@@ -861,8 +861,8 @@
     if (walker !== this.head && walker !== this.tail) {
       walker = walker.prev;
     }
-    for (var i = 0; i < nodes.length; i++) {
-      walker = insert(this, walker, nodes[i]);
+    for (var i2 = 0; i2 < nodes.length; i2++) {
+      walker = insert(this, walker, nodes[i2]);
     }
     return ret;
   };
@@ -870,9 +870,9 @@
     var head = this.head;
     var tail = this.tail;
     for (var walker = head; walker !== null; walker = walker.prev) {
-      var p = walker.prev;
+      var p2 = walker.prev;
       walker.prev = walker.next;
-      walker.next = p;
+      walker.next = p2;
     }
     this.head = tail;
     this.tail = head;
@@ -1109,8 +1109,8 @@
     load(arr) {
       this.reset();
       const now = Date.now();
-      for (let l = arr.length - 1; l >= 0; l--) {
-        const hit = arr[l];
+      for (let l2 = arr.length - 1; l2 >= 0; l2--) {
+        const hit = arr[l2];
         const expiresAt = hit.e || 0;
         if (expiresAt === 0)
           this.set(hit.k, hit.v);
@@ -1215,19 +1215,19 @@
         this.loose = !!options.loose;
         this.includePrerelease = !!options.includePrerelease;
         this.raw = range2;
-        this.set = range2.split("||").map((r) => this.parseRange(r.trim())).filter((c) => c.length);
+        this.set = range2.split("||").map((r2) => this.parseRange(r2.trim())).filter((c2) => c2.length);
         if (!this.set.length) {
           throw new TypeError(`Invalid SemVer Range: ${range2}`);
         }
         if (this.set.length > 1) {
           const first = this.set[0];
-          this.set = this.set.filter((c) => !isNullSet(c[0]));
+          this.set = this.set.filter((c2) => !isNullSet(c2[0]));
           if (this.set.length === 0) {
             this.set = [first];
           } else if (this.set.length > 1) {
-            for (const c of this.set) {
-              if (c.length === 1 && isAny(c[0])) {
-                this.set = [c];
+            for (const c2 of this.set) {
+              if (c2.length === 1 && isAny(c2[0])) {
+                this.set = [c2];
                 break;
               }
             }
@@ -1310,8 +1310,8 @@
             return false;
           }
         }
-        for (let i = 0; i < this.set.length; i++) {
-          if (testSet(this.set[i], version2, this.options)) {
+        for (let i2 = 0; i2 < this.set.length; i2++) {
+          if (testSet(this.set[i2], version2, this.options)) {
             return true;
           }
         }
@@ -1332,8 +1332,8 @@
       tildeTrimReplace,
       caretTrimReplace
     } = reExports;
-    const isNullSet = (c) => c.value === "<0.0.0-0";
-    const isAny = (c) => c.value === "";
+    const isNullSet = (c2) => c2.value === "<0.0.0-0";
+    const isAny = (c2) => c2.value === "";
     const isSatisfiable = (comparators, options) => {
       let result = true;
       const remainingComparators = comparators.slice();
@@ -1359,45 +1359,45 @@
       return comp;
     };
     const isX = (id) => !id || id.toLowerCase() === "x" || id === "*";
-    const replaceTildes = (comp, options) => comp.trim().split(/\s+/).map((c) => {
-      return replaceTilde(c, options);
+    const replaceTildes = (comp, options) => comp.trim().split(/\s+/).map((c2) => {
+      return replaceTilde(c2, options);
     }).join(" ");
     const replaceTilde = (comp, options) => {
-      const r = options.loose ? re2[t2.TILDELOOSE] : re2[t2.TILDE];
-      return comp.replace(r, (_, M, m, p, pr) => {
-        debug2("tilde", comp, _, M, m, p, pr);
+      const r2 = options.loose ? re2[t2.TILDELOOSE] : re2[t2.TILDE];
+      return comp.replace(r2, (_, M, m, p2, pr) => {
+        debug2("tilde", comp, _, M, m, p2, pr);
         let ret;
         if (isX(M)) {
           ret = "";
         } else if (isX(m)) {
           ret = `>=${M}.0.0 <${+M + 1}.0.0-0`;
-        } else if (isX(p)) {
+        } else if (isX(p2)) {
           ret = `>=${M}.${m}.0 <${M}.${+m + 1}.0-0`;
         } else if (pr) {
           debug2("replaceTilde pr", pr);
-          ret = `>=${M}.${m}.${p}-${pr} <${M}.${+m + 1}.0-0`;
+          ret = `>=${M}.${m}.${p2}-${pr} <${M}.${+m + 1}.0-0`;
         } else {
-          ret = `>=${M}.${m}.${p} <${M}.${+m + 1}.0-0`;
+          ret = `>=${M}.${m}.${p2} <${M}.${+m + 1}.0-0`;
         }
         debug2("tilde return", ret);
         return ret;
       });
     };
-    const replaceCarets = (comp, options) => comp.trim().split(/\s+/).map((c) => {
-      return replaceCaret(c, options);
+    const replaceCarets = (comp, options) => comp.trim().split(/\s+/).map((c2) => {
+      return replaceCaret(c2, options);
     }).join(" ");
     const replaceCaret = (comp, options) => {
       debug2("caret", comp, options);
-      const r = options.loose ? re2[t2.CARETLOOSE] : re2[t2.CARET];
+      const r2 = options.loose ? re2[t2.CARETLOOSE] : re2[t2.CARET];
       const z = options.includePrerelease ? "-0" : "";
-      return comp.replace(r, (_, M, m, p, pr) => {
-        debug2("caret", comp, _, M, m, p, pr);
+      return comp.replace(r2, (_, M, m, p2, pr) => {
+        debug2("caret", comp, _, M, m, p2, pr);
         let ret;
         if (isX(M)) {
           ret = "";
         } else if (isX(m)) {
           ret = `>=${M}.0.0${z} <${+M + 1}.0.0-0`;
-        } else if (isX(p)) {
+        } else if (isX(p2)) {
           if (M === "0") {
             ret = `>=${M}.${m}.0${z} <${M}.${+m + 1}.0-0`;
           } else {
@@ -1407,23 +1407,23 @@
           debug2("replaceCaret pr", pr);
           if (M === "0") {
             if (m === "0") {
-              ret = `>=${M}.${m}.${p}-${pr} <${M}.${m}.${+p + 1}-0`;
+              ret = `>=${M}.${m}.${p2}-${pr} <${M}.${m}.${+p2 + 1}-0`;
             } else {
-              ret = `>=${M}.${m}.${p}-${pr} <${M}.${+m + 1}.0-0`;
+              ret = `>=${M}.${m}.${p2}-${pr} <${M}.${+m + 1}.0-0`;
             }
           } else {
-            ret = `>=${M}.${m}.${p}-${pr} <${+M + 1}.0.0-0`;
+            ret = `>=${M}.${m}.${p2}-${pr} <${+M + 1}.0.0-0`;
           }
         } else {
           debug2("no pr");
           if (M === "0") {
             if (m === "0") {
-              ret = `>=${M}.${m}.${p}${z} <${M}.${m}.${+p + 1}-0`;
+              ret = `>=${M}.${m}.${p2}${z} <${M}.${m}.${+p2 + 1}-0`;
             } else {
-              ret = `>=${M}.${m}.${p}${z} <${M}.${+m + 1}.0-0`;
+              ret = `>=${M}.${m}.${p2}${z} <${M}.${+m + 1}.0-0`;
             }
           } else {
-            ret = `>=${M}.${m}.${p} <${+M + 1}.0.0-0`;
+            ret = `>=${M}.${m}.${p2} <${+M + 1}.0.0-0`;
           }
         }
         debug2("caret return", ret);
@@ -1432,18 +1432,18 @@
     };
     const replaceXRanges = (comp, options) => {
       debug2("replaceXRanges", comp, options);
-      return comp.split(/\s+/).map((c) => {
-        return replaceXRange(c, options);
+      return comp.split(/\s+/).map((c2) => {
+        return replaceXRange(c2, options);
       }).join(" ");
     };
     const replaceXRange = (comp, options) => {
       comp = comp.trim();
-      const r = options.loose ? re2[t2.XRANGELOOSE] : re2[t2.XRANGE];
-      return comp.replace(r, (ret, gtlt, M, m, p, pr) => {
-        debug2("xRange", comp, ret, gtlt, M, m, p, pr);
+      const r2 = options.loose ? re2[t2.XRANGELOOSE] : re2[t2.XRANGE];
+      return comp.replace(r2, (ret, gtlt, M, m, p2, pr) => {
+        debug2("xRange", comp, ret, gtlt, M, m, p2, pr);
         const xM = isX(M);
         const xm = xM || isX(m);
-        const xp = xm || isX(p);
+        const xp = xm || isX(p2);
         const anyX = xp;
         if (gtlt === "=" && anyX) {
           gtlt = "";
@@ -1459,16 +1459,16 @@
           if (xm) {
             m = 0;
           }
-          p = 0;
+          p2 = 0;
           if (gtlt === ">") {
             gtlt = ">=";
             if (xm) {
               M = +M + 1;
               m = 0;
-              p = 0;
+              p2 = 0;
             } else {
               m = +m + 1;
-              p = 0;
+              p2 = 0;
             }
           } else if (gtlt === "<=") {
             gtlt = "<";
@@ -1481,7 +1481,7 @@
           if (gtlt === "<") {
             pr = "-0";
           }
-          ret = `${gtlt + M}.${m}.${p}${pr}`;
+          ret = `${gtlt + M}.${m}.${p2}${pr}`;
         } else if (xm) {
           ret = `>=${M}.0.0${pr} <${+M + 1}.0.0-0`;
         } else if (xp) {
@@ -1527,19 +1527,19 @@
       return `${from} ${to}`.trim();
     };
     const testSet = (set, version2, options) => {
-      for (let i = 0; i < set.length; i++) {
-        if (!set[i].test(version2)) {
+      for (let i2 = 0; i2 < set.length; i2++) {
+        if (!set[i2].test(version2)) {
           return false;
         }
       }
       if (version2.prerelease.length && !options.includePrerelease) {
-        for (let i = 0; i < set.length; i++) {
-          debug2(set[i].semver);
-          if (set[i].semver === Comparator2.ANY) {
+        for (let i2 = 0; i2 < set.length; i2++) {
+          debug2(set[i2].semver);
+          if (set[i2].semver === Comparator2.ANY) {
             continue;
           }
-          if (set[i].semver.prerelease.length > 0) {
-            const allowed = set[i].semver;
+          if (set[i2].semver.prerelease.length > 0) {
+            const allowed = set[i2].semver;
             if (allowed.major === version2.major && allowed.minor === version2.minor && allowed.patch === version2.patch) {
               return true;
             }
@@ -1583,8 +1583,8 @@
         debug2("comp", this);
       }
       parse(comp) {
-        const r = this.options.loose ? re2[t2.COMPARATORLOOSE] : re2[t2.COMPARATOR];
-        const m = comp.match(r);
+        const r2 = this.options.loose ? re2[t2.COMPARATORLOOSE] : re2[t2.COMPARATOR];
+        const m = comp.match(r2);
         if (!m) {
           throw new TypeError(`Invalid comparator: ${comp}`);
         }
@@ -1665,7 +1665,7 @@
   };
   var satisfies_1 = satisfies$4;
   const Range$8 = requireRange();
-  const toComparators$1 = (range2, options) => new Range$8(range2, options).set.map((comp) => comp.map((c) => c.value).join(" ").trim().split(" "));
+  const toComparators$1 = (range2, options) => new Range$8(range2, options).set.map((comp) => comp.map((c2) => c2.value).join(" ").trim().split(" "));
   var toComparators_1 = toComparators$1;
   const SemVer$4 = semver$1;
   const Range$7 = requireRange();
@@ -1725,8 +1725,8 @@
       return minver;
     }
     minver = null;
-    for (let i = 0; i < range2.set.length; ++i) {
-      const comparators = range2.set[i];
+    for (let i2 = 0; i2 < range2.set.length; ++i2) {
+      const comparators = range2.set[i2];
       let setMin = null;
       comparators.forEach((comparator2) => {
         const compver = new SemVer$2(comparator2.semver.version);
@@ -1804,8 +1804,8 @@
     if (satisfies$3(version2, range2, options)) {
       return false;
     }
-    for (let i = 0; i < range2.set.length; ++i) {
-      const comparators = range2.set[i];
+    for (let i2 = 0; i2 < range2.set.length; ++i2) {
+      const comparators = range2.set[i2];
       let high = null;
       let low = null;
       comparators.forEach((comparator2) => {
@@ -1937,13 +1937,13 @@
     }
     const eqSet = /* @__PURE__ */ new Set();
     let gt2, lt2;
-    for (const c of sub) {
-      if (c.operator === ">" || c.operator === ">=") {
-        gt2 = higherGT(gt2, c, options);
-      } else if (c.operator === "<" || c.operator === "<=") {
-        lt2 = lowerLT(lt2, c, options);
+    for (const c2 of sub) {
+      if (c2.operator === ">" || c2.operator === ">=") {
+        gt2 = higherGT(gt2, c2, options);
+      } else if (c2.operator === "<" || c2.operator === "<=") {
+        lt2 = lowerLT(lt2, c2, options);
       } else {
-        eqSet.add(c.semver);
+        eqSet.add(c2.semver);
       }
     }
     if (eqSet.size > 1) {
@@ -1965,8 +1965,8 @@
       if (lt2 && !satisfies$1(eq2, String(lt2), options)) {
         return null;
       }
-      for (const c of dom) {
-        if (!satisfies$1(eq2, String(c), options)) {
+      for (const c2 of dom) {
+        if (!satisfies$1(eq2, String(c2), options)) {
           return false;
         }
       }
@@ -1979,40 +1979,40 @@
     if (needDomLTPre && needDomLTPre.prerelease.length === 1 && lt2.operator === "<" && needDomLTPre.prerelease[0] === 0) {
       needDomLTPre = false;
     }
-    for (const c of dom) {
-      hasDomGT = hasDomGT || c.operator === ">" || c.operator === ">=";
-      hasDomLT = hasDomLT || c.operator === "<" || c.operator === "<=";
+    for (const c2 of dom) {
+      hasDomGT = hasDomGT || c2.operator === ">" || c2.operator === ">=";
+      hasDomLT = hasDomLT || c2.operator === "<" || c2.operator === "<=";
       if (gt2) {
         if (needDomGTPre) {
-          if (c.semver.prerelease && c.semver.prerelease.length && c.semver.major === needDomGTPre.major && c.semver.minor === needDomGTPre.minor && c.semver.patch === needDomGTPre.patch) {
+          if (c2.semver.prerelease && c2.semver.prerelease.length && c2.semver.major === needDomGTPre.major && c2.semver.minor === needDomGTPre.minor && c2.semver.patch === needDomGTPre.patch) {
             needDomGTPre = false;
           }
         }
-        if (c.operator === ">" || c.operator === ">=") {
-          higher = higherGT(gt2, c, options);
-          if (higher === c && higher !== gt2) {
+        if (c2.operator === ">" || c2.operator === ">=") {
+          higher = higherGT(gt2, c2, options);
+          if (higher === c2 && higher !== gt2) {
             return false;
           }
-        } else if (gt2.operator === ">=" && !satisfies$1(gt2.semver, String(c), options)) {
+        } else if (gt2.operator === ">=" && !satisfies$1(gt2.semver, String(c2), options)) {
           return false;
         }
       }
       if (lt2) {
         if (needDomLTPre) {
-          if (c.semver.prerelease && c.semver.prerelease.length && c.semver.major === needDomLTPre.major && c.semver.minor === needDomLTPre.minor && c.semver.patch === needDomLTPre.patch) {
+          if (c2.semver.prerelease && c2.semver.prerelease.length && c2.semver.major === needDomLTPre.major && c2.semver.minor === needDomLTPre.minor && c2.semver.patch === needDomLTPre.patch) {
             needDomLTPre = false;
           }
         }
-        if (c.operator === "<" || c.operator === "<=") {
-          lower = lowerLT(lt2, c, options);
-          if (lower === c && lower !== lt2) {
+        if (c2.operator === "<" || c2.operator === "<=") {
+          lower = lowerLT(lt2, c2, options);
+          if (lower === c2 && lower !== lt2) {
             return false;
           }
-        } else if (lt2.operator === "<=" && !satisfies$1(lt2.semver, String(c), options)) {
+        } else if (lt2.operator === "<=" && !satisfies$1(lt2.semver, String(c2), options)) {
           return false;
         }
       }
-      if (!c.operator && (lt2 || gt2) && gtltComp !== 0) {
+      if (!c2.operator && (lt2 || gt2) && gtltComp !== 0) {
         return false;
       }
     }
@@ -2137,8 +2137,8 @@
   const noop = () => {
   };
   isClient && ((_a = window == null ? void 0 : window.navigator) == null ? void 0 : _a.userAgent) && /iP(ad|hone|od)/.test(window.navigator.userAgent);
-  function resolveUnref(r) {
-    return typeof r === "function" ? r() : vue.unref(r);
+  function resolveUnref(r2) {
+    return typeof r2 === "function" ? r2() : vue.unref(r2);
   }
   function createFilterWrapper(filter, fn) {
     function wrapper(...args) {
@@ -2747,10 +2747,10 @@
   var monkeyWindow = window;
   var GM_info = /* @__PURE__ */ (() => monkeyWindow.GM_info)();
   var GM_xmlhttpRequest = /* @__PURE__ */ (() => monkeyWindow.GM_xmlhttpRequest)();
-  const name$1 = "@leo/table-to-json";
-  const version$1 = "0.0.4";
-  const type$1 = "module";
-  const scripts$1 = {
+  const name = "@leo/table-to-json";
+  const version = "0.0.5";
+  const type = "module";
+  const scripts = {
     dev: "vite",
     build: "pnpm version patch && vue-tsc --noEmit && vite build",
     preview: "vite preview"
@@ -2759,21 +2759,21 @@
     "@leo/core": "workspace:^1.0.0",
     vue: "^3.2.45"
   };
-  const devDependencies$1 = {
+  const devDependencies = {
     "@vitejs/plugin-vue": "^4.0.0",
     typescript: "^4.9.4",
     vite: "^4.0.4",
     "vite-plugin-monkey": "^2.11.0",
     "vue-tsc": "^1.0.24"
   };
-  const packageInfo$1 = {
-    name: name$1,
+  const packageInfo = {
+    name,
     "private": true,
-    version: version$1,
-    type: type$1,
-    scripts: scripts$1,
+    version,
+    type,
+    scripts,
     dependencies,
-    devDependencies: devDependencies$1
+    devDependencies
   };
   const _hoisted_1 = ["href"];
   const _hoisted_2 = {
@@ -2783,14 +2783,8 @@
   const _sfc_main = /* @__PURE__ */ vue.defineComponent({
     __name: "App",
     setup(__props) {
-      var _a2;
       const version2 = GM_info.script.version;
       const drag = vue.ref();
-      let iframe = document.createElement("iframe");
-      iframe.style.display = "none";
-      document.body.appendChild(iframe);
-      console = (_a2 = iframe == null ? void 0 : iframe.contentWindow) == null ? void 0 : _a2.console;
-      window.console = console;
       const initialValue = useStorage("inno-userscript_invoice_style", { x: 10, y: 10 });
       const { position, style: style2 } = useDraggable(drag, { initialValue });
       vue.watch(
@@ -2851,7 +2845,7 @@
           }, [
             vue.createTextVNode(" Table to JSON - "),
             vue.createElementVNode("a", {
-              href: `https://gitee.com/mr.leo/userscript/raw/main/${vue.unref(packageInfo$1).name}.user.js`
+              href: `https://gitee.com/mr.leo/userscript/raw/main/${vue.unref(packageInfo).name}.user.js`
             }, vue.toDisplayString(vue.unref(version2)), 9, _hoisted_1),
             vue.createTextVNode("  /  "),
             vue.createElementVNode("a", {
@@ -2893,7 +2887,7 @@
       };
     }
   });
-  const App_vue_vue_type_style_index_0_scoped_f9336dac_lang = "";
+  const App_vue_vue_type_style_index_0_scoped_f87958ba_lang = "";
   const _export_sfc = (sfc, props) => {
     const target = sfc.__vccOpts || sfc;
     for (const [key, val] of props) {
@@ -2901,38 +2895,30 @@
     }
     return target;
   };
-  const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-f9336dac"]]);
-  const name = "@leo/core";
-  const version = "1.0.0";
-  const type = "module";
-  const main = "src/main.ts";
-  const scripts = {
+  const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-f87958ba"]]);
+  const o = "@leo/core", s = "0.0.0", n = "module", c = "dist/core.es.js", t = {
     dev: "vite",
     build: "tsc && vite build",
     preview: "vite preview"
-  };
-  const devDependencies = {
+  }, i = {
     typescript: "^4.9.4",
     vite: "^4.0.4"
-  };
-  const packageInfo = {
-    name,
-    "private": true,
-    version,
-    type,
-    main,
-    scripts,
-    devDependencies
+  }, r = {
+    name: o,
+    private: true,
+    version: s,
+    type: n,
+    main: c,
+    scripts: t,
+    devDependencies: i
   };
   console.log("hello world");
-  const oldTrace = console.trace;
-  console.trace = (...args) => {
-    console.groupCollapsed.apply(console, args);
-    oldTrace("");
-    console.groupEnd();
+  const l = console.trace;
+  console.trace = (...e) => {
+    console.groupCollapsed.apply(console, e), l(""), console.groupEnd();
   };
-  const core = {
-    version: packageInfo.version
+  const p = {
+    version: r.version
   };
   vue.createApp(App).mount(
     (() => {
@@ -2942,7 +2928,7 @@
     })()
   );
   const checkVersion = async () => {
-    console.log(`[core] ->`, core);
+    console.log(`[core] ->`, p);
     console.log(`%c[${GM_info.script.name}]`, "color: #409eff; font-weight: bold; font-size: 32px;", GM_info);
     GM_xmlhttpRequest({
       method: "GET",

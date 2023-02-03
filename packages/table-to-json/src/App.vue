@@ -8,13 +8,6 @@ const version = GM_info.script.version
 
 const drag = ref<HTMLElement | null>()
 
-let iframe = document.createElement('iframe')
-iframe.style.display = 'none'
-document.body.appendChild(iframe)
-// @ts-ignore
-console = iframe?.contentWindow?.console
-window.console = console
-
 const initialValue = useStorage('inno-userscript_invoice_style', { x: 10, y: 10 })
 const { position, style } = useDraggable(drag, { initialValue })
 watch(
