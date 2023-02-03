@@ -11,10 +11,7 @@ const initialValue = useStorage('inno-userscript_invoice_style', { x: 10, y: 10 
 const { position, style } = useDraggable(root, { initialValue })
 watch(
   () => style.value,
-  (value) => {
-    console.log(`[LOG] -> value`, value)
-    initialValue.value = position.value
-  },
+  () => (initialValue.value = position.value),
 )
 </script>
 
@@ -31,5 +28,7 @@ watch(
   z-index: 9999;
   background-color: #fff;
   box-shadow: 5px 5px 5px #ccc, -5px -5px 5px #ccc;
+  max-height: 80%;
+  overflow: auto;
 }
 </style>
