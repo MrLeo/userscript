@@ -81,7 +81,7 @@ const { copy, isSupported } = useClipboard()
   <div v-if="tables" ref="root" class="inno-userscript_invoice" :style="style">
     <h1 ref="drag" class="drag">
       Table to JSON
-      <a @click="getTables()">重新解析</a>
+      <a class="btn" @click="getTables()">重新解析</a>
     </h1>
     <pre>{{ JSON.stringify(output, null, 2) }}</pre>
     <details>
@@ -111,6 +111,10 @@ const { copy, isSupported } = useClipboard()
     background: #ccc;
     padding: 8px;
   }
+}
+
+.btn {
+  cursor: pointer;
 }
 
 .copy {
