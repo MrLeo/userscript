@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import monkey, { cdn } from 'vite-plugin-monkey'
+import packageInfo from './package.json'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -18,7 +19,7 @@ export default defineConfig({
         icon: 'https://vitejs.dev/logo.svg',
         namespace: 'https://xuebin.me/',
         match: ['*://wiki.zhaopin.com/*'],
-        updateURL: 'https://gitee.com/mr.leo/userscript/raw/main/@leo/table-to-json.user.js',
+        updateURL: `https://gitee.com/mr.leo/userscript/raw/main/${packageInfo.name}.user.js`,
         require: [
           'https://cdn.jsdelivr.net/npm/core-js-bundle@latest/minified.js',
           'https://cdn.jsdelivr.net/npm/table-to-json@1.0.0/lib/jquery.tabletojson.min.js',

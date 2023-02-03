@@ -28,7 +28,7 @@
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   },
   "exclude": ["**/*.js", "tests/**/*", "node_modules", "dist", ".git"],
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "./package.json"],
   "references": [
     {
       "path": "./tsconfig.node.json"
