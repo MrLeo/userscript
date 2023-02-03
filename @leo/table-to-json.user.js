@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name       @leo/table-to-json
 // @namespace  https://xuebin.me/
-// @version    0.0.3
+// @version    0.0.4
 // @author     monkey
 // @icon       https://vitejs.dev/logo.svg
 // @updateURL  https://gitee.com/mr.leo/userscript/raw/main/@leo/table-to-json.user.js
@@ -2747,33 +2747,33 @@
   var monkeyWindow = window;
   var GM_info = /* @__PURE__ */ (() => monkeyWindow.GM_info)();
   var GM_xmlhttpRequest = /* @__PURE__ */ (() => monkeyWindow.GM_xmlhttpRequest)();
-  const name = "@leo/table-to-json";
-  const version = "0.0.3";
-  const type = "module";
-  const scripts = {
+  const name$1 = "@leo/table-to-json";
+  const version$1 = "0.0.4";
+  const type$1 = "module";
+  const scripts$1 = {
     dev: "vite",
     build: "pnpm version patch && vue-tsc --noEmit && vite build",
     preview: "vite preview"
   };
   const dependencies = {
-    "@leo/core": "workspace:*",
+    "@leo/core": "workspace:^1.0.0",
     vue: "^3.2.45"
   };
-  const devDependencies = {
+  const devDependencies$1 = {
     "@vitejs/plugin-vue": "^4.0.0",
     typescript: "^4.9.4",
     vite: "^4.0.4",
     "vite-plugin-monkey": "^2.11.0",
     "vue-tsc": "^1.0.24"
   };
-  const packageInfo = {
-    name,
+  const packageInfo$1 = {
+    name: name$1,
     "private": true,
-    version,
-    type,
-    scripts,
+    version: version$1,
+    type: type$1,
+    scripts: scripts$1,
     dependencies,
-    devDependencies
+    devDependencies: devDependencies$1
   };
   const _hoisted_1 = ["href"];
   const _hoisted_2 = {
@@ -2851,7 +2851,7 @@
           }, [
             vue.createTextVNode(" Table to JSON - "),
             vue.createElementVNode("a", {
-              href: `https://gitee.com/mr.leo/userscript/raw/main/${vue.unref(packageInfo).name}.user.js`
+              href: `https://gitee.com/mr.leo/userscript/raw/main/${vue.unref(packageInfo$1).name}.user.js`
             }, vue.toDisplayString(vue.unref(version2)), 9, _hoisted_1),
             vue.createTextVNode("  /  "),
             vue.createElementVNode("a", {
@@ -2902,11 +2902,37 @@
     return target;
   };
   const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-f9336dac"]]);
+  const name = "@leo/core";
+  const version = "1.0.0";
+  const type = "module";
+  const main = "src/main.ts";
+  const scripts = {
+    dev: "vite",
+    build: "tsc && vite build",
+    preview: "vite preview"
+  };
+  const devDependencies = {
+    typescript: "^4.9.4",
+    vite: "^4.0.4"
+  };
+  const packageInfo = {
+    name,
+    "private": true,
+    version,
+    type,
+    main,
+    scripts,
+    devDependencies
+  };
+  console.log("hello world");
   const oldTrace = console.trace;
   console.trace = (...args) => {
     console.groupCollapsed.apply(console, args);
     oldTrace("");
     console.groupEnd();
+  };
+  const core = {
+    version: packageInfo.version
   };
   vue.createApp(App).mount(
     (() => {
@@ -2916,6 +2942,7 @@
     })()
   );
   const checkVersion = async () => {
+    console.log(`[core] ->`, core);
     console.log(`%c[${GM_info.script.name}]`, "color: #409eff; font-weight: bold; font-size: 32px;", GM_info);
     GM_xmlhttpRequest({
       method: "GET",
