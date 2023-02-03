@@ -4,6 +4,7 @@
 // @version    0.0.0
 // @author     monkey
 // @icon       https://vitejs.dev/logo.svg
+// @updateURL  https://github.com/MrLeo/userscript/raw/main/packages/table-to-json/dist/%40leo/table-to-json.user.js
 // @match      *://www.baidu.com/*
 // @match      *://wiki.zhaopin.com/*
 // @require    https://cdn.jsdelivr.net/npm/core-js-bundle@latest/minified.js

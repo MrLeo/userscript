@@ -2,6 +2,7 @@ node_modules/
 build/
 dist/
 docs/
+@leo/
 package-lock.json
 pnpm-lock.yaml
 yarn.lock
