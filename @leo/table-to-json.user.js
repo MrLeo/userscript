@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name       @leo/table-to-json
 // @namespace  https://xuebin.me/
-// @version    0.0.6
+// @version    0.0.7
 // @author     monkey
 // @icon       https://vitejs.dev/logo.svg
 // @updateURL  https://gitee.com/mr.leo/userscript/raw/main/@leo/table-to-json.user.js
@@ -106,16 +106,16 @@
   }, {});
   var parseOptions_1 = parseOptions$2;
   const numeric = /^[0-9]+$/;
-  const compareIdentifiers$1 = (a, b) => {
-    const anum = numeric.test(a);
+  const compareIdentifiers$1 = (a2, b) => {
+    const anum = numeric.test(a2);
     const bnum = numeric.test(b);
     if (anum && bnum) {
-      a = +a;
+      a2 = +a2;
       b = +b;
     }
-    return a === b ? 0 : anum && !bnum ? -1 : bnum && !anum ? 1 : a < b ? -1 : 1;
+    return a2 === b ? 0 : anum && !bnum ? -1 : bnum && !anum ? 1 : a2 < b ? -1 : 1;
   };
-  const rcompareIdentifiers = (a, b) => compareIdentifiers$1(b, a);
+  const rcompareIdentifiers = (a2, b) => compareIdentifiers$1(b, a2);
   var identifiers$1 = {
     compareIdentifiers: compareIdentifiers$1,
     rcompareIdentifiers
@@ -221,19 +221,19 @@
       }
       let i2 = 0;
       do {
-        const a = this.prerelease[i2];
+        const a2 = this.prerelease[i2];
         const b = other.prerelease[i2];
-        debug("prerelease compare", i2, a, b);
-        if (a === void 0 && b === void 0) {
+        debug("prerelease compare", i2, a2, b);
+        if (a2 === void 0 && b === void 0) {
           return 0;
         } else if (b === void 0) {
           return 1;
-        } else if (a === void 0) {
+        } else if (a2 === void 0) {
           return -1;
-        } else if (a === b) {
+        } else if (a2 === b) {
           continue;
         } else {
-          return compareIdentifiers(a, b);
+          return compareIdentifiers(a2, b);
         }
       } while (++i2);
     }
@@ -243,19 +243,19 @@
       }
       let i2 = 0;
       do {
-        const a = this.build[i2];
+        const a2 = this.build[i2];
         const b = other.build[i2];
-        debug("prerelease compare", i2, a, b);
-        if (a === void 0 && b === void 0) {
+        debug("prerelease compare", i2, a2, b);
+        if (a2 === void 0 && b === void 0) {
           return 0;
         } else if (b === void 0) {
           return 1;
-        } else if (a === void 0) {
+        } else if (a2 === void 0) {
           return -1;
-        } else if (a === b) {
+        } else if (a2 === b) {
           continue;
         } else {
-          return compareIdentifiers(a, b);
+          return compareIdentifiers(a2, b);
         }
       } while (++i2);
     }
@@ -397,10 +397,10 @@
   };
   var inc_1 = inc$1;
   const SemVer$a = semver$1;
-  const compare$b = (a, b, loose) => new SemVer$a(a, loose).compare(new SemVer$a(b, loose));
+  const compare$b = (a2, b, loose) => new SemVer$a(a2, loose).compare(new SemVer$a(b, loose));
   var compare_1 = compare$b;
   const compare$a = compare_1;
-  const eq$3 = (a, b, loose) => compare$a(a, b, loose) === 0;
+  const eq$3 = (a2, b, loose) => compare$a(a2, b, loose) === 0;
   var eq_1 = eq$3;
   const parse$3 = parse_1;
   const eq$2 = eq_1;
@@ -425,13 +425,13 @@
   };
   var diff_1 = diff$1;
   const SemVer$9 = semver$1;
-  const major$1 = (a, loose) => new SemVer$9(a, loose).major;
+  const major$1 = (a2, loose) => new SemVer$9(a2, loose).major;
   var major_1 = major$1;
   const SemVer$8 = semver$1;
-  const minor$1 = (a, loose) => new SemVer$8(a, loose).minor;
+  const minor$1 = (a2, loose) => new SemVer$8(a2, loose).minor;
   var minor_1 = minor$1;
   const SemVer$7 = semver$1;
-  const patch$1 = (a, loose) => new SemVer$7(a, loose).patch;
+  const patch$1 = (a2, loose) => new SemVer$7(a2, loose).patch;
   var patch_1 = patch$1;
   const parse$2 = parse_1;
   const prerelease$1 = (version2, options) => {
@@ -440,38 +440,38 @@
   };
   var prerelease_1 = prerelease$1;
   const compare$9 = compare_1;
-  const rcompare$1 = (a, b, loose) => compare$9(b, a, loose);
+  const rcompare$1 = (a2, b, loose) => compare$9(b, a2, loose);
   var rcompare_1 = rcompare$1;
   const compare$8 = compare_1;
-  const compareLoose$1 = (a, b) => compare$8(a, b, true);
+  const compareLoose$1 = (a2, b) => compare$8(a2, b, true);
   var compareLoose_1 = compareLoose$1;
   const SemVer$6 = semver$1;
-  const compareBuild$3 = (a, b, loose) => {
-    const versionA = new SemVer$6(a, loose);
+  const compareBuild$3 = (a2, b, loose) => {
+    const versionA = new SemVer$6(a2, loose);
     const versionB = new SemVer$6(b, loose);
     return versionA.compare(versionB) || versionA.compareBuild(versionB);
   };
   var compareBuild_1 = compareBuild$3;
   const compareBuild$2 = compareBuild_1;
-  const sort$1 = (list, loose) => list.sort((a, b) => compareBuild$2(a, b, loose));
+  const sort$1 = (list, loose) => list.sort((a2, b) => compareBuild$2(a2, b, loose));
   var sort_1 = sort$1;
   const compareBuild$1 = compareBuild_1;
-  const rsort$1 = (list, loose) => list.sort((a, b) => compareBuild$1(b, a, loose));
+  const rsort$1 = (list, loose) => list.sort((a2, b) => compareBuild$1(b, a2, loose));
   var rsort_1 = rsort$1;
   const compare$7 = compare_1;
-  const gt$4 = (a, b, loose) => compare$7(a, b, loose) > 0;
+  const gt$4 = (a2, b, loose) => compare$7(a2, b, loose) > 0;
   var gt_1 = gt$4;
   const compare$6 = compare_1;
-  const lt$3 = (a, b, loose) => compare$6(a, b, loose) < 0;
+  const lt$3 = (a2, b, loose) => compare$6(a2, b, loose) < 0;
   var lt_1 = lt$3;
   const compare$5 = compare_1;
-  const neq$2 = (a, b, loose) => compare$5(a, b, loose) !== 0;
+  const neq$2 = (a2, b, loose) => compare$5(a2, b, loose) !== 0;
   var neq_1 = neq$2;
   const compare$4 = compare_1;
-  const gte$3 = (a, b, loose) => compare$4(a, b, loose) >= 0;
+  const gte$3 = (a2, b, loose) => compare$4(a2, b, loose) >= 0;
   var gte_1 = gte$3;
   const compare$3 = compare_1;
-  const lte$3 = (a, b, loose) => compare$3(a, b, loose) <= 0;
+  const lte$3 = (a2, b, loose) => compare$3(a2, b, loose) <= 0;
   var lte_1 = lte$3;
   const eq$1 = eq_1;
   const neq$1 = neq_1;
@@ -479,38 +479,38 @@
   const gte$2 = gte_1;
   const lt$2 = lt_1;
   const lte$2 = lte_1;
-  const cmp$1 = (a, op, b, loose) => {
+  const cmp$1 = (a2, op, b, loose) => {
     switch (op) {
       case "===":
-        if (typeof a === "object") {
-          a = a.version;
+        if (typeof a2 === "object") {
+          a2 = a2.version;
         }
         if (typeof b === "object") {
           b = b.version;
         }
-        return a === b;
+        return a2 === b;
       case "!==":
-        if (typeof a === "object") {
-          a = a.version;
+        if (typeof a2 === "object") {
+          a2 = a2.version;
         }
         if (typeof b === "object") {
           b = b.version;
         }
-        return a !== b;
+        return a2 !== b;
       case "":
       case "=":
       case "==":
-        return eq$1(a, b, loose);
+        return eq$1(a2, b, loose);
       case "!=":
-        return neq$1(a, b, loose);
+        return neq$1(a2, b, loose);
       case ">":
-        return gt$3(a, b, loose);
+        return gt$3(a2, b, loose);
       case ">=":
-        return gte$2(a, b, loose);
+        return gte$2(a2, b, loose);
       case "<":
-        return lt$2(a, b, loose);
+        return lt$2(a2, b, loose);
       case "<=":
-        return lte$2(a, b, loose);
+        return lte$2(a2, b, loose);
       default:
         throw new TypeError(`Invalid operator: ${op}`);
     }
@@ -1851,7 +1851,7 @@
     const set = [];
     let first = null;
     let prev = null;
-    const v = versions.sort((a, b) => compare$2(a, b, options));
+    const v = versions.sort((a2, b) => compare$2(a2, b, options));
     for (const version2 of v) {
       const included = satisfies$2(version2, range2, options);
       if (included) {
@@ -2027,19 +2027,19 @@
     }
     return true;
   };
-  const higherGT = (a, b, options) => {
-    if (!a) {
+  const higherGT = (a2, b, options) => {
+    if (!a2) {
       return b;
     }
-    const comp = compare$1(a.semver, b.semver, options);
-    return comp > 0 ? a : comp < 0 ? b : b.operator === ">" && a.operator === ">=" ? b : a;
+    const comp = compare$1(a2.semver, b.semver, options);
+    return comp > 0 ? a2 : comp < 0 ? b : b.operator === ">" && a2.operator === ">=" ? b : a2;
   };
-  const lowerLT = (a, b, options) => {
-    if (!a) {
+  const lowerLT = (a2, b, options) => {
+    if (!a2) {
       return b;
     }
-    const comp = compare$1(a.semver, b.semver, options);
-    return comp < 0 ? a : comp > 0 ? b : b.operator === "<" && a.operator === "<=" ? b : a;
+    const comp = compare$1(a2.semver, b.semver, options);
+    return comp < 0 ? a2 : comp > 0 ? b : b.operator === "<" && a2.operator === "<=" ? b : a2;
   };
   var subset_1 = subset$1;
   const internalRe = reExports;
@@ -2182,18 +2182,18 @@
   var __hasOwnProp$9 = Object.prototype.hasOwnProperty;
   var __propIsEnum$9 = Object.prototype.propertyIsEnumerable;
   var __defNormalProp$7 = (obj, key, value) => key in obj ? __defProp$7(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-  var __spreadValues$7 = (a, b) => {
+  var __spreadValues$7 = (a2, b) => {
     for (var prop in b || (b = {}))
       if (__hasOwnProp$9.call(b, prop))
-        __defNormalProp$7(a, prop, b[prop]);
+        __defNormalProp$7(a2, prop, b[prop]);
     if (__getOwnPropSymbols$9)
       for (var prop of __getOwnPropSymbols$9(b)) {
         if (__propIsEnum$9.call(b, prop))
-          __defNormalProp$7(a, prop, b[prop]);
+          __defNormalProp$7(a2, prop, b[prop]);
       }
-    return a;
+    return a2;
   };
-  var __spreadProps$5 = (a, b) => __defProps$5(a, __getOwnPropDescs$5(b));
+  var __spreadProps$5 = (a2, b) => __defProps$5(a2, __getOwnPropDescs$5(b));
   function toRefs(objectRef) {
     if (!vue.isRef(objectRef))
       return vue.toRefs(objectRef);
@@ -2293,18 +2293,18 @@
   var __hasOwnProp$2 = Object.prototype.hasOwnProperty;
   var __propIsEnum$2 = Object.prototype.propertyIsEnumerable;
   var __defNormalProp$2 = (obj, key, value) => key in obj ? __defProp$2(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-  var __spreadValues$2 = (a, b) => {
+  var __spreadValues$2 = (a2, b) => {
     for (var prop in b || (b = {}))
       if (__hasOwnProp$2.call(b, prop))
-        __defNormalProp$2(a, prop, b[prop]);
+        __defNormalProp$2(a2, prop, b[prop]);
     if (__getOwnPropSymbols$2)
       for (var prop of __getOwnPropSymbols$2(b)) {
         if (__propIsEnum$2.call(b, prop))
-          __defNormalProp$2(a, prop, b[prop]);
+          __defNormalProp$2(a2, prop, b[prop]);
       }
-    return a;
+    return a2;
   };
-  var __spreadProps$2 = (a, b) => __defProps$2(a, __getOwnPropDescs$2(b));
+  var __spreadProps$2 = (a2, b) => __defProps$2(a2, __getOwnPropDescs$2(b));
   var __objRest$1 = (source, exclude) => {
     var target = {};
     for (var prop in source)
@@ -2460,16 +2460,16 @@
   var __hasOwnProp$l = Object.prototype.hasOwnProperty;
   var __propIsEnum$l = Object.prototype.propertyIsEnumerable;
   var __defNormalProp$j = (obj, key, value) => key in obj ? __defProp$j(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-  var __spreadValues$j = (a, b) => {
+  var __spreadValues$j = (a2, b) => {
     for (var prop in b || (b = {}))
       if (__hasOwnProp$l.call(b, prop))
-        __defNormalProp$j(a, prop, b[prop]);
+        __defNormalProp$j(a2, prop, b[prop]);
     if (__getOwnPropSymbols$l)
       for (var prop of __getOwnPropSymbols$l(b)) {
         if (__propIsEnum$l.call(b, prop))
-          __defNormalProp$j(a, prop, b[prop]);
+          __defNormalProp$j(a2, prop, b[prop]);
       }
-    return a;
+    return a2;
   };
   const StorageSerializers = {
     boolean: {
@@ -2612,18 +2612,18 @@
   var __hasOwnProp$g = Object.prototype.hasOwnProperty;
   var __propIsEnum$g = Object.prototype.propertyIsEnumerable;
   var __defNormalProp$e = (obj, key, value) => key in obj ? __defProp$e(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-  var __spreadValues$e = (a, b) => {
+  var __spreadValues$e = (a2, b) => {
     for (var prop in b || (b = {}))
       if (__hasOwnProp$g.call(b, prop))
-        __defNormalProp$e(a, prop, b[prop]);
+        __defNormalProp$e(a2, prop, b[prop]);
     if (__getOwnPropSymbols$g)
       for (var prop of __getOwnPropSymbols$g(b)) {
         if (__propIsEnum$g.call(b, prop))
-          __defNormalProp$e(a, prop, b[prop]);
+          __defNormalProp$e(a2, prop, b[prop]);
       }
-    return a;
+    return a2;
   };
-  var __spreadProps$4 = (a, b) => __defProps$4(a, __getOwnPropDescs$4(b));
+  var __spreadProps$4 = (a2, b) => __defProps$4(a2, __getOwnPropDescs$4(b));
   function useDraggable(target, options = {}) {
     var _a2, _b, _c;
     const draggingElement = (_a2 = options.draggingElement) != null ? _a2 : defaultWindow;
@@ -2704,16 +2704,16 @@
   var __hasOwnProp = Object.prototype.hasOwnProperty;
   var __propIsEnum = Object.prototype.propertyIsEnumerable;
   var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
-  var __spreadValues = (a, b) => {
+  var __spreadValues = (a2, b) => {
     for (var prop in b || (b = {}))
       if (__hasOwnProp.call(b, prop))
-        __defNormalProp(a, prop, b[prop]);
+        __defNormalProp(a2, prop, b[prop]);
     if (__getOwnPropSymbols)
       for (var prop of __getOwnPropSymbols(b)) {
         if (__propIsEnum.call(b, prop))
-          __defNormalProp(a, prop, b[prop]);
+          __defNormalProp(a2, prop, b[prop]);
       }
-    return a;
+    return a2;
   };
   const _TransitionPresets = {
     easeInSine: [0.12, 0, 0.39, 0],
@@ -2748,7 +2748,7 @@
   var GM_info = /* @__PURE__ */ (() => monkeyWindow.GM_info)();
   var GM_xmlhttpRequest = /* @__PURE__ */ (() => monkeyWindow.GM_xmlhttpRequest)();
   const name = "@leo/table-to-json";
-  const version = "0.0.6";
+  const version = "0.0.7";
   const type = "module";
   const scripts = {
     dev: "vite",
@@ -2756,7 +2756,7 @@
     preview: "vite preview"
   };
   const dependencies = {
-    "@leo/core": "workspace:^1.0.0",
+    "@leo/core": "workspace:*",
     vue: "^3.2.45"
   };
   const devDependencies = {
@@ -2896,29 +2896,37 @@
     return target;
   };
   const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-f87958ba"]]);
-  const o = "@leo/core", s = "0.0.0", n = "module", c = "dist/core.es.js", t = {
+  const s = "@leo/core", t = "1.0.0", n = "module", c = "./dist/core.umd.js", i = "./dist/core.es.js", r = {
+    ".": {
+      import: "./dist/core.es.js",
+      require: "./dist/core.umd.js"
+    }
+  }, d = {
     dev: "vite",
     build: "tsc && vite build",
     preview: "vite preview"
-  }, i = {
+  }, p = {
     typescript: "^4.9.4",
     vite: "^4.0.4"
-  }, r = {
-    name: o,
+  }, l = {
+    name: s,
     private: true,
-    version: s,
+    version: t,
     type: n,
     main: c,
-    scripts: t,
-    devDependencies: i
+    module: i,
+    exports: r,
+    scripts: d,
+    devDependencies: p
   };
-  console.log("hello world");
-  const l = console.trace;
-  console.trace = (...e) => {
-    console.groupCollapsed.apply(console, e), l(""), console.groupEnd();
-  };
-  const p = {
-    version: r.version
+  var o;
+  try {
+    const e = document.createElement("iframe");
+    e.style.display = "none", document.body.appendChild(e), console = (o = e == null ? void 0 : e.contentWindow) == null ? void 0 : o.console, window.console = console;
+  } catch {
+  }
+  const a = {
+    version: l.version
   };
   vue.createApp(App).mount(
     (() => {
@@ -2928,7 +2936,7 @@
     })()
   );
   const checkVersion = async () => {
-    console.log(`[core] ->`, p);
+    console.log(`[core] ->`, a);
     console.log(`%c[${GM_info.script.name}]`, "color: #409eff; font-weight: bold; font-size: 32px;", GM_info);
     GM_xmlhttpRequest({
       method: "GET",
