@@ -4,13 +4,7 @@ import semver from 'semver'
 import './style.css'
 import App from './App.vue'
 import { GM_info, GM_xmlhttpRequest } from '$'
-
-const oldTrace = console.trace
-console.trace = (...args) => {
-  console.groupCollapsed.apply(console, args) // eslint-disable-line prefer-spread
-  oldTrace('')
-  console.groupEnd()
-}
+import core from '@leo/core'
 
 createApp(App).mount(
   (() => {
@@ -21,6 +15,7 @@ createApp(App).mount(
 )
 
 const checkVersion = async () => {
+  console.log(`[core] ->`, core)
   console.log(`%c[${GM_info.script.name}]`, 'color: #409eff; font-weight: bold; font-size: 32px;', GM_info)
 
   GM_xmlhttpRequest({
