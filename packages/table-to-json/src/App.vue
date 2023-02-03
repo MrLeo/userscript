@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 import { useDraggable, useStorage, useClipboard } from '@vueuse/core'
+import { GM_info } from '$'
+import packageInfo from '../package.json'
+
+const version = GM_info.script.version
 
 const drag = ref<HTMLElement | null>()
 
@@ -80,12 +84,14 @@ const { copy, isSupported } = useClipboard()
 <template>
   <div ref="root" class="inno-userscript_invoice" :style="style">
     <h1 ref="drag" class="drag">
-      Table to JSON &nbsp;
+      Table to JSON -
+      <a :href="`https://gitee.com/mr.leo/userscript/raw/main/${packageInfo.name}.user.js`">{{ version }}</a>
+      &nbsp;/&nbsp;
       <a class="btn" @click="getTables()">解析</a>
-      &nbsp;
+      &nbsp;/&nbsp;
       <a class="btn" @click="getTables()">关闭</a>
     </h1>
-    <template v-if="tables">
+    <div v-if="tables" class="main">
       <pre>{{ JSON.stringify(output, null, 2) }}</pre>
       <details>
         <summary>Request <a v-if="isSupported" class="copy" @click="copy(TypeResponse)">copy</a></summary>
@@ -95,7 +101,7 @@ const { copy, isSupported } = useClipboard()
         <summary>Response <a v-if="isSupported" class="copy" @click="copy(TypeResponse)">copy</a></summary>
         <pre>{{ TypeResponse }}</pre>
       </details>
-    </template>
+    </div>
   </div>
 </template>
 
@@ -104,9 +110,18 @@ const { copy, isSupported } = useClipboard()
   position: fixed;
   z-index: 9999;
   background-color: #fff;
-  box-shadow: 5px 5px 5px #ccc, -5px -5px 5px #ccc;
+  box-shadow: 5px 5px 10px 0px #ccc;
   max-height: 80%;
   overflow: auto;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+
+  .main {
+    overflow: auto;
+    padding: 4px;
+  }
 
   .drag {
     cursor: move;

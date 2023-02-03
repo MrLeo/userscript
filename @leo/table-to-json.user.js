@@ -9,9 +9,10 @@
 // @require    https://cdn.jsdelivr.net/npm/core-js-bundle@latest/minified.js
 // @require    https://cdn.jsdelivr.net/npm/table-to-json@1.0.0/lib/jquery.tabletojson.min.js
 // @require    https://cdn.jsdelivr.net/npm/vue@3.2.45/dist/vue.global.prod.js
+// @grant      GM_info
 // ==/UserScript==
 
-(e=>{const o=document.createElement("style");o.dataset.source="vite-plugin-monkey",o.innerText=e,document.head.appendChild(o)})(":root{font-family:Inter,Avenir,Helvetica,Arial,sans-serif;font-size:16px;line-height:24px;font-weight:400;color-scheme:light dark;color:#ffffffde;background-color:#242424;font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;-webkit-text-size-adjust:100%}a{font-weight:500;color:#646cff;text-decoration:inherit}a:hover{color:#535bf2}body{margin:0;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;place-items:center;min-width:320px;min-height:100vh}h1{font-size:3.2em;line-height:1.1}button{border-radius:8px;border:1px solid transparent;padding:.6em 1.2em;font-size:1em;font-weight:500;font-family:inherit;background-color:#1a1a1a;cursor:pointer;-webkit-transition:border-color .25s;transition:border-color .25s}button:hover{border-color:#646cff}button:focus,button:focus-visible{outline:4px auto -webkit-focus-ring-color}.card{padding:2em}#app{max-width:1280px;margin:0 auto;padding:2rem;text-align:center}@media (prefers-color-scheme: light){:root{color:#213547;background-color:#fff}a:hover{color:#747bff}button{background-color:#f9f9f9}}.inno-userscript_invoice[data-v-00439c86]{position:fixed;z-index:9999;background-color:#fff;-webkit-box-shadow:5px 5px 5px #ccc,-5px -5px 5px #ccc;box-shadow:5px 5px 5px #ccc,-5px -5px 5px #ccc;max-height:80%;overflow:auto}.inno-userscript_invoice .drag[data-v-00439c86]{cursor:move;font-size:16px;background:#ccc;padding:8px}.btn[data-v-00439c86]{cursor:pointer}.copy[data-v-00439c86]{cursor:copy}details[data-v-00439c86]{border:1px solid #aaa;border-radius:4px;padding:.5em .5em 0}summary[data-v-00439c86]{font-weight:700;margin:-.5em -.5em 0;padding:.5em;cursor:pointer}details[open][data-v-00439c86]{padding:.5em}details[open] summary[data-v-00439c86]{border-bottom:1px solid #aaa;margin-bottom:.5em}");
+(e=>{const o=document.createElement("style");o.dataset.source="vite-plugin-monkey",o.innerText=e,document.head.appendChild(o)})(":root{font-family:Inter,Avenir,Helvetica,Arial,sans-serif;font-size:16px;line-height:24px;font-weight:400;color-scheme:light dark;color:#ffffffde;background-color:#242424;font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;-webkit-text-size-adjust:100%}a{font-weight:500;color:#646cff;text-decoration:inherit}a:hover{color:#535bf2}body{margin:0;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;place-items:center;min-width:320px;min-height:100vh}h1{font-size:3.2em;line-height:1.1}button{border-radius:8px;border:1px solid transparent;padding:.6em 1.2em;font-size:1em;font-weight:500;font-family:inherit;background-color:#1a1a1a;cursor:pointer;-webkit-transition:border-color .25s;transition:border-color .25s}button:hover{border-color:#646cff}button:focus,button:focus-visible{outline:4px auto -webkit-focus-ring-color}.card{padding:2em}#app{max-width:1280px;margin:0 auto;padding:2rem;text-align:center}@media (prefers-color-scheme: light){:root{color:#213547;background-color:#fff}a:hover{color:#747bff}button{background-color:#f9f9f9}}.inno-userscript_invoice[data-v-f9336dac]{position:fixed;z-index:9999;background-color:#fff;-webkit-box-shadow:5px 5px 10px 0px #ccc;box-shadow:5px 5px 10px #ccc;max-height:80%;overflow:auto;border-radius:5px;border:1px solid #ccc;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column}.inno-userscript_invoice .main[data-v-f9336dac]{overflow:auto;padding:4px}.inno-userscript_invoice .drag[data-v-f9336dac]{cursor:move;font-size:16px;background:#ccc;padding:8px}.btn[data-v-f9336dac]{cursor:pointer}.copy[data-v-f9336dac]{cursor:copy}details[data-v-f9336dac]{border:1px solid #aaa;border-radius:4px;padding:.5em .5em 0}summary[data-v-f9336dac]{font-weight:700;margin:-.5em -.5em 0;padding:.5em;cursor:pointer}details[open][data-v-f9336dac]{padding:.5em}details[open] summary[data-v-f9336dac]{border-bottom:1px solid #aaa;margin-bottom:.5em}");
 
 (function(vue) {
   "use strict";
@@ -420,8 +421,8 @@
     if (!storage)
       return data;
     const rawInit = resolveUnref(defaults);
-    const type = guessSerializerType(rawInit);
-    const serializer = (_a2 = options.serializer) != null ? _a2 : StorageSerializers[type];
+    const type2 = guessSerializerType(rawInit);
+    const serializer = (_a2 = options.serializer) != null ? _a2 : StorageSerializers[type2];
     const { pause: pauseWatch, resume: resumeWatch } = watchPausable(data, () => write(data.value), { flush, deep, eventFilter });
     if (window2 && listenToStorageChanges)
       useEventListener(window2, "storage", update);
@@ -460,7 +461,7 @@
         const value = serializer.read(rawValue);
         if (isFunction(mergeDefaults))
           return mergeDefaults(value, rawInit);
-        else if (type === "object" && !Array.isArray(value))
+        else if (type2 === "object" && !Array.isArray(value))
           return __spreadValues$j(__spreadValues$j({}, rawInit), value);
         return value;
       } else if (typeof rawValue !== "string") {
@@ -630,10 +631,45 @@
   __spreadValues({
     linear: identity
   }, _TransitionPresets);
+  var monkeyWindow = window;
+  var GM_info = /* @__PURE__ */ (() => monkeyWindow.GM_info)();
+  const name = "@leo/table-to-json";
+  const version = "0.0.2";
+  const type = "module";
+  const scripts = {
+    dev: "vite",
+    build: "vue-tsc --noEmit && vite build",
+    preview: "vite preview"
+  };
+  const dependencies = {
+    vue: "^3.2.45"
+  };
+  const devDependencies = {
+    "@vitejs/plugin-vue": "^4.0.0",
+    typescript: "^4.9.4",
+    vite: "^4.0.4",
+    "vite-plugin-monkey": "^2.11.0",
+    "vue-tsc": "^1.0.24"
+  };
+  const packageInfo = {
+    name,
+    "private": true,
+    version,
+    type,
+    scripts,
+    dependencies,
+    devDependencies
+  };
+  const _hoisted_1 = ["href"];
+  const _hoisted_2 = {
+    key: 0,
+    class: "main"
+  };
   const _sfc_main = /* @__PURE__ */ vue.defineComponent({
     __name: "App",
     setup(__props) {
       var _a2;
+      const version2 = GM_info.script.version;
       const drag = vue.ref();
       let iframe = document.createElement("iframe");
       iframe.style.display = "none";
@@ -646,7 +682,7 @@
         () => style2.value,
         () => initialValue.value = position.value
       );
-      const typeReplace = (type) => type.replace(/^string$/i, "string").replace(/^int|long$/i, "number").replace(/^List<([^>]*)>$/i, "$1[]");
+      const typeReplace = (type2) => type2.replace(/^string$/i, "string").replace(/^int|long$/i, "number").replace(/^List<([^>]*)>$/i, "$1[]");
       const tables = vue.ref();
       const output = vue.ref();
       const TypeRequest = vue.ref("");
@@ -660,9 +696,9 @@
           console.info(`[LOG] -> 页面表格渲染更新`, v);
           output.value = {};
           Array.from(tables.value || []).forEach((element) => {
-            const name = jQuery(element).parent().prev().text();
+            const name2 = jQuery(element).parent().prev().text();
             const json = jQuery(element).tableToJSON();
-            if (/body参数/gi.test(name)) {
+            if (/body参数/gi.test(name2)) {
               const interfaceFieldStr = json.map((item) => {
                 if ("参数名" === item["参数名"])
                   return "";
@@ -672,15 +708,15 @@
               }).filter(Boolean);
               TypeRequest.value = [`export interface Request {`, ...interfaceFieldStr, `}`].join("\n");
               console.info(`[LOG] -> TypeRequest`, TypeRequest.value);
-            } else if (/字段说明/gi.test(name) || /^\w+$/i.test(name)) {
+            } else if (/字段说明/gi.test(name2) || /^\w+$/i.test(name2)) {
               const interfaceFieldStr = json.map((item) => {
                 return [item["说明"] ? `  /** ${item["说明"]} */` : "", `  ${item["字段名称"]}: ${typeReplace(item["类型"])}`].filter(Boolean).join("\n");
               }).filter(Boolean);
-              TypeResponse.value += [`export interface ${/^\w+$/i.test(name) ? name : "Response"} {`, ...interfaceFieldStr, `}`].join("\n") + "\n\n";
+              TypeResponse.value += [`export interface ${/^\w+$/i.test(name2) ? name2 : "Response"} {`, ...interfaceFieldStr, `}`].join("\n") + "\n\n";
               console.info(`[LOG] -> TypeResponse`, TypeResponse.value);
             } else {
-              if (name) {
-                output.value[name] = json;
+              if (name2) {
+                output.value[name2] = json;
               }
             }
           });
@@ -698,18 +734,22 @@
             ref: drag,
             class: "drag"
           }, [
-            vue.createTextVNode(" Table to JSON   "),
+            vue.createTextVNode(" Table to JSON - "),
+            vue.createElementVNode("a", {
+              href: `https://gitee.com/mr.leo/userscript/raw/main/${vue.unref(packageInfo).name}.user.js`
+            }, vue.toDisplayString(vue.unref(version2)), 9, _hoisted_1),
+            vue.createTextVNode("  /  "),
             vue.createElementVNode("a", {
               class: "btn",
               onClick: _cache[0] || (_cache[0] = ($event) => getTables())
             }, "解析"),
-            vue.createTextVNode("   "),
+            vue.createTextVNode("  /  "),
             vue.createElementVNode("a", {
               class: "btn",
               onClick: _cache[1] || (_cache[1] = ($event) => getTables())
             }, "关闭")
           ], 512),
-          tables.value ? (vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: 0 }, [
+          tables.value ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_2, [
             vue.createElementVNode("pre", null, vue.toDisplayString(JSON.stringify(output.value, null, 2)), 1),
             vue.createElementVNode("details", null, [
               vue.createElementVNode("summary", null, [
@@ -733,12 +773,12 @@
               ]),
               vue.createElementVNode("pre", null, vue.toDisplayString(TypeResponse.value), 1)
             ])
-          ], 64)) : vue.createCommentVNode("", true)
+          ])) : vue.createCommentVNode("", true)
         ], 4);
       };
     }
   });
-  const App_vue_vue_type_style_index_0_scoped_00439c86_lang = "";
+  const App_vue_vue_type_style_index_0_scoped_f9336dac_lang = "";
   const _export_sfc = (sfc, props) => {
     const target = sfc.__vccOpts || sfc;
     for (const [key, val] of props) {
@@ -746,7 +786,7 @@
     }
     return target;
   };
-  const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-00439c86"]]);
+  const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-f9336dac"]]);
   vue.createApp(App).mount(
     (() => {
       const app = document.createElement("div");
