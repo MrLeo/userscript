@@ -9,12 +9,12 @@ try {
   console = iframe?.contentWindow?.console
   window.console = console
 
-  const oldTrace = console.trace
-  console.trace = (...args) => {
-    console.groupCollapsed.apply(console, args) // eslint-disable-line prefer-spread
-    oldTrace('')
-    console.groupEnd()
-  }
+  // const oldTrace = console.trace
+  // console.trace = (...args) => {
+  //   console.groupCollapsed.apply(console, args) // eslint-disable-line prefer-spread
+  //   oldTrace('')
+  //   console.groupEnd()
+  // }
 } catch (error) {}
 
 export default {

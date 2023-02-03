@@ -1,7 +1,7 @@
 {
   "name": "@leo/table-to-json",
   "private": true,
-  "version": "0.0.5",
+  "version": "0.0.6",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@leo/core": "workspace:^1.0.0",
+    "@leo/core": "workspace:*",
     "vue": "^3.2.45"
   },
   "devDependencies": {

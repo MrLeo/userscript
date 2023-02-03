@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name       @leo/table-to-json
 // @namespace  https://xuebin.me/
-// @version    0.0.5
+// @version    0.0.6
 // @author     monkey
 // @icon       https://vitejs.dev/logo.svg
 // @updateURL  https://gitee.com/mr.leo/userscript/raw/main/@leo/table-to-json.user.js
@@ -2748,7 +2748,7 @@
   var GM_info = /* @__PURE__ */ (() => monkeyWindow.GM_info)();
   var GM_xmlhttpRequest = /* @__PURE__ */ (() => monkeyWindow.GM_xmlhttpRequest)();
   const name = "@leo/table-to-json";
-  const version = "0.0.5";
+  const version = "0.0.6";
   const type = "module";
   const scripts = {
     dev: "vite",
