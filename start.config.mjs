@@ -2,6 +2,10 @@ import inquirer from 'inquirer'
 import { execaCommand } from 'execa'
 import { magentaBright, greenBright, bold } from 'colorette'
 
+// "scripts": {
+//   "dev": "cross-env type=start node start.config.mjs",
+// },
+
 const projects = [{ cnName: '开票', enName: 'invoice' }]
 
 inquirer
