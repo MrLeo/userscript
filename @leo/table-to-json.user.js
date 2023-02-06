@@ -14,7 +14,7 @@
 // @grant        GM_xmlhttpRequest
 // ==/UserScript==
 
-(o=>{const e=document.createElement("style");e.dataset.source="vite-plugin-monkey",e.innerText=o,document.head.appendChild(e)})(":root{font-family:Inter,Avenir,Helvetica,Arial,sans-serif;font-size:16px;line-height:24px;font-weight:400;color-scheme:light dark;color:#ffffffde;background-color:#242424;font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;-webkit-text-size-adjust:100%}a{font-weight:500;color:#646cff;text-decoration:inherit}a:hover{color:#535bf2}body{margin:0;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;place-items:center;min-width:320px;min-height:100vh}h1{font-size:3.2em;line-height:1.1}button{border-radius:8px;border:1px solid transparent;padding:.6em 1.2em;font-size:1em;font-weight:500;font-family:inherit;background-color:#1a1a1a;cursor:pointer;-webkit-transition:border-color .25s;transition:border-color .25s}button:hover{border-color:#646cff}button:focus,button:focus-visible{outline:4px auto -webkit-focus-ring-color}.card{padding:2em}#app{max-width:1280px;margin:0 auto;padding:2rem;text-align:center}@media (prefers-color-scheme: light){:root{color:#213547;background-color:#fff}a:hover{color:#747bff}button{background-color:#f9f9f9}}.inno-userscript_invoice[data-v-deed8649]{position:fixed;z-index:9999;background-color:#fff;-webkit-box-shadow:5px 5px 10px 0px #ccc;box-shadow:5px 5px 10px #ccc;max-height:80%;overflow:auto;border-radius:5px;border:1px solid #ccc;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column}.inno-userscript_invoice .main[data-v-deed8649]{overflow:auto;padding:4px}.inno-userscript_invoice .drag[data-v-deed8649]{cursor:move;font-size:16px;background:#ccc;padding:8px}.btn[data-v-deed8649]{cursor:pointer}.copy[data-v-deed8649]{cursor:copy}details[data-v-deed8649]{border:1px solid #aaa;border-radius:4px;padding:.5em .5em 0}summary[data-v-deed8649]{font-weight:700;margin:-.5em -.5em 0;padding:.5em;cursor:pointer}details[open][data-v-deed8649]{padding:.5em}details[open] summary[data-v-deed8649]{border-bottom:1px solid #aaa;margin-bottom:.5em}");
+(o=>{const e=document.createElement("style");e.dataset.source="vite-plugin-monkey",e.innerText=o,document.head.appendChild(e)})(":root{font-family:Inter,Avenir,Helvetica,Arial,sans-serif;font-size:16px;line-height:24px;font-weight:400;color-scheme:light dark;color:#ffffffde;background-color:#242424;font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;-webkit-text-size-adjust:100%}a{font-weight:500;color:#646cff;text-decoration:inherit}a:hover{color:#535bf2}body{margin:0;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;place-items:center;min-width:320px;min-height:100vh}h1{font-size:3.2em;line-height:1.1}button{border-radius:8px;border:1px solid transparent;padding:.6em 1.2em;font-size:1em;font-weight:500;font-family:inherit;background-color:#1a1a1a;cursor:pointer;-webkit-transition:border-color .25s;transition:border-color .25s}button:hover{border-color:#646cff}button:focus,button:focus-visible{outline:4px auto -webkit-focus-ring-color}.card{padding:2em}#app{max-width:1280px;margin:0 auto;padding:2rem;text-align:center}@media (prefers-color-scheme: light){:root{color:#213547;background-color:#fff}a:hover{color:#747bff}button{background-color:#f9f9f9}}.inno-userscript_invoice[data-v-3098e73e]{position:fixed;z-index:9999;background-color:#fff;-webkit-box-shadow:5px 5px 10px 0px #ccc;box-shadow:5px 5px 10px #ccc;max-height:80%;overflow:auto;border-radius:5px;border:1px solid #ccc;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column}.inno-userscript_invoice .main[data-v-3098e73e]{overflow:auto;padding:4px}.inno-userscript_invoice .drag[data-v-3098e73e]{cursor:move;font-size:16px;background:#ccc;padding:8px}.btn[data-v-3098e73e]{cursor:pointer}.copy[data-v-3098e73e]{cursor:copy}details[data-v-3098e73e]{border:1px solid #aaa;border-radius:4px;padding:.5em .5em 0;margin-top:8px}summary[data-v-3098e73e]{font-weight:700;margin:-.5em -.5em 0;padding:.5em;cursor:pointer}details[open][data-v-3098e73e]{padding:.5em}details[open] summary[data-v-3098e73e]{border-bottom:1px solid #aaa;margin-bottom:.5em}");
 
 (function(vue) {
   "use strict";
@@ -101,9 +101,9 @@
     createToken("GTE0PRE", "^\\s*>=\\s*0\\.0\\.0-0\\s*$");
   })(re$3, reExports);
   const opts = ["includePrerelease", "loose", "rtl"];
-  const parseOptions$2 = (options) => !options ? {} : typeof options !== "object" ? { loose: true } : opts.filter((k) => options[k]).reduce((o2, k) => {
-    o2[k] = true;
-    return o2;
+  const parseOptions$2 = (options) => !options ? {} : typeof options !== "object" ? { loose: true } : opts.filter((k) => options[k]).reduce((o, k) => {
+    o[k] = true;
+    return o;
   }, {});
   var parseOptions_1 = parseOptions$2;
   const numeric = /^[0-9]+$/;
@@ -147,14 +147,14 @@
       this.options = options;
       this.loose = !!options.loose;
       this.includePrerelease = !!options.includePrerelease;
-      const m = version2.trim().match(options.loose ? re$2[t$3.LOOSE] : re$2[t$3.FULL]);
-      if (!m) {
+      const m2 = version2.trim().match(options.loose ? re$2[t$3.LOOSE] : re$2[t$3.FULL]);
+      if (!m2) {
         throw new TypeError(`Invalid Version: ${version2}`);
       }
       this.raw = version2;
-      this.major = +m[1];
-      this.minor = +m[2];
-      this.patch = +m[3];
+      this.major = +m2[1];
+      this.minor = +m2[2];
+      this.patch = +m2[3];
       if (this.major > MAX_SAFE_INTEGER || this.major < 0) {
         throw new TypeError("Invalid major version");
       }
@@ -164,10 +164,10 @@
       if (this.patch > MAX_SAFE_INTEGER || this.patch < 0) {
         throw new TypeError("Invalid patch version");
       }
-      if (!m[4]) {
+      if (!m2[4]) {
         this.prerelease = [];
       } else {
-        this.prerelease = m[4].split(".").map((id) => {
+        this.prerelease = m2[4].split(".").map((id) => {
           if (/^[0-9]+$/.test(id)) {
             const num = +id;
             if (num >= 0 && num < MAX_SAFE_INTEGER) {
@@ -177,7 +177,7 @@
           return id;
         });
       }
-      this.build = m[5] ? m[5].split(".") : [];
+      this.build = m2[5] ? m2[5].split(".") : [];
       this.format();
     }
     format() {
@@ -1365,20 +1365,20 @@
     }).join(" ");
     const replaceTilde = (comp, options) => {
       const r2 = options.loose ? re2[t2.TILDELOOSE] : re2[t2.TILDE];
-      return comp.replace(r2, (_, M, m, p2, pr) => {
-        debug2("tilde", comp, _, M, m, p2, pr);
+      return comp.replace(r2, (_, M, m2, p2, pr) => {
+        debug2("tilde", comp, _, M, m2, p2, pr);
         let ret;
         if (isX(M)) {
           ret = "";
-        } else if (isX(m)) {
+        } else if (isX(m2)) {
           ret = `>=${M}.0.0 <${+M + 1}.0.0-0`;
         } else if (isX(p2)) {
-          ret = `>=${M}.${m}.0 <${M}.${+m + 1}.0-0`;
+          ret = `>=${M}.${m2}.0 <${M}.${+m2 + 1}.0-0`;
         } else if (pr) {
           debug2("replaceTilde pr", pr);
-          ret = `>=${M}.${m}.${p2}-${pr} <${M}.${+m + 1}.0-0`;
+          ret = `>=${M}.${m2}.${p2}-${pr} <${M}.${+m2 + 1}.0-0`;
         } else {
-          ret = `>=${M}.${m}.${p2} <${M}.${+m + 1}.0-0`;
+          ret = `>=${M}.${m2}.${p2} <${M}.${+m2 + 1}.0-0`;
         }
         debug2("tilde return", ret);
         return ret;
@@ -1391,40 +1391,40 @@
       debug2("caret", comp, options);
       const r2 = options.loose ? re2[t2.CARETLOOSE] : re2[t2.CARET];
       const z = options.includePrerelease ? "-0" : "";
-      return comp.replace(r2, (_, M, m, p2, pr) => {
-        debug2("caret", comp, _, M, m, p2, pr);
+      return comp.replace(r2, (_, M, m2, p2, pr) => {
+        debug2("caret", comp, _, M, m2, p2, pr);
         let ret;
         if (isX(M)) {
           ret = "";
-        } else if (isX(m)) {
+        } else if (isX(m2)) {
           ret = `>=${M}.0.0${z} <${+M + 1}.0.0-0`;
         } else if (isX(p2)) {
           if (M === "0") {
-            ret = `>=${M}.${m}.0${z} <${M}.${+m + 1}.0-0`;
+            ret = `>=${M}.${m2}.0${z} <${M}.${+m2 + 1}.0-0`;
           } else {
-            ret = `>=${M}.${m}.0${z} <${+M + 1}.0.0-0`;
+            ret = `>=${M}.${m2}.0${z} <${+M + 1}.0.0-0`;
           }
         } else if (pr) {
           debug2("replaceCaret pr", pr);
           if (M === "0") {
-            if (m === "0") {
-              ret = `>=${M}.${m}.${p2}-${pr} <${M}.${m}.${+p2 + 1}-0`;
+            if (m2 === "0") {
+              ret = `>=${M}.${m2}.${p2}-${pr} <${M}.${m2}.${+p2 + 1}-0`;
             } else {
-              ret = `>=${M}.${m}.${p2}-${pr} <${M}.${+m + 1}.0-0`;
+              ret = `>=${M}.${m2}.${p2}-${pr} <${M}.${+m2 + 1}.0-0`;
             }
           } else {
-            ret = `>=${M}.${m}.${p2}-${pr} <${+M + 1}.0.0-0`;
+            ret = `>=${M}.${m2}.${p2}-${pr} <${+M + 1}.0.0-0`;
           }
         } else {
           debug2("no pr");
           if (M === "0") {
-            if (m === "0") {
-              ret = `>=${M}.${m}.${p2}${z} <${M}.${m}.${+p2 + 1}-0`;
+            if (m2 === "0") {
+              ret = `>=${M}.${m2}.${p2}${z} <${M}.${m2}.${+p2 + 1}-0`;
             } else {
-              ret = `>=${M}.${m}.${p2}${z} <${M}.${+m + 1}.0-0`;
+              ret = `>=${M}.${m2}.${p2}${z} <${M}.${+m2 + 1}.0-0`;
             }
           } else {
-            ret = `>=${M}.${m}.${p2} <${+M + 1}.0.0-0`;
+            ret = `>=${M}.${m2}.${p2} <${+M + 1}.0.0-0`;
           }
         }
         debug2("caret return", ret);
@@ -1440,10 +1440,10 @@
     const replaceXRange = (comp, options) => {
       comp = comp.trim();
       const r2 = options.loose ? re2[t2.XRANGELOOSE] : re2[t2.XRANGE];
-      return comp.replace(r2, (ret, gtlt, M, m, p2, pr) => {
-        debug2("xRange", comp, ret, gtlt, M, m, p2, pr);
+      return comp.replace(r2, (ret, gtlt, M, m2, p2, pr) => {
+        debug2("xRange", comp, ret, gtlt, M, m2, p2, pr);
         const xM = isX(M);
-        const xm = xM || isX(m);
+        const xm = xM || isX(m2);
         const xp = xm || isX(p2);
         const anyX = xp;
         if (gtlt === "=" && anyX) {
@@ -1458,17 +1458,17 @@
           }
         } else if (gtlt && anyX) {
           if (xm) {
-            m = 0;
+            m2 = 0;
           }
           p2 = 0;
           if (gtlt === ">") {
             gtlt = ">=";
             if (xm) {
               M = +M + 1;
-              m = 0;
+              m2 = 0;
               p2 = 0;
             } else {
-              m = +m + 1;
+              m2 = +m2 + 1;
               p2 = 0;
             }
           } else if (gtlt === "<=") {
@@ -1476,17 +1476,17 @@
             if (xm) {
               M = +M + 1;
             } else {
-              m = +m + 1;
+              m2 = +m2 + 1;
             }
           }
           if (gtlt === "<") {
             pr = "-0";
           }
-          ret = `${gtlt + M}.${m}.${p2}${pr}`;
+          ret = `${gtlt + M}.${m2}.${p2}${pr}`;
         } else if (xm) {
           ret = `>=${M}.0.0${pr} <${+M + 1}.0.0-0`;
         } else if (xp) {
-          ret = `>=${M}.${m}.0${pr} <${M}.${+m + 1}.0-0`;
+          ret = `>=${M}.${m2}.0${pr} <${M}.${+m2 + 1}.0-0`;
         }
         debug2("xRange return", ret);
         return ret;
@@ -1585,18 +1585,18 @@
       }
       parse(comp) {
         const r2 = this.options.loose ? re2[t2.COMPARATORLOOSE] : re2[t2.COMPARATOR];
-        const m = comp.match(r2);
-        if (!m) {
+        const m2 = comp.match(r2);
+        if (!m2) {
           throw new TypeError(`Invalid comparator: ${comp}`);
         }
-        this.operator = m[1] !== void 0 ? m[1] : "";
+        this.operator = m2[1] !== void 0 ? m2[1] : "";
         if (this.operator === "=") {
           this.operator = "";
         }
-        if (!m[2]) {
+        if (!m2[2]) {
           this.semver = ANY2;
         } else {
-          this.semver = new SemVer2(m[2], this.options.loose);
+          this.semver = new SemVer2(m2[2], this.options.loose);
         }
       }
       toString() {
@@ -2781,6 +2781,8 @@
     key: 0,
     class: "main"
   };
+  const _hoisted_3 = { open: "" };
+  const _hoisted_4 = { open: "" };
   const _sfc_main = /* @__PURE__ */ vue.defineComponent({
     __name: "App",
     setup(__props) {
@@ -2795,9 +2797,14 @@
       const typeReplace = (type2) => type2.replace(/^string$/i, "string").replace(/^int|long$/i, "number").replace(/^List<([^>]*)>$/i, "$1[]");
       const tables = vue.ref();
       const output = vue.ref();
+      const api = vue.ref("");
+      const apiMethod = vue.ref("");
+      const apiDemo = vue.ref("");
       const TypeRequest = vue.ref("");
       const TypeResponse = vue.ref("");
       const getTables = () => {
+        TypeRequest.value = "";
+        TypeResponse.value = "";
         tables.value = jQuery("table");
       };
       vue.watch(
@@ -2808,29 +2815,48 @@
           Array.from(tables.value || []).forEach((element) => {
             const name2 = jQuery(element).parent().prev().text() || jQuery(element).parent().prev().prev().text() || jQuery(element).parent().prev().prev().prev().text() || jQuery(element).parent().prev().prev().prev().prev().text();
             const json = jQuery(element).tableToJSON();
-            if (/body参数/gi.test(name2)) {
-              const interfaceFieldStr = json.map((item) => {
-                if ("参数名" === item["参数名"])
-                  return "";
-                if (/^page.?/.test(item["参数名"]))
-                  return "";
-                return [item["说明"] ? `  /** ${item["说明"]} */` : "", `  ${item["参数名"]}: ${typeReplace(item["类型"])}`].filter(Boolean).join("\n");
-              }).filter(Boolean);
-              TypeRequest.value = [`export interface Request {`, ...interfaceFieldStr, `}`].join("\n");
-              console.info(`[LOG] -> TypeRequest`, TypeRequest.value);
+            if (/^Request/.test(name2) || /^Response/.test(name2))
               return;
+            try {
+              if (/请求URL地址/i.test(name2)) {
+                output.value[name2] = json;
+                api.value = json[0]["地址"].replace(/\{.*\}/, "");
+                apiMethod.value = api.value.replace(/.*\//gi, "");
+                apiDemo.value = `export const ${apiMethod.value} = passPost('${api.value}')`;
+                return;
+              }
+            } catch (err) {
+              console.error(`[LOG] -> 请求URL地址`, err);
             }
-            if (/字段说明/gi.test(name2) || /^\w+$/i.test(name2)) {
-              const interfaceFieldStr = json.map((item) => {
-                return [item["说明"] ? `  /** ${item["说明"]} */` : "", `  ${item["字段名称"]}: ${typeReplace(item["类型"])}`].filter(Boolean).join("\n");
-              }).filter(Boolean);
-              TypeResponse.value += [`export interface ${/^\w+$/i.test(name2) ? name2 : "Response"} {`, ...interfaceFieldStr, `}`].join("\n") + "\n\n";
-              console.info(`[LOG] -> TypeResponse`, TypeResponse.value);
-              return;
+            try {
+              if (/body参数/gi.test(name2)) {
+                const interfaceFieldStr = json.map((item) => {
+                  if ("参数名" === item["参数名"])
+                    return "";
+                  if (/^page.?/.test(item["参数名"]))
+                    return "";
+                  return [item["说明"] ? `  /** ${item["说明"]} */` : "", `  ${item["参数名"]}: ${typeReplace(item["类型"])}`].filter(Boolean).join("\n");
+                }).filter(Boolean);
+                TypeRequest.value = [`export interface ${apiMethod.value}Request {`, ...interfaceFieldStr, `}`].join("\n");
+                console.info(`[LOG] -> TypeRequest`, TypeRequest.value);
+                return;
+              }
+            } catch (err) {
+              console.error(`[LOG] -> 请求参数 -> BODY参数`, err);
             }
-            if (name2) {
-              output.value[name2] = json;
+            try {
+              if (/字段说明/gi.test(name2) || /^\w+$/i.test(name2)) {
+                const interfaceFieldStr = json.map((item) => {
+                  return [item["说明"] ? `  /** ${item["说明"]} */` : "", `  ${item["字段名称"]}: ${typeReplace(item["类型"])}`].filter(Boolean).join("\n");
+                }).filter(Boolean);
+                TypeResponse.value += [`export interface ${/^\w+$/i.test(name2) ? name2 : `${apiMethod.value}Response`} {`, ...interfaceFieldStr, `}`].join("\n") + "\n\n";
+                console.info(`[LOG] -> TypeResponse`, TypeResponse.value);
+                return;
+              }
+            } catch (err) {
+              console.error(`[LOG] -> 返回结果 -> 字段说明`, err);
             }
+            output.value[name2 || Symbol()] = json;
           });
         }
       );
@@ -2858,29 +2884,33 @@
             vue.createTextVNode("  /  "),
             vue.createElementVNode("a", {
               class: "btn",
-              onClick: _cache[1] || (_cache[1] = ($event) => getTables())
+              onClick: _cache[1] || (_cache[1] = ($event) => tables.value = void 0)
             }, "关闭")
           ], 512),
           tables.value ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_2, [
             vue.createElementVNode("pre", null, vue.toDisplayString(JSON.stringify(output.value, null, 2)), 1),
-            vue.createElementVNode("details", null, [
+            vue.createElementVNode("pre", {
+              class: "copy",
+              onClick: _cache[2] || (_cache[2] = ($event) => vue.unref(copy)(apiDemo.value))
+            }, vue.toDisplayString(apiDemo.value), 1),
+            vue.createElementVNode("details", _hoisted_3, [
               vue.createElementVNode("summary", null, [
                 vue.createTextVNode("Request "),
                 vue.unref(isSupported) ? (vue.openBlock(), vue.createElementBlock("a", {
                   key: 0,
                   class: "copy",
-                  onClick: _cache[2] || (_cache[2] = ($event) => vue.unref(copy)(TypeRequest.value))
+                  onClick: _cache[3] || (_cache[3] = ($event) => vue.unref(copy)(TypeRequest.value))
                 }, "copy")) : vue.createCommentVNode("", true)
               ]),
               vue.createElementVNode("pre", null, vue.toDisplayString(TypeRequest.value), 1)
             ]),
-            vue.createElementVNode("details", null, [
+            vue.createElementVNode("details", _hoisted_4, [
               vue.createElementVNode("summary", null, [
                 vue.createTextVNode("Response "),
                 vue.unref(isSupported) ? (vue.openBlock(), vue.createElementBlock("a", {
                   key: 0,
                   class: "copy",
-                  onClick: _cache[3] || (_cache[3] = ($event) => vue.unref(copy)(TypeResponse.value))
+                  onClick: _cache[4] || (_cache[4] = ($event) => vue.unref(copy)(TypeResponse.value))
                 }, "copy")) : vue.createCommentVNode("", true)
               ]),
               vue.createElementVNode("pre", null, vue.toDisplayString(TypeResponse.value), 1)
@@ -2890,7 +2920,7 @@
       };
     }
   });
-  const App_vue_vue_type_style_index_0_scoped_deed8649_lang = "";
+  const App_vue_vue_type_style_index_0_scoped_3098e73e_lang = "";
   const _export_sfc = (sfc, props) => {
     const target = sfc.__vccOpts || sfc;
     for (const [key, val] of props) {
@@ -2898,13 +2928,13 @@
     }
     return target;
   };
-  const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-deed8649"]]);
-  const s = "@leo/core", t = "1.0.0", n = "module", c = "./dist/core.umd.js", i = "./dist/core.es.js", r = {
+  const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-3098e73e"]]);
+  const s = "@leo/core", t = "1.0.0", n = "module", c = "./dist/core.umd.js", i = "./dist/core.es.js", d = {
     ".": {
       import: "./dist/core.es.js",
       require: "./dist/core.umd.js"
     }
-  }, d = {
+  }, r = {
     dev: "vite",
     build: "tsc && vite build",
     preview: "vite preview"
@@ -2918,19 +2948,39 @@
     type: n,
     main: c,
     module: i,
-    exports: r,
-    scripts: d,
+    exports: d,
+    scripts: r,
     devDependencies: p
+  }, a = () => {
+    var o;
+    try {
+      const e = document.createElement("iframe");
+      e.style.display = "none", document.body.appendChild(e), console = (o = e == null ? void 0 : e.contentWindow) == null ? void 0 : o.console, window.console = console;
+    } catch {
+    }
+  }, m = {
+    version: l.version,
+    addConsole: a
   };
-  var o;
-  try {
-    const e = document.createElement("iframe");
-    e.style.display = "none", document.body.appendChild(e), console = (o = e == null ? void 0 : e.contentWindow) == null ? void 0 : o.console, window.console = console;
-  } catch {
-  }
-  const a = {
-    version: l.version
+  const checkVersion = async () => {
+    console.log(`[core] ->`, m);
+    console.log(`%c[${GM_info.script.name}]`, "color: #409eff; font-weight: bold; font-size: 32px;", GM_info);
+    {
+      GM_xmlhttpRequest({
+        method: "GET",
+        url: "https://gitee.com/mr.leo/userscript/raw/main/packages/table-to-json/package.json",
+        headers: { "Content-Type": "application/json" },
+        responseType: "json",
+        onload({ response }) {
+          const versionGt = semver.gt(response.version, GM_info.script.version);
+          console.info(`[LOG] -> onload -> response.version(${response.version}) > GM_info.script.version(${GM_info.script.version}) = ${versionGt}`);
+          if (versionGt && GM_info.scriptUpdateURL)
+            window.location.href = GM_info.scriptUpdateURL;
+        }
+      });
+    }
   };
+  checkVersion();
   vue.createApp(App).mount(
     (() => {
       const app = document.createElement("div");
@@ -2938,21 +2988,4 @@
       return app;
     })()
   );
-  const checkVersion = async () => {
-    console.log(`[core] ->`, a);
-    console.log(`%c[${GM_info.script.name}]`, "color: #409eff; font-weight: bold; font-size: 32px;", GM_info);
-    GM_xmlhttpRequest({
-      method: "GET",
-      url: "https://gitee.com/mr.leo/userscript/raw/main/packages/table-to-json/package.json",
-      headers: { "Content-Type": "application/json" },
-      responseType: "json",
-      onload({ response }) {
-        const versionGt = semver.gt(response.version, GM_info.script.version);
-        console.info(`[LOG] -> onload -> response.version(${response.version}) > GM_info.script.version(${GM_info.script.version}) = ${versionGt}`);
-        if (versionGt && GM_info.scriptUpdateURL)
-          window.location.href = GM_info.scriptUpdateURL;
-      }
-    });
-  };
-  checkVersion();
 })(Vue);

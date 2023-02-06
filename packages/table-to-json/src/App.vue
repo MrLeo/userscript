@@ -3,6 +3,7 @@ import { ref, watch } from 'vue'
 import { useDraggable, useStorage, useClipboard } from '@vueuse/core'
 import { GM_info } from '$'
 import packageInfo from '../package.json'
+import _ from 'lodash'
 
 const version = GM_info.script.version
 
@@ -22,11 +23,17 @@ const typeReplace = (type) =>
     .replace(/^List<([^>]*)>$/i, '$1[]')
 
 const tables = ref<JQuery<HTMLElement>>()
+
 const output = ref()
+const api = ref('')
+const apiMethod = ref('')
+const apiDemo = ref('')
 const TypeRequest = ref('')
 const TypeResponse = ref('')
 
 const getTables = () => {
+  TypeRequest.value = ''
+  TypeResponse.value = ''
   tables.value = jQuery('table')
 }
 
@@ -48,33 +55,56 @@ watch(
         jQuery(element).parent().prev().prev().prev().prev().text()
       const json = (jQuery(element) as any).tableToJSON()
 
-      if (/body参数/gi.test(name)) {
-        const interfaceFieldStr = json
-          .map((item) => {
-            if ('参数名' === item['参数名']) return ''
-            if (/^page.?/.test(item['参数名'])) return ''
-            return [item['说明'] ? `  /** ${item['说明']} */` : '', `  ${item['参数名']}: ${typeReplace(item['类型'])}`].filter(Boolean).join('\n')
-          })
-          .filter(Boolean)
-        TypeRequest.value = [`export interface Request {`, ...interfaceFieldStr, `}`].join('\n')
-        console.info(`[LOG] -> TypeRequest`, TypeRequest.value)
-        return
+      if (/^Request/.test(name) || /^Response/.test(name)) return
+
+      try {
+        if (/请求URL地址/i.test(name)) {
+          output.value[name] = json
+          api.value = json[0]['地址'].replace(/\{.*\}/, '')
+          apiMethod.value = api.value.replace(/.*\//gi, '')
+          apiDemo.value = `export const ${apiMethod.value} = passPost('${api.value}')`
+          return
+        }
+      } catch (err) {
+        console.error(`[LOG] -> 请求URL地址`, err)
       }
 
-      if (/字段说明/gi.test(name) || /^\w+$/i.test(name)) {
-        const interfaceFieldStr = json
-          .map((item) => {
-            return [item['说明'] ? `  /** ${item['说明']} */` : '', `  ${item['字段名称']}: ${typeReplace(item['类型'])}`].filter(Boolean).join('\n')
-          })
-          .filter(Boolean)
-        TypeResponse.value += [`export interface ${/^\w+$/i.test(name) ? name : 'Response'} {`, ...interfaceFieldStr, `}`].join('\n') + '\n\n'
-        console.info(`[LOG] -> TypeResponse`, TypeResponse.value)
-        return
+      try {
+        if (/body参数/gi.test(name)) {
+          const interfaceFieldStr = json
+            .map((item) => {
+              if ('参数名' === item['参数名']) return ''
+              if (/^page.?/.test(item['参数名'])) return ''
+              return [item['说明'] ? `  /** ${item['说明']} */` : '', `  ${item['参数名']}: ${typeReplace(item['类型'])}`].filter(Boolean).join('\n')
+            })
+            .filter(Boolean)
+          TypeRequest.value = [`export interface ${apiMethod.value}Request {`, ...interfaceFieldStr, `}`].join('\n')
+          console.info(`[LOG] -> TypeRequest`, TypeRequest.value)
+          return
+        }
+      } catch (err) {
+        console.error(`[LOG] -> 请求参数 -> BODY参数`, err)
       }
 
-      if (name) {
-        output.value[name] = json
+      try {
+        if (/字段说明/gi.test(name) || /^\w+$/i.test(name)) {
+          const interfaceFieldStr = json
+            .map((item) => {
+              return [item['说明'] ? `  /** ${item['说明']} */` : '', `  ${item['字段名称']}: ${typeReplace(item['类型'])}`]
+                .filter(Boolean)
+                .join('\n')
+            })
+            .filter(Boolean)
+          TypeResponse.value +=
+            [`export interface ${/^\w+$/i.test(name) ? name : `${apiMethod.value}Response`} {`, ...interfaceFieldStr, `}`].join('\n') + '\n\n'
+          console.info(`[LOG] -> TypeResponse`, TypeResponse.value)
+          return
+        }
+      } catch (err) {
+        console.error(`[LOG] -> 返回结果 -> 字段说明`, err)
       }
+
+      output.value[name || Symbol()] = json
     })
   },
 )
@@ -94,11 +124,12 @@ const { copy, isSupported } = useClipboard()
     </h1>
     <div v-if="tables" class="main">
       <pre>{{ JSON.stringify(output, null, 2) }}</pre>
-      <details>
+      <pre class="copy" @click="copy(apiDemo)">{{ apiDemo }}</pre>
+      <details open>
         <summary>Request <a v-if="isSupported" class="copy" @click="copy(TypeRequest)">copy</a></summary>
         <pre>{{ TypeRequest }}</pre>
       </details>
-      <details>
+      <details open>
         <summary>Response <a v-if="isSupported" class="copy" @click="copy(TypeResponse)">copy</a></summary>
         <pre>{{ TypeResponse }}</pre>
       </details>
@@ -145,6 +176,7 @@ details {
   border: 1px solid #aaa;
   border-radius: 4px;
   padding: 0.5em 0.5em 0;
+  margin-top: 8px;
 }
 
 summary {
