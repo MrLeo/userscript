@@ -95,7 +95,7 @@ const { copy, isSupported } = useClipboard()
     <div v-if="tables" class="main">
       <pre>{{ JSON.stringify(output, null, 2) }}</pre>
       <details>
-        <summary>Request <a v-if="isSupported" class="copy" @click="copy(TypeResponse)">copy</a></summary>
+        <summary>Request <a v-if="isSupported" class="copy" @click="copy(TypeRequest)">copy</a></summary>
         <pre>{{ TypeRequest }}</pre>
       </details>
       <details>
