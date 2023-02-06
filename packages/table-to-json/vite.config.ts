@@ -20,6 +20,7 @@ export default defineConfig({
         namespace: 'https://xuebin.me/',
         match: ['*://wiki.zhaopin.com/*'],
         updateURL: `https://gitee.com/mr.leo/userscript/raw/main/${packageInfo.name}.user.js`,
+        downloadURL: `https://gitee.com/mr.leo/userscript/raw/main/${packageInfo.name}.user.js`,
         require: [
           'https://cdn.jsdelivr.net/npm/core-js-bundle@latest/minified.js',
           'https://cdn.jsdelivr.net/npm/table-to-json@1.0.0/lib/jquery.tabletojson.min.js',
