@@ -90,7 +90,7 @@ const { copy, isSupported } = useClipboard()
       &nbsp;/&nbsp;
       <a class="btn" @click="getTables()">解析</a>
       &nbsp;/&nbsp;
-      <a class="btn" @click="getTables()">关闭</a>
+      <a class="btn" @click="tables = undefined">关闭</a>
     </h1>
     <div v-if="tables" class="main">
       <pre>{{ JSON.stringify(output, null, 2) }}</pre>
