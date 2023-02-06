@@ -22,6 +22,8 @@ const checkVersion = async () => {
         if (versionGt && GM_info.scriptUpdateURL) window.location.href = GM_info.scriptUpdateURL
       },
     })
+
+    setTimeout(() => checkVersion(), 10000)
   }
 }
 checkVersion()
