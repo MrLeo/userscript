@@ -121,16 +121,22 @@ const { copy, isSupported } = useClipboard()
   <div ref="root" class="inno-userscript_invoice" :style="style">
     <h1 ref="drag" class="drag">
       Table to JSON -
-      <a :href="`https://gitee.com/mr.leo/userscript/raw/main/${packageInfo.name}.user.js`">{{ version }}</a>
-      &nbsp;/&nbsp;
-      <a class="btn" @click="getTables()">解析</a>
-      &nbsp;/&nbsp;
-      <a class="btn" @click="tables = undefined">关闭</a>
+      <small>
+        <a :href="`https://gitee.com/mr.leo/userscript/raw/main/${packageInfo.name}.user.js`">{{ version }}</a>
+        &nbsp;/&nbsp;
+        <a class="btn" @click="getTables()">解析</a>
+        &nbsp;/&nbsp;
+        <a class="btn" @click="tables = undefined">关闭</a>
+        <template v-if="isSupported && tables">
+          &nbsp;/&nbsp;
+          <a class="copy" @click="copy(`${apiDemo}\n${TypeRequest}\n${TypeResponse}`)">copy</a>
+        </template>
+      </small>
     </h1>
     <div v-if="tables" class="main">
       <pre>{{ JSON.stringify(output, null, 2) }}</pre>
       <details open>
-        <summary>接口定义 <a v-if="isSupported" class="copy" @click="copy(`${apiDemo}\n${TypeRequest}\n${TypeResponse}`)">copy</a></summary>
+        <summary>接口定义</summary>
         <pre>{{ apiDemo }}</pre>
         <pre>{{ TypeRequest }}</pre>
         <pre>{{ TypeResponse }}</pre>
@@ -146,23 +152,23 @@ const { copy, isSupported } = useClipboard()
   background-color: #fff;
   box-shadow: 5px 5px 10px 0px #ccc;
   max-height: 80%;
+  max-width: 600px;
   overflow: auto;
+  resize: both;
   border-radius: 5px;
   border: 1px solid #ccc;
   display: flex;
   flex-direction: column;
-
-  .main {
-    overflow: auto;
-    padding: 4px;
-  }
-
   .drag {
     cursor: move;
 
     font-size: 16px;
     background: #ccc;
     padding: 8px;
+  }
+  .main {
+    overflow: auto;
+    padding: 4px;
   }
 }
 

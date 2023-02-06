@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         @leo/table-to-json
 // @namespace    https://xuebin.me/
-// @version      1.0.6
+// @version      1.0.7
 // @author       monkey
 // @icon         https://vitejs.dev/logo.svg
 // @downloadURL  https://gitee.com/mr.leo/userscript/raw/main/@leo/table-to-json.user.js
@@ -14,7 +14,7 @@
 // @grant        GM_xmlhttpRequest
 // ==/UserScript==
 
-(e=>{const o=document.createElement("style");o.dataset.source="vite-plugin-monkey",o.innerText=e,document.head.appendChild(o)})(":root{font-family:Inter,Avenir,Helvetica,Arial,sans-serif;font-size:16px;line-height:24px;font-weight:400;color-scheme:light dark;color:#ffffffde;background-color:#242424;font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;-webkit-text-size-adjust:100%}a{font-weight:500;color:#646cff;text-decoration:inherit}a:hover{color:#535bf2}body{margin:0;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;place-items:center;min-width:320px;min-height:100vh}h1{font-size:3.2em;line-height:1.1}button{border-radius:8px;border:1px solid transparent;padding:.6em 1.2em;font-size:1em;font-weight:500;font-family:inherit;background-color:#1a1a1a;cursor:pointer;-webkit-transition:border-color .25s;transition:border-color .25s}button:hover{border-color:#646cff}button:focus,button:focus-visible{outline:4px auto -webkit-focus-ring-color}.card{padding:2em}#app{max-width:1280px;margin:0 auto;padding:2rem;text-align:center}@media (prefers-color-scheme: light){:root{color:#213547;background-color:#fff}a:hover{color:#747bff}button{background-color:#f9f9f9}}.inno-userscript_invoice[data-v-0b062fb1]{position:fixed;z-index:9999;background-color:#fff;-webkit-box-shadow:5px 5px 10px 0px #ccc;box-shadow:5px 5px 10px #ccc;max-height:80%;overflow:auto;border-radius:5px;border:1px solid #ccc;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column}.inno-userscript_invoice .main[data-v-0b062fb1]{overflow:auto;padding:4px}.inno-userscript_invoice .drag[data-v-0b062fb1]{cursor:move;font-size:16px;background:#ccc;padding:8px}.btn[data-v-0b062fb1]{cursor:pointer}.copy[data-v-0b062fb1]{cursor:copy}.pre[data-v-0b062fb1]{border:1px solid #ccc;border-radius:5px;padding:8px}details[data-v-0b062fb1]{border:1px solid #aaa;border-radius:4px;padding:.5em .5em 0;margin-top:8px}summary[data-v-0b062fb1]{font-weight:700;margin:-.5em -.5em 0;padding:.5em;cursor:pointer}details[open][data-v-0b062fb1]{padding:.5em}details[open] summary[data-v-0b062fb1]{border-bottom:1px solid #aaa;margin-bottom:.5em}");
+(e=>{const o=document.createElement("style");o.dataset.source="vite-plugin-monkey",o.innerText=e,document.head.appendChild(o)})(":root{font-family:Inter,Avenir,Helvetica,Arial,sans-serif;font-size:16px;line-height:24px;font-weight:400;color-scheme:light dark;color:#ffffffde;background-color:#242424;font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;-webkit-text-size-adjust:100%}a{font-weight:500;color:#646cff;text-decoration:inherit}a:hover{color:#535bf2}body{margin:0;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;place-items:center;min-width:320px;min-height:100vh}h1{font-size:3.2em;line-height:1.1}button{border-radius:8px;border:1px solid transparent;padding:.6em 1.2em;font-size:1em;font-weight:500;font-family:inherit;background-color:#1a1a1a;cursor:pointer;-webkit-transition:border-color .25s;transition:border-color .25s}button:hover{border-color:#646cff}button:focus,button:focus-visible{outline:4px auto -webkit-focus-ring-color}.card{padding:2em}#app{max-width:1280px;margin:0 auto;padding:2rem;text-align:center}@media (prefers-color-scheme: light){:root{color:#213547;background-color:#fff}a:hover{color:#747bff}button{background-color:#f9f9f9}}.inno-userscript_invoice[data-v-6f848078]{position:fixed;z-index:9999;background-color:#fff;-webkit-box-shadow:5px 5px 10px 0px #ccc;box-shadow:5px 5px 10px #ccc;max-height:80%;max-width:600px;overflow:auto;resize:both;border-radius:5px;border:1px solid #ccc;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column}.inno-userscript_invoice .drag[data-v-6f848078]{cursor:move;font-size:16px;background:#ccc;padding:8px}.inno-userscript_invoice .main[data-v-6f848078]{overflow:auto;padding:4px}.btn[data-v-6f848078]{cursor:pointer}.copy[data-v-6f848078]{cursor:copy}.pre[data-v-6f848078]{border:1px solid #ccc;border-radius:5px;padding:8px}details[data-v-6f848078]{border:1px solid #aaa;border-radius:4px;padding:.5em .5em 0;margin-top:8px}summary[data-v-6f848078]{font-weight:700;margin:-.5em -.5em 0;padding:.5em;cursor:pointer}details[open][data-v-6f848078]{padding:.5em}details[open] summary[data-v-6f848078]{border-bottom:1px solid #aaa;margin-bottom:.5em}");
 
 (function(vue) {
   "use strict";
@@ -2750,7 +2750,7 @@
   var GM_info = /* @__PURE__ */ (() => monkeyWindow.GM_info)();
   var GM_xmlhttpRequest = /* @__PURE__ */ (() => monkeyWindow.GM_xmlhttpRequest)();
   const name = "@leo/table-to-json";
-  const version = "1.0.6";
+  const version = "1.0.7";
   const type = "module";
   const scripts = {
     dev: "vite",
@@ -8266,12 +8266,14 @@
       }
     }).call(commonjsGlobal);
   })(lodash, lodashExports);
+  const _withScopeId = (n2) => (vue.pushScopeId("data-v-6f848078"), n2 = n2(), vue.popScopeId(), n2);
   const _hoisted_1 = ["href"];
   const _hoisted_2 = {
     key: 0,
     class: "main"
   };
   const _hoisted_3 = { open: "" };
+  const _hoisted_4 = /* @__PURE__ */ _withScopeId(() => /* @__PURE__ */ vue.createElementVNode("summary", null, "接口定义", -1));
   const _sfc_main = /* @__PURE__ */ vue.defineComponent({
     __name: "App",
     setup(__props) {
@@ -8369,33 +8371,35 @@
             class: "drag"
           }, [
             vue.createTextVNode(" Table to JSON - "),
-            vue.createElementVNode("a", {
-              href: `https://gitee.com/mr.leo/userscript/raw/main/${vue.unref(packageInfo).name}.user.js`
-            }, vue.toDisplayString(vue.unref(version2)), 9, _hoisted_1),
-            vue.createTextVNode("  /  "),
-            vue.createElementVNode("a", {
-              class: "btn",
-              onClick: _cache[0] || (_cache[0] = ($event) => getTables())
-            }, "解析"),
-            vue.createTextVNode("  /  "),
-            vue.createElementVNode("a", {
-              class: "btn",
-              onClick: _cache[1] || (_cache[1] = ($event) => tables.value = void 0)
-            }, "关闭")
-          ], 512),
-          tables.value ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_2, [
-            vue.createElementVNode("pre", null, vue.toDisplayString(JSON.stringify(output.value, null, 2)), 1),
-            vue.createElementVNode("details", _hoisted_3, [
-              vue.createElementVNode("summary", null, [
-                vue.createTextVNode("接口定义 "),
-                vue.unref(isSupported) ? (vue.openBlock(), vue.createElementBlock("a", {
-                  key: 0,
+            vue.createElementVNode("small", null, [
+              vue.createElementVNode("a", {
+                href: `https://gitee.com/mr.leo/userscript/raw/main/${vue.unref(packageInfo).name}.user.js`
+              }, vue.toDisplayString(vue.unref(version2)), 9, _hoisted_1),
+              vue.createTextVNode("  /  "),
+              vue.createElementVNode("a", {
+                class: "btn",
+                onClick: _cache[0] || (_cache[0] = ($event) => getTables())
+              }, "解析"),
+              vue.createTextVNode("  /  "),
+              vue.createElementVNode("a", {
+                class: "btn",
+                onClick: _cache[1] || (_cache[1] = ($event) => tables.value = void 0)
+              }, "关闭"),
+              vue.unref(isSupported) && tables.value ? (vue.openBlock(), vue.createElementBlock(vue.Fragment, { key: 0 }, [
+                vue.createTextVNode("  /  "),
+                vue.createElementVNode("a", {
                   class: "copy",
                   onClick: _cache[2] || (_cache[2] = ($event) => vue.unref(copy)(`${apiDemo.value}
 ${TypeRequest.value}
 ${TypeResponse.value}`))
-                }, "copy")) : vue.createCommentVNode("", true)
-              ]),
+                }, "copy")
+              ], 64)) : vue.createCommentVNode("", true)
+            ])
+          ], 512),
+          tables.value ? (vue.openBlock(), vue.createElementBlock("div", _hoisted_2, [
+            vue.createElementVNode("pre", null, vue.toDisplayString(JSON.stringify(output.value, null, 2)), 1),
+            vue.createElementVNode("details", _hoisted_3, [
+              _hoisted_4,
               vue.createElementVNode("pre", null, vue.toDisplayString(apiDemo.value), 1),
               vue.createElementVNode("pre", null, vue.toDisplayString(TypeRequest.value), 1),
               vue.createElementVNode("pre", null, vue.toDisplayString(TypeResponse.value), 1)
@@ -8405,7 +8409,7 @@ ${TypeResponse.value}`))
       };
     }
   });
-  const App_vue_vue_type_style_index_0_scoped_0b062fb1_lang = "";
+  const App_vue_vue_type_style_index_0_scoped_6f848078_lang = "";
   const _export_sfc = (sfc, props) => {
     const target = sfc.__vccOpts || sfc;
     for (const [key, val] of props) {
@@ -8413,7 +8417,7 @@ ${TypeResponse.value}`))
     }
     return target;
   };
-  const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-0b062fb1"]]);
+  const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-6f848078"]]);
   const s = "@leo/core", t = "1.0.0", n = "module", c = "./dist/core.umd.js", i = "./dist/core.es.js", d = {
     ".": {
       import: "./dist/core.es.js",
