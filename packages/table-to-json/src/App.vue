@@ -3,7 +3,7 @@ import { ref, watch } from 'vue'
 import { useDraggable, useStorage, useClipboard } from '@vueuse/core'
 import { GM_info } from '$'
 import packageInfo from '../package.json'
-import _ from 'lodash'
+import { upperFirst } from 'lodash'
 
 const version = GM_info.script.version
 
@@ -78,7 +78,7 @@ watch(
               return [item['说明'] ? `  /** ${item['说明']} */` : '', `  ${item['参数名']}: ${typeReplace(item['类型'])}`].filter(Boolean).join('\n')
             })
             .filter(Boolean)
-          TypeRequest.value = [`export interface ${apiMethod.value}Request {`, ...interfaceFieldStr, `}`].join('\n')
+          TypeRequest.value = [`export interface ${upperFirst(apiMethod.value)}Request {`, ...interfaceFieldStr, `}`].join('\n')
           console.info(`[LOG] -> TypeRequest`, TypeRequest.value)
           return
         }
@@ -96,7 +96,8 @@ watch(
             })
             .filter(Boolean)
           TypeResponse.value +=
-            [`export interface ${/^\w+$/i.test(name) ? name : `${apiMethod.value}Response`} {`, ...interfaceFieldStr, `}`].join('\n') + '\n\n'
+            [`export interface ${/^\w+$/i.test(name) ? name : `${upperFirst(apiMethod.value)}Response`} {`, ...interfaceFieldStr, `}`].join('\n') +
+            '\n\n'
           console.info(`[LOG] -> TypeResponse`, TypeResponse.value)
           return
         }
