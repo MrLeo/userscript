@@ -41,7 +41,11 @@ watch(
     console.info(`[LOG] -> 页面表格渲染更新`, v)
     output.value = {}
     Array.from(tables.value || []).forEach((element) => {
-      const name = jQuery(element).parent().prev().text() || jQuery(element).parent().prev().prev().text()
+      const name =
+        jQuery(element).parent().prev().text() ||
+        jQuery(element).parent().prev().prev().text() ||
+        jQuery(element).parent().prev().prev().prev().text() ||
+        jQuery(element).parent().prev().prev().prev().prev().text()
       const json = (jQuery(element) as any).tableToJSON()
 
       if (/body参数/gi.test(name)) {
