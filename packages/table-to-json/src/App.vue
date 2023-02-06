@@ -63,9 +63,9 @@ watch(
           api.value = json[0]['地址'].replace(/\{.*\}/, '')
           apiMethod.value = api.value.replace(/.*\//gi, '')
           if (apiMethod.value) {
-            apiDemo.value = `export const ${apiMethod.value} = passPost<${upperFirst(apiMethod.value)}Request, ${upperFirst(
+            apiDemo.value = `export const ${apiMethod.value} = passPost<\n${upperFirst(apiMethod.value)}Request,\n${upperFirst(
               apiMethod.value,
-            )}Response>('${api.value}')`
+            )}Response\n>('${api.value}')`
           }
           return
         }
