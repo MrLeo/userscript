@@ -63,7 +63,7 @@ watch(
           api.value = json[0]['地址'].replace(/\{.*\}/, '')
           apiMethod.value = api.value.replace(/.*\//gi, '')
           if (apiMethod.value) {
-            apiDemo.value = `export const ${apiMethod.value} = passPost<\n${upperFirst(apiMethod.value)}Request,\n${upperFirst(
+            apiDemo.value = `export const ${apiMethod.value} = passPost<\n  ${upperFirst(apiMethod.value)}Request,\n  ${upperFirst(
               apiMethod.value,
             )}Response\n>('${api.value}')`
           }
@@ -129,7 +129,7 @@ const { copy, isSupported } = useClipboard()
     </h1>
     <div v-if="tables" class="main">
       <pre>{{ JSON.stringify(output, null, 2) }}</pre>
-      <pre class="copy" @click="copy(apiDemo)">{{ apiDemo }}</pre>
+      <pre class="copy pre" @click="copy(apiDemo)">{{ apiDemo }}</pre>
       <details open>
         <summary>Request <a v-if="isSupported" class="copy" @click="copy(TypeRequest)">copy</a></summary>
         <pre>{{ TypeRequest }}</pre>
@@ -175,6 +175,12 @@ const { copy, isSupported } = useClipboard()
 
 .copy {
   cursor: copy;
+}
+
+.pre {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 8px;
 }
 
 details {
