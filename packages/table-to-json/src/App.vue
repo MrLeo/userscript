@@ -62,7 +62,11 @@ watch(
           output.value[name] = json
           api.value = json[0]['地址'].replace(/\{.*\}/, '')
           apiMethod.value = api.value.replace(/.*\//gi, '')
-          apiDemo.value = `export const ${apiMethod.value} = passPost('${api.value}')`
+          if (apiMethod.value) {
+            apiDemo.value = `export const ${apiMethod.value} = passPost<${upperFirst(apiMethod.value)}Request, ${upperFirst(
+              apiMethod.value,
+            )}Response>('${api.value}')`
+          }
           return
         }
       } catch (err) {
@@ -90,7 +94,7 @@ watch(
         if (/字段说明/gi.test(name) || /^\w+$/i.test(name)) {
           const interfaceFieldStr = json
             .map((item) => {
-              return [item['说明'] ? `  /** ${item['说明']} */` : '', `  ${item['字段名称']}: ${typeReplace(item['类型'])}`]
+              return [item['说明'] ? `  /** ${item['说明']} */` : '', `  ${item['字段名称'] || item['参数名']}: ${typeReplace(item['类型'])}`]
                 .filter(Boolean)
                 .join('\n')
             })
