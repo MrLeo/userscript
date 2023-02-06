@@ -41,7 +41,7 @@ watch(
     console.info(`[LOG] -> 页面表格渲染更新`, v)
     output.value = {}
     Array.from(tables.value || []).forEach((element) => {
-      const name = jQuery(element).parent().prev().text()
+      const name = jQuery(element).parent().prev().text() || jQuery(element).parent().prev().prev().text()
       const json = (jQuery(element) as any).tableToJSON()
 
       if (/body参数/gi.test(name)) {
@@ -54,7 +54,10 @@ watch(
           .filter(Boolean)
         TypeRequest.value = [`export interface Request {`, ...interfaceFieldStr, `}`].join('\n')
         console.info(`[LOG] -> TypeRequest`, TypeRequest.value)
-      } else if (/字段说明/gi.test(name) || /^\w+$/i.test(name)) {
+        return
+      }
+
+      if (/字段说明/gi.test(name) || /^\w+$/i.test(name)) {
         const interfaceFieldStr = json
           .map((item) => {
             return [item['说明'] ? `  /** ${item['说明']} */` : '', `  ${item['字段名称']}: ${typeReplace(item['类型'])}`].filter(Boolean).join('\n')
@@ -62,10 +65,11 @@ watch(
           .filter(Boolean)
         TypeResponse.value += [`export interface ${/^\w+$/i.test(name) ? name : 'Response'} {`, ...interfaceFieldStr, `}`].join('\n') + '\n\n'
         console.info(`[LOG] -> TypeResponse`, TypeResponse.value)
-      } else {
-        if (name) {
-          output.value[name] = json
-        }
+        return
+      }
+
+      if (name) {
+        output.value[name] = json
       }
     })
   },

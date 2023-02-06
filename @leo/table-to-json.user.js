@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name       @leo/table-to-json
 // @namespace  https://xuebin.me/
-// @version    0.0.7
+// @version    0.0.8
 // @author     monkey
 // @icon       https://vitejs.dev/logo.svg
 // @updateURL  https://gitee.com/mr.leo/userscript/raw/main/@leo/table-to-json.user.js
@@ -13,7 +13,7 @@
 // @grant      GM_xmlhttpRequest
 // ==/UserScript==
 
-(e=>{const o=document.createElement("style");o.dataset.source="vite-plugin-monkey",o.innerText=e,document.head.appendChild(o)})(":root{font-family:Inter,Avenir,Helvetica,Arial,sans-serif;font-size:16px;line-height:24px;font-weight:400;color-scheme:light dark;color:#ffffffde;background-color:#242424;font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;-webkit-text-size-adjust:100%}a{font-weight:500;color:#646cff;text-decoration:inherit}a:hover{color:#535bf2}body{margin:0;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;place-items:center;min-width:320px;min-height:100vh}h1{font-size:3.2em;line-height:1.1}button{border-radius:8px;border:1px solid transparent;padding:.6em 1.2em;font-size:1em;font-weight:500;font-family:inherit;background-color:#1a1a1a;cursor:pointer;-webkit-transition:border-color .25s;transition:border-color .25s}button:hover{border-color:#646cff}button:focus,button:focus-visible{outline:4px auto -webkit-focus-ring-color}.card{padding:2em}#app{max-width:1280px;margin:0 auto;padding:2rem;text-align:center}@media (prefers-color-scheme: light){:root{color:#213547;background-color:#fff}a:hover{color:#747bff}button{background-color:#f9f9f9}}.inno-userscript_invoice[data-v-f87958ba]{position:fixed;z-index:9999;background-color:#fff;-webkit-box-shadow:5px 5px 10px 0px #ccc;box-shadow:5px 5px 10px #ccc;max-height:80%;overflow:auto;border-radius:5px;border:1px solid #ccc;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column}.inno-userscript_invoice .main[data-v-f87958ba]{overflow:auto;padding:4px}.inno-userscript_invoice .drag[data-v-f87958ba]{cursor:move;font-size:16px;background:#ccc;padding:8px}.btn[data-v-f87958ba]{cursor:pointer}.copy[data-v-f87958ba]{cursor:copy}details[data-v-f87958ba]{border:1px solid #aaa;border-radius:4px;padding:.5em .5em 0}summary[data-v-f87958ba]{font-weight:700;margin:-.5em -.5em 0;padding:.5em;cursor:pointer}details[open][data-v-f87958ba]{padding:.5em}details[open] summary[data-v-f87958ba]{border-bottom:1px solid #aaa;margin-bottom:.5em}");
+(e=>{const o=document.createElement("style");o.dataset.source="vite-plugin-monkey",o.innerText=e,document.head.appendChild(o)})(":root{font-family:Inter,Avenir,Helvetica,Arial,sans-serif;font-size:16px;line-height:24px;font-weight:400;color-scheme:light dark;color:#ffffffde;background-color:#242424;font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;-webkit-text-size-adjust:100%}a{font-weight:500;color:#646cff;text-decoration:inherit}a:hover{color:#535bf2}body{margin:0;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;place-items:center;min-width:320px;min-height:100vh}h1{font-size:3.2em;line-height:1.1}button{border-radius:8px;border:1px solid transparent;padding:.6em 1.2em;font-size:1em;font-weight:500;font-family:inherit;background-color:#1a1a1a;cursor:pointer;-webkit-transition:border-color .25s;transition:border-color .25s}button:hover{border-color:#646cff}button:focus,button:focus-visible{outline:4px auto -webkit-focus-ring-color}.card{padding:2em}#app{max-width:1280px;margin:0 auto;padding:2rem;text-align:center}@media (prefers-color-scheme: light){:root{color:#213547;background-color:#fff}a:hover{color:#747bff}button{background-color:#f9f9f9}}.inno-userscript_invoice[data-v-bbace4df]{position:fixed;z-index:9999;background-color:#fff;-webkit-box-shadow:5px 5px 10px 0px #ccc;box-shadow:5px 5px 10px #ccc;max-height:80%;overflow:auto;border-radius:5px;border:1px solid #ccc;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column}.inno-userscript_invoice .main[data-v-bbace4df]{overflow:auto;padding:4px}.inno-userscript_invoice .drag[data-v-bbace4df]{cursor:move;font-size:16px;background:#ccc;padding:8px}.btn[data-v-bbace4df]{cursor:pointer}.copy[data-v-bbace4df]{cursor:copy}details[data-v-bbace4df]{border:1px solid #aaa;border-radius:4px;padding:.5em .5em 0}summary[data-v-bbace4df]{font-weight:700;margin:-.5em -.5em 0;padding:.5em;cursor:pointer}details[open][data-v-bbace4df]{padding:.5em}details[open] summary[data-v-bbace4df]{border-bottom:1px solid #aaa;margin-bottom:.5em}");
 
 (function(vue) {
   "use strict";
@@ -2748,7 +2748,7 @@
   var GM_info = /* @__PURE__ */ (() => monkeyWindow.GM_info)();
   var GM_xmlhttpRequest = /* @__PURE__ */ (() => monkeyWindow.GM_xmlhttpRequest)();
   const name = "@leo/table-to-json";
-  const version = "0.0.7";
+  const version = "0.0.8";
   const type = "module";
   const scripts = {
     dev: "vite",
@@ -2805,7 +2805,7 @@
           console.info(`[LOG] -> 页面表格渲染更新`, v);
           output.value = {};
           Array.from(tables.value || []).forEach((element) => {
-            const name2 = jQuery(element).parent().prev().text();
+            const name2 = jQuery(element).parent().prev().text() || jQuery(element).parent().prev().prev().text();
             const json = jQuery(element).tableToJSON();
             if (/body参数/gi.test(name2)) {
               const interfaceFieldStr = json.map((item) => {
@@ -2817,16 +2817,18 @@
               }).filter(Boolean);
               TypeRequest.value = [`export interface Request {`, ...interfaceFieldStr, `}`].join("\n");
               console.info(`[LOG] -> TypeRequest`, TypeRequest.value);
-            } else if (/字段说明/gi.test(name2) || /^\w+$/i.test(name2)) {
+              return;
+            }
+            if (/字段说明/gi.test(name2) || /^\w+$/i.test(name2)) {
               const interfaceFieldStr = json.map((item) => {
                 return [item["说明"] ? `  /** ${item["说明"]} */` : "", `  ${item["字段名称"]}: ${typeReplace(item["类型"])}`].filter(Boolean).join("\n");
               }).filter(Boolean);
               TypeResponse.value += [`export interface ${/^\w+$/i.test(name2) ? name2 : "Response"} {`, ...interfaceFieldStr, `}`].join("\n") + "\n\n";
               console.info(`[LOG] -> TypeResponse`, TypeResponse.value);
-            } else {
-              if (name2) {
-                output.value[name2] = json;
-              }
+              return;
+            }
+            if (name2) {
+              output.value[name2] = json;
             }
           });
         }
@@ -2887,7 +2889,7 @@
       };
     }
   });
-  const App_vue_vue_type_style_index_0_scoped_f87958ba_lang = "";
+  const App_vue_vue_type_style_index_0_scoped_bbace4df_lang = "";
   const _export_sfc = (sfc, props) => {
     const target = sfc.__vccOpts || sfc;
     for (const [key, val] of props) {
@@ -2895,7 +2897,7 @@
     }
     return target;
   };
-  const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-f87958ba"]]);
+  const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-bbace4df"]]);
   const s = "@leo/core", t = "1.0.0", n = "module", c = "./dist/core.umd.js", i = "./dist/core.es.js", r = {
     ".": {
       import: "./dist/core.es.js",
