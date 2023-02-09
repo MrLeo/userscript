@@ -1,5 +1,5 @@
 import semver from 'semver'
-import { GM_info, GM_xmlhttpRequest } from '$'
+import { GM_info, GM_xmlhttpRequest } from 'vite-plugin-monkey/dist/client'
 
 console.info(`%c[${GM_info.script.name}]`, 'color: #409eff; font-weight: bold; font-size: 32px;', GM_info)
 export const checkVersion = async () => {
