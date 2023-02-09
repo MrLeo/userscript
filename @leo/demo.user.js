@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         @leo/demo
 // @namespace    https://github.com/MrLeo/userscript
-// @version      1.0.1
+// @version      1.0.2
 // @author       https://xuebin.me
 // @icon         https://vitejs.dev/logo.svg
 // @downloadURL  https://gitee.com/mr.leo/userscript/raw/main/@leo/demo.user.js

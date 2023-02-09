@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         @leo/table-to-json
 // @namespace    https://github.com/MrLeo/userscript
-// @version      1.0.7
+// @version      1.0.8
 // @author       https://xuebin.me
 // @icon         https://vitejs.dev/logo.svg
 // @downloadURL  https://gitee.com/mr.leo/userscript/raw/main/@leo/table-to-json.user.js
@@ -2750,12 +2750,11 @@
   var GM_info = /* @__PURE__ */ (() => monkeyWindow.GM_info)();
   var GM_xmlhttpRequest = /* @__PURE__ */ (() => monkeyWindow.GM_xmlhttpRequest)();
   const name = "@leo/table-to-json";
-  const version = "1.0.7";
+  const version = "1.0.8";
   const type = "module";
   const scripts = {
     dev: "vite",
-    build: "vue-tsc --noEmit && vite build",
-    publish: "pnpm version patch && pnpm run build",
+    build: "pnpm version patch && vue-tsc --noEmit && vite build",
     preview: "vite preview"
   };
   const dependencies = {
