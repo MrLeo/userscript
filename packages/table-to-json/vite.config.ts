@@ -1,9 +1,5 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import { createStyleImportPlugin } from 'vite-plugin-style-import'
-import AutoImport from 'unplugin-auto-import/vite'
-import Components from 'unplugin-vue-components/vite'
-import { ArcoResolver } from 'unplugin-vue-components/resolvers'
 import monkey, { cdn } from 'vite-plugin-monkey'
 import packageInfo from './package.json'
 
@@ -17,26 +13,6 @@ export default defineConfig({
   },
   plugins: [
     vue(),
-    AutoImport({
-      resolvers: [ArcoResolver()],
-    }),
-    Components({
-      resolvers: [ArcoResolver({ sideEffect: true })],
-    }),
-    createStyleImportPlugin({
-      libs: [
-        {
-          libraryName: '@arco-design/web-vue',
-          esModule: true,
-          resolveStyle: (name) => {
-            // less
-            // return `@arco-design/web-vue/es/${name}/style/index.js`
-            // css
-            return `@arco-design/web-vue/es/${name}/style/css.js`
-          },
-        },
-      ],
-    }),
     monkey({
       entry: 'src/main.ts',
       userscript: {
