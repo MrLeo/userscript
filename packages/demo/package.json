@@ -12,6 +12,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@arco-design/web-vue": "^2.42.1",
+    "@leo/core": "workspace:*",
     "vue": "^3.2.45"
   },
   "devDependencies": {

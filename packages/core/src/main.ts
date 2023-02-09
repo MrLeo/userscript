@@ -1,25 +1,12 @@
 /* eslint-disable no-console */
 import packageInfo from '../package.json'
+import { addConsole } from './log'
+import { checkVersion } from './version'
 
-export const addConsole = () => {
-  try {
-    const iframe = document.createElement('iframe')
-    iframe.style.display = 'none'
-    document.body.appendChild(iframe)
-    // @ts-ignore
-    console = iframe?.contentWindow?.console
-    window.console = console
-
-    // const oldTrace = console.trace
-    // console.trace = (...args) => {
-    //   console.groupCollapsed.apply(console, args) // eslint-disable-line prefer-spread
-    //   oldTrace('')
-    //   console.groupEnd()
-    // }
-  } catch (error) {}
-}
+console.info('core version', packageInfo.version)
 
 export default {
   version: packageInfo.version,
   addConsole,
+  checkVersion,
 }
