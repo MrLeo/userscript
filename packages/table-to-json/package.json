@@ -1,8 +1,11 @@
 {
   "name": "@leo/table-to-json",
   "private": true,
-  "version": "1.0.8",
+  "version": "1.0.10",
   "type": "module",
+  "namespace": "https://github.com/MrLeo/userscript",
+  "homepage": "https://xuebin.me",
+  "author": "https://xuebin.me",
   "scripts": {
     "dev": "vite",
     "build": "pnpm version patch && vue-tsc --noEmit && vite build",

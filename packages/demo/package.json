@@ -1,8 +1,11 @@
 {
   "name": "@leo/demo",
   "private": true,
-  "version": "1.0.2",
+  "version": "1.0.4",
   "type": "module",
+  "namespace": "https://github.com/MrLeo/userscript",
+  "homepage": "https://xuebin.me",
+  "author": "https://xuebin.me",
   "scripts": {
     "dev": "vite",
     "build": "pnpm version patch && vue-tsc --noEmit && vite build",

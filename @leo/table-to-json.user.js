@@ -1,9 +1,11 @@
 // ==UserScript==
 // @name         @leo/table-to-json
 // @namespace    https://github.com/MrLeo/userscript
-// @version      1.0.8
+// @version      1.0.10
 // @author       https://xuebin.me
 // @icon         https://vitejs.dev/logo.svg
+// @homepage     https://xuebin.me
+// @homepageURL  https://xuebin.me
 // @downloadURL  https://gitee.com/mr.leo/userscript/raw/main/@leo/table-to-json.user.js
 // @updateURL    https://gitee.com/mr.leo/userscript/raw/main/@leo/table-to-json.user.js
 // @match        *://wiki.zhaopin.com/*
@@ -2750,8 +2752,11 @@
   var GM_info = /* @__PURE__ */ (() => monkeyWindow.GM_info)();
   var GM_xmlhttpRequest = /* @__PURE__ */ (() => monkeyWindow.GM_xmlhttpRequest)();
   const name = "@leo/table-to-json";
-  const version = "1.0.8";
+  const version = "1.0.10";
   const type = "module";
+  const namespace = "https://github.com/MrLeo/userscript";
+  const homepage = "https://xuebin.me";
+  const author = "https://xuebin.me";
   const scripts = {
     dev: "vite",
     build: "pnpm version patch && vue-tsc --noEmit && vite build",
@@ -2777,6 +2782,9 @@
     "private": true,
     version,
     type,
+    namespace,
+    homepage,
+    author,
     scripts,
     dependencies,
     devDependencies

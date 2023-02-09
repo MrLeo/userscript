@@ -18,6 +18,7 @@ export default defineConfig({
       userscript: {
         icon: 'https://vitejs.dev/logo.svg',
         namespace: 'https://github.com/MrLeo/userscript',
+        homepage: 'https://xuebin.me',
         author: 'https://xuebin.me',
         match: ['*://*/*'],
         updateURL: `https://gitee.com/mr.leo/userscript/raw/main/${packageInfo.name}.user.js`,

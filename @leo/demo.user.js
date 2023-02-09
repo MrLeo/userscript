@@ -1,9 +1,11 @@
 // ==UserScript==
 // @name         @leo/demo
 // @namespace    https://github.com/MrLeo/userscript
-// @version      1.0.2
+// @version      1.0.4
 // @author       https://xuebin.me
 // @icon         https://vitejs.dev/logo.svg
+// @homepage     https://xuebin.me
+// @homepageURL  https://xuebin.me
 // @downloadURL  https://gitee.com/mr.leo/userscript/raw/main/@leo/demo.user.js
 // @updateURL    https://gitee.com/mr.leo/userscript/raw/main/@leo/demo.user.js
 // @match        *://*/*
