@@ -1,7 +1,7 @@
 {
   "name": "@leo/table-to-json",
   "private": true,
-  "version": "1.0.13",
+  "version": "1.0.14",
   "type": "module",
   "namespace": "https://github.com/MrLeo/userscript",
   "homepage": "https://xuebin.me",
