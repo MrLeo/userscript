@@ -1,5 +1,7 @@
 # @leo
 
+源代码: [GitHub](https://github.com/MrLeo/userscript) / [Gitee](https://gitee.com/mr.leo/userscript)
+
 > [Userscript 油猴脚本](https://www.notion.so/lxb/Userscript-3c8e87b4d5f248a1b1e278de4f975379)
 
 # API 文档

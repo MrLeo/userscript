@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name         @leo/demo
-// @namespace    https://xuebin.me/
+// @namespace    https://github.com/MrLeo/userscript
 // @version      1.0.1
-// @author       monkey
+// @author       https://xuebin.me
 // @icon         https://vitejs.dev/logo.svg
 // @downloadURL  https://gitee.com/mr.leo/userscript/raw/main/@leo/demo.user.js
 // @updateURL    https://gitee.com/mr.leo/userscript/raw/main/@leo/demo.user.js
-// @match        https://www.baidu.com/
+// @match        *://*/*
 // @require      https://cdn.jsdelivr.net/npm/core-js-bundle@latest/minified.js
 // @require      https://cdn.jsdelivr.net/npm/vue@3.2.45/dist/vue.global.prod.js
 // ==/UserScript==

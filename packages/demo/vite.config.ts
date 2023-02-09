@@ -17,8 +17,9 @@ export default defineConfig({
       entry: 'src/main.ts',
       userscript: {
         icon: 'https://vitejs.dev/logo.svg',
-        namespace: 'https://xuebin.me/',
-        match: ['https://www.baidu.com/'],
+        namespace: 'https://github.com/MrLeo/userscript',
+        author: 'https://xuebin.me',
+        match: ['*://*/*'],
         updateURL: `https://gitee.com/mr.leo/userscript/raw/main/${packageInfo.name}.user.js`,
         downloadURL: `https://gitee.com/mr.leo/userscript/raw/main/${packageInfo.name}.user.js`,
         require: ['https://cdn.jsdelivr.net/npm/core-js-bundle@latest/minified.js'],

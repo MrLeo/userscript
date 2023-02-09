@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         @leo/table-to-json
-// @namespace    https://xuebin.me/
+// @namespace    https://github.com/MrLeo/userscript
 // @version      1.0.7
-// @author       monkey
+// @author       https://xuebin.me
 // @icon         https://vitejs.dev/logo.svg
 // @downloadURL  https://gitee.com/mr.leo/userscript/raw/main/@leo/table-to-json.user.js
 // @updateURL    https://gitee.com/mr.leo/userscript/raw/main/@leo/table-to-json.user.js
@@ -2759,14 +2759,18 @@
     preview: "vite preview"
   };
   const dependencies = {
+    "@arco-design/web-vue": "^2.42.1",
     "@leo/core": "workspace:*",
     vue: "^3.2.45"
   };
   const devDependencies = {
     "@vitejs/plugin-vue": "^4.0.0",
     typescript: "^4.9.4",
+    "unplugin-auto-import": "^0.13.0",
+    "unplugin-vue-components": "^0.23.0",
     vite: "^4.0.4",
     "vite-plugin-monkey": "^2.11.0",
+    "vite-plugin-style-import": "^2.0.0",
     "vue-tsc": "^1.0.24"
   };
   const packageInfo = {
@@ -8418,14 +8422,15 @@ ${TypeResponse.value}`))
     return target;
   };
   const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-6f848078"]]);
-  const s = "@leo/core", t = "1.0.0", n = "module", c = "./dist/core.umd.js", i = "./dist/core.es.js", d = {
+  const s = "@leo/core", n = "1.0.0", t = "module", c = "./dist/core.umd.js", i = "./dist/core.es.js", r = {
     ".": {
       import: "./dist/core.es.js",
       require: "./dist/core.umd.js"
     }
-  }, r = {
+  }, d = {
     dev: "vite",
     build: "tsc && vite build",
+    publish: "pnpm version patch && pnpm run build",
     preview: "vite preview"
   }, p = {
     typescript: "^4.9.4",
@@ -8433,12 +8438,12 @@ ${TypeResponse.value}`))
   }, l = {
     name: s,
     private: true,
-    version: t,
-    type: n,
+    version: n,
+    type: t,
     main: c,
     module: i,
-    exports: d,
-    scripts: r,
+    exports: r,
+    scripts: d,
     devDependencies: p
   }, a = () => {
     var o;
