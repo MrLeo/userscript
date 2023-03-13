@@ -91,7 +91,7 @@ watch(
       }
 
       try {
-        if (/字段说明/gi.test(name) || /^\w+(\s*：\s*)?$/i.test(name) || /^\w+DTO/.test(name)) {
+        if (/字段说明/gi.test(name)) {
           const interfaceFieldStr = json
             .map((item) => {
               return [item['说明'] ? `  /** ${item['说明']} */` : '', `  ${item['字段名称'] || item['参数名']}: ${typeReplace(item['类型'])}`]
@@ -99,9 +99,24 @@ watch(
                 .join('\n')
             })
             .filter(Boolean)
-          TypeResponse.value +=
-            [`export interface ${/^\w+$/i.test(name) ? name : `${upperFirst(apiMethod.value)}Response`} {`, ...interfaceFieldStr, `}`].join('\n') +
-            '\n\n'
+          TypeResponse.value += [`export interface ${upperFirst(apiMethod.value)}Response {`, ...interfaceFieldStr, `}`].join('\n') + '\n\n'
+          console.info(`[LOG] -> TypeResponse`, TypeResponse.value)
+          return
+        }
+      } catch (err) {
+        console.error(`[LOG] -> 返回结果 -> 字段说明`, err)
+      }
+
+      try {
+        if (/^\w+(\s*：\s*)?$/i.test(name) || /^\w+DTO/.test(name)) {
+          const interfaceFieldStr = json
+            .map((item) => {
+              return [item['说明'] ? `  /** ${item['说明']} */` : '', `  ${item['字段名称'] || item['参数名']}: ${typeReplace(item['类型'])}`]
+                .filter(Boolean)
+                .join('\n')
+            })
+            .filter(Boolean)
+          TypeResponse.value += [`export interface ${name} {`, ...interfaceFieldStr, `}`].join('\n') + '\n\n'
           console.info(`[LOG] -> TypeResponse`, TypeResponse.value)
           return
         }
