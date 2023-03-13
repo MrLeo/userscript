@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         @leo/table-to-json
 // @namespace    https://github.com/MrLeo/userscript
-// @version      1.0.17
+// @version      1.0.18
 // @author       https://xuebin.me
 // @icon         https://vitejs.dev/logo.svg
 // @homepage     https://xuebin.me
@@ -16,7 +16,7 @@
 // @grant        GM_xmlhttpRequest
 // ==/UserScript==
 
-(e=>{const o=document.createElement("style");o.dataset.source="vite-plugin-monkey",o.innerText=e,document.head.appendChild(o)})(":root{font-family:Inter,Avenir,Helvetica,Arial,sans-serif;font-size:16px;line-height:24px;font-weight:400;color-scheme:light dark;color:#ffffffde;background-color:#242424;font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;-webkit-text-size-adjust:100%}a{font-weight:500;color:#646cff;text-decoration:inherit}a:hover{color:#535bf2}body{margin:0;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;place-items:center;min-width:320px;min-height:100vh}h1{font-size:3.2em;line-height:1.1}button{border-radius:8px;border:1px solid transparent;padding:.6em 1.2em;font-size:1em;font-weight:500;font-family:inherit;background-color:#1a1a1a;cursor:pointer;-webkit-transition:border-color .25s;transition:border-color .25s}button:hover{border-color:#646cff}button:focus,button:focus-visible{outline:4px auto -webkit-focus-ring-color}.card{padding:2em}#app{max-width:1280px;margin:0 auto;padding:2rem;text-align:center}@media (prefers-color-scheme: light){:root{color:#213547;background-color:#fff}a:hover{color:#747bff}button{background-color:#f9f9f9}}.inno-userscript_invoice[data-v-6f848078]{position:fixed;z-index:9999;background-color:#fff;-webkit-box-shadow:5px 5px 10px 0px #ccc;box-shadow:5px 5px 10px #ccc;max-height:80%;max-width:600px;overflow:auto;resize:both;border-radius:5px;border:1px solid #ccc;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column}.inno-userscript_invoice .drag[data-v-6f848078]{cursor:move;font-size:16px;background:#ccc;padding:8px}.inno-userscript_invoice .main[data-v-6f848078]{overflow:auto;padding:4px}.btn[data-v-6f848078]{cursor:pointer}.copy[data-v-6f848078]{cursor:copy}.pre[data-v-6f848078]{border:1px solid #ccc;border-radius:5px;padding:8px}details[data-v-6f848078]{border:1px solid #aaa;border-radius:4px;padding:.5em .5em 0;margin-top:8px}summary[data-v-6f848078]{font-weight:700;margin:-.5em -.5em 0;padding:.5em;cursor:pointer}details[open][data-v-6f848078]{padding:.5em}details[open] summary[data-v-6f848078]{border-bottom:1px solid #aaa;margin-bottom:.5em}");
+(e=>{const o=document.createElement("style");o.dataset.source="vite-plugin-monkey",o.innerText=e,document.head.appendChild(o)})(":root{font-family:Inter,Avenir,Helvetica,Arial,sans-serif;font-size:16px;line-height:24px;font-weight:400;color-scheme:light dark;color:#ffffffde;background-color:#242424;font-synthesis:none;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;-webkit-text-size-adjust:100%}a{font-weight:500;color:#646cff;text-decoration:inherit}a:hover{color:#535bf2}body{margin:0;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;place-items:center;min-width:320px;min-height:100vh}h1{font-size:3.2em;line-height:1.1}button{border-radius:8px;border:1px solid transparent;padding:.6em 1.2em;font-size:1em;font-weight:500;font-family:inherit;background-color:#1a1a1a;cursor:pointer;-webkit-transition:border-color .25s;transition:border-color .25s}button:hover{border-color:#646cff}button:focus,button:focus-visible{outline:4px auto -webkit-focus-ring-color}.card{padding:2em}#app{max-width:1280px;margin:0 auto;padding:2rem;text-align:center}@media (prefers-color-scheme: light){:root{color:#213547;background-color:#fff}a:hover{color:#747bff}button{background-color:#f9f9f9}}.inno-userscript_invoice[data-v-45abdef0]{position:fixed;z-index:9999;background-color:#fff;-webkit-box-shadow:5px 5px 10px 0px #ccc;box-shadow:5px 5px 10px #ccc;max-height:80%;max-width:600px;overflow:auto;resize:both;border-radius:5px;border:1px solid #ccc;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column}.inno-userscript_invoice .drag[data-v-45abdef0]{cursor:move;font-size:16px;background:#ccc;padding:8px}.inno-userscript_invoice .main[data-v-45abdef0]{overflow:auto;padding:4px}.btn[data-v-45abdef0]{cursor:pointer}.copy[data-v-45abdef0]{cursor:copy}.pre[data-v-45abdef0]{border:1px solid #ccc;border-radius:5px;padding:8px}details[data-v-45abdef0]{border:1px solid #aaa;border-radius:4px;padding:.5em .5em 0;margin-top:8px}summary[data-v-45abdef0]{font-weight:700;margin:-.5em -.5em 0;padding:.5em;cursor:pointer}details[open][data-v-45abdef0]{padding:.5em}details[open] summary[data-v-45abdef0]{border-bottom:1px solid #aaa;margin-bottom:.5em}");
 
 (function(vue) {
   "use strict";
@@ -638,7 +638,7 @@
   var monkeyWindow = window;
   var GM_info = /* @__PURE__ */ (() => monkeyWindow.GM_info)();
   const name = "@leo/table-to-json";
-  const version = "1.0.17";
+  const version = "1.0.18";
   const type = "module";
   const namespace = "https://github.com/MrLeo/userscript";
   const homepage = "https://xuebin.me";
@@ -6160,7 +6160,7 @@
       }
     }).call(commonjsGlobal);
   })(lodash, lodashExports);
-  const _withScopeId = (n) => (vue.pushScopeId("data-v-6f848078"), n = n(), vue.popScopeId(), n);
+  const _withScopeId = (n) => (vue.pushScopeId("data-v-45abdef0"), n = n(), vue.popScopeId(), n);
   const _hoisted_1 = ["href"];
   const _hoisted_2 = {
     key: 0,
@@ -6179,7 +6179,7 @@
         () => style2.value,
         () => initialValue.value = position.value
       );
-      const typeReplace = (type2) => type2.replace(/^string$/i, "string").replace(/^int|long$/i, "number").replace(/^List<([^>]*)>$/i, "$1[]");
+      const typeReplace = (type2) => type2.replace(/^string$/i, "string").replace(/^integer|int|long$/i, "number").replace(/^List<([^>]*)>$/i, "$1[]");
       const tables = vue.ref();
       const output = vue.ref();
       const api = vue.ref("");
@@ -6237,7 +6237,7 @@
               console.error(`[LOG] -> 请求参数 -> BODY参数`, err);
             }
             try {
-              if (/字段说明/gi.test(name2) || /^\w+$/i.test(name2)) {
+              if (/字段说明/gi.test(name2) || /^\w+(\s*：\s*)?$/i.test(name2) || /^\w+DTO/.test(name2)) {
                 const interfaceFieldStr = json.map((item) => {
                   return [item["说明"] ? `  /** ${item["说明"]} */` : "", `  ${item["字段名称"] || item["参数名"]}: ${typeReplace(item["类型"])}`].filter(Boolean).join("\n");
                 }).filter(Boolean);
@@ -6303,7 +6303,7 @@ ${TypeResponse.value}`))
       };
     }
   });
-  const App_vue_vue_type_style_index_0_scoped_6f848078_lang = "";
+  const App_vue_vue_type_style_index_0_scoped_45abdef0_lang = "";
   const _export_sfc = (sfc, props) => {
     const target = sfc.__vccOpts || sfc;
     for (const [key, val] of props) {
@@ -6311,7 +6311,7 @@ ${TypeResponse.value}`))
     }
     return target;
   };
-  const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-6f848078"]]);
+  const App = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-45abdef0"]]);
   const ft = "@leo/core", pt = "1.0.0", Et = "module", $t = "./dist/core.umd.js", vt = "./dist/core.es.js", mt = {
     ".": {
       import: "./dist/core.es.js",
