@@ -19,7 +19,7 @@ watch(
 const typeReplace = (type) =>
   type
     .replace(/^string$/i, 'string')
-    .replace(/^int|long$/i, 'number')
+    .replace(/^integer|int|long$/i, 'number')
     .replace(/^List<([^>]*)>$/i, '$1[]')
 
 const tables = ref<JQuery<HTMLElement>>()
@@ -91,7 +91,7 @@ watch(
       }
 
       try {
-        if (/字段说明/gi.test(name) || /^\w+$/i.test(name)) {
+        if (/字段说明/gi.test(name) || /^\w+(\s*：\s*)?$/i.test(name) || /^\w+DTO/.test(name)) {
           const interfaceFieldStr = json
             .map((item) => {
               return [item['说明'] ? `  /** ${item['说明']} */` : '', `  ${item['字段名称'] || item['参数名']}: ${typeReplace(item['类型'])}`]
