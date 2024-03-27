@@ -1,6 +1,7 @@
 node_modules/
 build/
 dist/
+@leo/
 docs/
 package-lock.json
 pnpm-lock.yaml

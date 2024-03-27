@@ -1,69 +1,121 @@
 {
+  /* Visit https://aka.ms/tsconfig to read more about this file */
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "Recommended - https://www.typescriptlang.org/tsconfig",
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.vue",
-    "**/*.json"
-  ],
-  "exclude": [
-    "**/*.js",
-    "tests/**/*",
-    "node_modules",
-    "dist",
-    "output",
-    ".git"
-  ],
+
+  // "extends": "@tsconfig/recommended/tsconfig.json", // https://github.com/tsconfig/bases/blob/main/bases/recommended.json
+  // "extends": "@vue/tsconfig/tsconfig.json", // https://github.com/vuejs/tsconfig/blob/main/tsconfig.json
+  // "extends": "@zpfe/tsconfig/vue", // http://npm.zhaopin.com/@zpfe/tsconfig
+
+  // "files": [],
+  "include": ["**/*.ts", "**/*.tsx", "**/*.vue", "**/*.json"],
+  "exclude": ["**/*.js", "**/*.cjs", "tests/**/*", "node_modules", "dist", "output", ".git"],
+
   "compilerOptions": {
+    /* Projects */
+    // "incremental": true,
+    // "composite": true,
+    // "tsBuildInfoFile": "./.tsbuildinfo",
+    // "disableSourceOfProjectReferenceRedirect": true,
+    // "disableSolutionSearching": true,
+    // "disableReferencedProjectLoad": true,
+
+    /* Language and Environment */
     "target": "ESNext",
-    "lib": [
-      "ESNext",
-      "DOM"
-    ],
+    "lib": ["ESNext", "DOM"],
     "jsx": "preserve",
     "experimentalDecorators": true,
+    // "emitDecoratorMetadata": true,
+    // "jsxFactory": "",
+    // "jsxFragmentFactory": "",
     "jsxImportSource": "vue",
+    // "reactNamespace": "",
+    // "noLib": true,
     "useDefineForClassFields": true,
+    // "moduleDetection": "auto",
+
+    /* Modules */
     "module": "ESNext",
-    "moduleResolution": "bundler",
+    // "rootDir": "./",
+    "moduleResolution": "bundler", // "node"
     "baseUrl": "./",
     "paths": {
-      "env": [
-        "env/local.json"
-      ],
-      "types/*": [
-        "types/*"
-      ],
-      "common/*": [
-        "common/*"
-      ],
-      "pages/*": [
-        "pages/*"
-      ],
-      "api/*": [
-        "api/*"
-      ],
-      "extensions/*": [
-        "extensions/*"
-      ]
+      "env": ["env/local.json"],
+      "types/*": ["types/*"],
+      "common/*": ["common/*"],
+      "pages/*": ["pages/*"],
+      "api/*": ["api/*"],
+      "extensions/*": ["extensions/*"]
     },
+    // "rootDirs": [],
+    // "typeRoots": [],
+    // "types": [],
+    // "allowUmdGlobalAccess": true,
+    // "moduleSuffixes": [],
     "resolveJsonModule": true,
+    // "noResolve": true,
+
+    /* JavaScript Support */
     "allowJs": true,
     "checkJs": true,
+    // "maxNodeModuleJsDepth": 1,
+
+    /* Emit */
+    // "declaration": true,
+    // "declarationMap": true,
+    // "emitDeclarationOnly": true,
     "sourceMap": true,
+    // "outFile": "./",
     "outDir": "./dist",
+    // "removeComments": true,
+    // "noEmit": true,
+    // "importHelpers": true,
+    // "importsNotUsedAsValues": "remove",
+    // "downlevelIteration": true,
+    // "sourceRoot": "",
+    // "mapRoot": "",
+    // "inlineSourceMap": true,
+    // "inlineSources": true,
+    // "emitBOM": true,
+    // "newLine": "crlf",
+    // "stripInternal": true,
+    // "noEmitHelpers": true,
+    // "noEmitOnError": true,
+    // "preserveConstEnums": true,
+    // "declarationDir": "./",
+    // "preserveValueImports": true,
+
+    /* Interop Constraints */
     "isolatedModules": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
+    // "preserveSymlinks": true,
     "forceConsistentCasingInFileNames": true,
     "verbatimModuleSyntax": true,
+
+    /* Type Checking */
     "strict": true,
-    "noImplicitAny": false,
+    "noImplicitAny": false, // true,
+    // "strictNullChecks": true,
     "strictFunctionTypes": true,
+    // "strictBindCallApply": true,
+    // "strictPropertyInitialization": true,
     "noImplicitThis": true,
+    // "useUnknownInCatchVariables": true,
+    // "alwaysStrict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    // "exactOptionalPropertyTypes": true,
+    // "noImplicitReturns": true,
+    // "noFallthroughCasesInSwitch": true,
+    // "noUncheckedIndexedAccess": true,
+    // "noImplicitOverride": true,
+    // "noPropertyAccessFromIndexSignature": true,
+    // "allowUnusedLabels": true,
+    // "allowUnreachableCode": true,
+
+    /* Completeness */
+    // "skipDefaultLibCheck": true,
     "skipLibCheck": true
   }
 }

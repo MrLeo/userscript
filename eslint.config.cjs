@@ -10,6 +10,7 @@ module.exports = {
   parser: 'vue-eslint-parser',
   parserOptions: {
     parser: '@typescript-eslint/parser', // see https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/parser
+    project: './tsconfig.json',
     ecmaVersion: 2020,
     sourceType: 'module',
     jsxPragma: 'React',
@@ -33,7 +34,6 @@ module.exports = {
     'plugin:@typescript-eslint/recommended-type-checked',
 
     // 'standard',
-
 
     // 'prettier', // eslint-config-prettier
     // 'plugin:prettier/recommended', // eslint-plugin-prettier
@@ -70,7 +70,6 @@ module.exports = {
     'max-classes-per-file': 0,
     'arrow-body-style': 'off',
     'prefer-arrow-callback': 'off',
-    'prettier/prettier': ['error', {}, { usePrettierrc: true }],
     // 匿名函数和箭头函数括号前必须加空格，具名函数不需要：https://eslint.org/docs/rules/space-before-function-paren
     'space-before-function-paren': ['error', { anonymous: 'always', named: 'never', asyncArrow: 'always' }],
     
@@ -99,6 +98,7 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': ['warn'],
     '@typescript-eslint/ban-ts-comment': 'off', // 允许使用ts注释 (例如: @ts-ignore)
     '@typescript-eslint/no-explicit-any': 'off', // 允许使用any
+    '@typescript-eslint/await-thenable': 'warn',
   },
   overrides: [
     {
