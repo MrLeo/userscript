@@ -1,39 +1,19 @@
 {
-  "printWidth": 150,
-  "tabWidth": 2,
-  "useTabs": false,
-  "semi": false,
-  "singleQuote": true,
-  "quoteProps": "as-needed",
-  "jsxSingleQuote": false,
-  "trailingComma": "all",
-  "bracketSpacing": true,
-  "jsxBracketSameLine": false,
-  "arrowParens": "always",
-  "rangeStart": 0,
   "requirePragma": false,
-  "insertPragma": false,
-  "proseWrap": "preserve",
-  "htmlWhitespaceSensitivity": "css",
-  "vueIndentScriptAndStyle": false,
-  "endOfLine": "auto",
+  "arrowParens": "always",
+  "bracketSpacing": true,
   "embeddedLanguageFormatting": "auto",
-  "overrides": [
-    {
-      "files": "*.md",
-      "options": {
-        "printWidth": 70,
-        "useTabs": false,
-        "trailingComma": "none",
-        "arrowParens": "avoid",
-        "proseWrap": "never"
-      }
-    },
-    {
-      "files": "*.{json,babelrc,eslintrc,remarkrc,prettierrc}",
-      "options": {
-        "useTabs": false
-      }
-    }
-  ]
+  "endOfLine": "auto",
+  "htmlWhitespaceSensitivity": "css",
+  "insertPragma": false,
+  "singleQuote": true,
+  "jsxSingleQuote": false,
+  "printWidth": 150,
+  "proseWrap": "preserve",
+  "quoteProps": "as-needed",
+  "semi": false,
+  "useTabs": false,
+  "tabWidth": 2,
+  "trailingComma": "all",
+  "vueIndentScriptAndStyle": false
 }

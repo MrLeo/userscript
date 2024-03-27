@@ -9,8 +9,7 @@ module.exports = {
 
   parser: 'vue-eslint-parser',
   parserOptions: {
-    // see https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/parser
-    parser: '@typescript-eslint/parser',
+    parser: '@typescript-eslint/parser', // see https://github.com/typescript-eslint/typescript-eslint/tree/master/packages/parser
     ecmaVersion: 2020,
     sourceType: 'module',
     jsxPragma: 'React',
@@ -23,21 +22,32 @@ module.exports = {
   extends: [
     // https://eslint.vuejs.org/user-guide/
     // add more generic rulesets here, such as:
-    // 'eslint:recommended',
+    'eslint:recommended',
+    
     // 'plugin:vue/recommended', // Use this if you are using Vue.js 2.x.
     'plugin:vue/vue3-recommended',
     // 'plugin:vue/vue3-essential', // This option doesn't impose formatting rules
     // 'plugin:vue/vue3-strongly-recommended', // This option imposes formatting rules on your code to improve readability
+    
     'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/recommended-type-checked',
+
     // 'standard',
-    'prettier',
-    'plugin:prettier/recommended',
+
+
+    // 'prettier', // eslint-config-prettier
+    // 'plugin:prettier/recommended', // eslint-plugin-prettier
   ],
   globals: {
     '': 'readonly',
-    uni: 'readonly',
-    jQuery: 'readonly',
   },
+  /**
+   * @规则 https://cn.eslint.org/docs/rules/
+   * @配置 https://cn.eslint.org/docs/user-guide/configuring
+   * - "off" 或 0 - 关闭规则
+   * - "warn" 或 1 - 开启规则，使用警告级别的错误：warn (不会导致程序退出)
+   * - "error" 或 2 - 开启规则，使用错误级别的错误：error (当被触发的时候，程序会退出)
+   */
   rules: {
     indent: 'off', // 缩进2个空格：https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/indent.md
     quotes: 0, // [2, 'single'], //强制使用单引号
@@ -50,7 +60,7 @@ module.exports = {
     'prefer-promise-reject-errors': 'off', // 建议Promise.reject的reason使用Error对象：https://eslint.org/docs/rules/prefer-promise-reject-errors
     'import/no-webpack-loader-syntax': 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'no-warning-comments': [1, { terms: ['fixme'], location: 'start' }], // 禁止注释中出现 FIXME
+    'no-warning-comments': [1, { terms: ['fixme'], location: 'start' }], // 禁止注释中出现 FIX ME
     'max-len': [1, { code: 150 }],
     'no-underscore-dangle': 0, // 下划线开头或结尾
     'no-bitwise': 0, // 位运算符
@@ -63,13 +73,12 @@ module.exports = {
     'prettier/prettier': ['error', {}, { usePrettierrc: true }],
     // 匿名函数和箭头函数括号前必须加空格，具名函数不需要：https://eslint.org/docs/rules/space-before-function-paren
     'space-before-function-paren': ['error', { anonymous: 'always', named: 'never', asyncArrow: 'always' }],
-
+    
     // ------------------ Vue ------------------
     'vue/html-self-closing': 'off', // 与html规范不匹配
     'vue/multi-word-component-names': 'warn',
-
+    
     // ------------------ TypeScript ------------------
-    // '@typescript-eslint/explicit-function-return-type': 'off',
     /**
      * 类型定义的分隔符保持与JS对象一致：
      * https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/member-delimiter-style.md
@@ -88,12 +97,13 @@ module.exports = {
     '@typescript-eslint/no-empty-function': 'off',
     '@typescript-eslint/no-var-requires': 'off',
     '@typescript-eslint/no-unused-vars': ['warn'],
-    '@typescript-eslint/ban-ts-comment': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off', // 允许使用ts注释 (例如: @ts-ignore)
+    '@typescript-eslint/no-explicit-any': 'off', // 允许使用any
   },
   overrides: [
     {
       // enable the rule specifically for TypeScript files
-      files: ['*.ts', '*.mts', '*.cts', '*.tsx'],
+      files: ["*.ts", "*.mts", "*.cts", "*.tsx"],
       rules: {
         // '@typescript-eslint/no-explicit-any': ['error'],
         // '@typescript-eslint/no-unused-vars': ['error'],

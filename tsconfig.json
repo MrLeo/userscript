@@ -1,44 +1,69 @@
 {
-  "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "strict": true,
-    "jsx": "preserve",
-    "baseUrl": ".",
-    "outDir": "./dist",
-    "pretty": true,
-    "checkJs": true,
-    "sourceMap": true,
-    "skipLibCheck": true,
-    "importHelpers": true,
-    "noImplicitAny": false,
-    "noUnusedLocals": true,
-    "esModuleInterop": true,
-    "resolveJsonModule": true,
-    "noUnusedParameters": true,
-    "strictFunctionTypes": false,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-    "paths": {
-      "types/*": [
-        "types/*"
-      ]
-    },
-    "lib": [
-      "esnext",
-      "dom",
-      "dom.iterable",
-      "scripthost"
-    ]
-  },
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Recommended - https://www.typescriptlang.org/tsconfig",
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.vue",
+    "**/*.json"
+  ],
   "exclude": [
     "**/*.js",
     "tests/**/*",
     "node_modules",
     "dist",
+    "output",
     ".git"
-  ]
+  ],
+  "compilerOptions": {
+    "target": "ESNext",
+    "lib": [
+      "ESNext",
+      "DOM"
+    ],
+    "jsx": "preserve",
+    "experimentalDecorators": true,
+    "jsxImportSource": "vue",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "baseUrl": "./",
+    "paths": {
+      "env": [
+        "env/local.json"
+      ],
+      "types/*": [
+        "types/*"
+      ],
+      "common/*": [
+        "common/*"
+      ],
+      "pages/*": [
+        "pages/*"
+      ],
+      "api/*": [
+        "api/*"
+      ],
+      "extensions/*": [
+        "extensions/*"
+      ]
+    },
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "checkJs": true,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "isolatedModules": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "verbatimModuleSyntax": true,
+    "strict": true,
+    "noImplicitAny": false,
+    "strictFunctionTypes": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "skipLibCheck": true
+  }
 }
